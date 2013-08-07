@@ -1,8 +1,15 @@
+/**
+ * Project: Eneter.ProtoBuf.Serializer
+ * Author: Ondrej Uzovic
+ * 
+ * Copyright © 2013 Ondrej Uzovic
+ * 
+ */
+
 package eneter.protobuf;
 
 import static org.junit.Assert.*;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 import org.junit.Test;
@@ -10,12 +17,9 @@ import org.junit.Test;
 import eneter.messaging.endpoints.typedmessages.VoidMessage;
 import eneter.messaging.endpoints.typedmessages.internal.ReliableMessage;
 import eneter.messaging.endpoints.typedmessages.internal.ReliableMessage.EMessageType;
-import eneter.messaging.messagingsystems.composites.monitoredmessagingcomposit.MonitorChannelMessage;
-import eneter.messaging.messagingsystems.composites.monitoredmessagingcomposit.MonitorChannelMessageType;
-import eneter.messaging.nodes.broker.BrokerMessage;
-import eneter.messaging.nodes.broker.EBrokerRequest;
+import eneter.messaging.messagingsystems.composites.monitoredmessagingcomposit.*;
+import eneter.messaging.nodes.broker.*;
 import eneter.messaging.nodes.channelwrapper.WrappedData;
-import eneter.protobuf.EneterProtoBufDeclarations.WrappedDataProto;
 import eneter.protobuf.EneterProtoBufUnitTestDeclarations.TestMessage;
 
 public class Test_ProtoBufSerializer
