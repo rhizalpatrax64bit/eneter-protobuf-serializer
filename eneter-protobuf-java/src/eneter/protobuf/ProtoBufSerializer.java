@@ -1,3 +1,11 @@
+/**
+ * Project: Eneter.ProtoBuf.Serializer
+ * Author: Ondrej Uzovic
+ * 
+ * Copyright © 2013 Ondrej Uzovic
+ * 
+ */
+
 package eneter.protobuf;
 
 import java.lang.reflect.Method;
