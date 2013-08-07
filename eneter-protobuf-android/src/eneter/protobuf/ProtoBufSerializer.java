@@ -24,9 +24,20 @@ import eneter.messaging.nodes.broker.*;
 import eneter.messaging.nodes.channelwrapper.WrappedData;
 import eneter.protobuf.EneterProtoBufDeclarations.*;
 
+/**
+ * Implements protocol buffer serialization for Eneter.Messaging.Framework.
+ * 
+ *
+ */
 public class ProtoBufSerializer implements ISerializer
 {
 
+    /**
+     * Serializes data using Protocol Buffer binary format.
+     * @param dataToSerialize protocol buffer generated data class to be serialized.
+     * @param clazz data type of serialized data.
+     * @return byte[] array containing serialized data. 
+     */
     @Override
     public <T> Object serialize(T dataToSerialize, Class<T> clazz)
             throws Exception
@@ -64,6 +75,12 @@ public class ProtoBufSerializer implements ISerializer
         return aSerializedData;
     }
 
+    /**
+     * Deserializes data from the Protocol Buffer binary format.
+     * @param serializedData data (byte[]) serialized by protocol buffer to be deserialized
+     * @param clazz data type of deserialized data.
+     * @return instance of deserialized data type 
+     */
     @Override
     public <T> T deserialize(Object serializedData, Class<T> clazz)
             throws Exception
