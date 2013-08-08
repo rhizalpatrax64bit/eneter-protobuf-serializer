@@ -31,6 +31,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Eneter.Messaging.Framework">
+      <HintPath>..\..\..\..\EneterMessaging510\EneterMessagingFramework\bin\Net40\Debug\Eneter.Messaging.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\..\..\Program Files\NUnit-2.6.2\bin\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net">
+      <HintPath>..\..\..\..\Ondrej\Projects\Externals\ProtoBufNet\Full\net30\protobuf-net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,8 +49,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="EneterProtoBufUnitTestDeclarations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EneterProtoBufSerializer\EneterProtoBufSerializerNet40.csproj">
+      <Project>{33C0EBF6-C962-4EDA-A77D-5DEAA9BF8B44}</Project>
+      <Name>EneterProtoBufSerializerNet40</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
