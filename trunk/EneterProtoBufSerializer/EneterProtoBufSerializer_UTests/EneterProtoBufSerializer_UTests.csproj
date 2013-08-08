@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="EneterProtoBufUnitTestDeclarations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test_ProtoBufSerializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EneterProtoBufSerializer\EneterProtoBufSerializerNet40.csproj">
