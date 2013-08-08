@@ -16,8 +16,17 @@ using ProtoBuf;
 
 namespace Eneter.ProtoBuf
 {
+    /// <summary>
+    /// Implements protocol buffer serialization for Eneter.Messaging.Framework.
+    /// </summary>
     public class ProtoBufSerializer : ISerializer
     {
+        /// <summary>
+        /// Serializes data using Protocol Buffer binary format.
+        /// </summary>
+        /// <typeparam name="_T">data type of serialized data</typeparam>
+        /// <param name="dataToSerialize">protocol buffer generated data class to be serialized.</param>
+        /// <returns>array containing serialized data</returns>
         public object Serialize<_T>(_T dataToSerialize)
         {
             object aSerializedData;
@@ -52,6 +61,12 @@ namespace Eneter.ProtoBuf
             return aSerializedData;
         }
 
+        /// <summary>
+        /// Deserializes data from the Protocol Buffer binary format.
+        /// </summary>
+        /// <typeparam name="_T">data type of deserialized data.</typeparam>
+        /// <param name="serializedData">data (byte[]) serialized by protocol buffer to be deserialized</param>
+        /// <returns>instance of deserialized data type</returns>
         public _T Deserialize<_T>(object serializedData)
         {
             using (MemoryStream aBuf = new MemoryStream((byte[])serializedData))
