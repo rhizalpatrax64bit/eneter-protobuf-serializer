@@ -1,0 +1,38 @@
+// Message for ChannelWrapper/ChannelUnwrapper
+message WrappedDataProto
+{
+    required string AddedData = 1;
+    optional bytes OriginalDataBin = 2;
+    optional string OriginalDataStr = 3;
+}
+
+// Message for Broker.
+message BrokerMessageProto
+{
+    required string Request = 1;
+    repeated string MessageTypes = 2;
+    optional bytes MessageBin = 3;
+    optional string MessageStr = 4;
+}
+
+// Reliable messaging.
+message ReliableMessageProto
+{
+    required string MessageType = 1;
+    required string MessageId = 2;
+    optional bytes MessageBin = 3;
+    optional string MessageStr = 4;
+}
+
+// Monitored messaging.
+message MonitorChannelMessageProto
+{
+    required string MessageType = 1;
+    optional bytes MessageContentBin = 2;
+    optional string MessageContentStr = 3;
+}
+
+// Empty message
+message VoidMessageProto
+{
+}
