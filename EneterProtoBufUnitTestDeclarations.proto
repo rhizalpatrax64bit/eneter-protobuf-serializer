@@ -1,5 +1,0 @@
-message TestMessage
-{
-    required string Name = 1;
-    required int32 Value = 2;
-}
