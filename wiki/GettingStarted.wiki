@@ -30,6 +30,6 @@ Eneter.ProtoBuf.Serializer integrates Protocol Buffers with Eneter Messaging Fra
   * Eneter.Messaging.Framework.CF.dll
 
 The mentioned libraries can be obtained (downloaded and/or compiled) from their original pages:
- * [https://code.google.com/p/protobuf/ *protobuf library*] for Java and Android is from Google.
- * [https://code.google.com/p/protobuf-net/ *protobuf-net library*] for .NET, Windows Phone, Silverlight and Compact Framework is developed by Marc Gravell.
- * [http://www.eneter.net/ProductDownload.htm *Eneter.Messaging.Framework*] as cross-platform framework developed by Ondrej Uzovic.
+ * *[https://code.google.com/p/protobuf/ protobuf library]* for Java and Android is from Google.
+ * *[https://code.google.com/p/protobuf-net/ protobuf-net library]* for .NET, Windows Phone, Silverlight and Compact Framework is developed by Marc Gravell.
+ * *[http://www.eneter.net/ProductDownload.htm Eneter.Messaging.Framework]* as cross-platform framework developed by Ondrej Uzovic.
