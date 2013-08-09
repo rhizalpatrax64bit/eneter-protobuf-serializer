@@ -15,6 +15,6 @@ Further, you may need a utility application to convert 'proto' files to the sour
  * *protoc* - to convert 'proto' files to Java.
 
 These libraries and applications can be downloaded and/or compiled directly from their original pages but in order to simplify the setup Eneter.ProtoBuf.Serializer package includes all of them except Eneter Messaging Framework which is free only for non-commercial use.<br/>
-Therefore to get everything what is needed you need to do two downloads:
- * *[http://eneter.net/Downloads/Extensions/EneterProtoBufSerializer/EneterProtoBufSerializer100.zip Eneter.ProtoBuf.Serializer package]* - includes protocol buffer serializer for Eneter and protocol buffer libraries and utility applications for 'proto' files.
- * *[http://www.eneter.net/ProductDownload.htm Eneter.Messaging.Framework]* - communication framework that you can download for free if you want to give a try or your project is non-commercial.
+Therefore to get everything what is needed you need to download two things:
+ * *[http://eneter.net/Downloads/Extensions/EneterProtoBufSerializer/EneterProtoBufSerializer100.zip Eneter.ProtoBuf.Serializer package]* - includes protocol buffer serializer for Eneter, and in addition protocol buffer libraries and utility applications for 'proto' files.
+ * *[http://www.eneter.net/ProductDownload.htm Eneter.Messaging.Framework]* - communication framework that can be  downloaded for free in case of a non-commercial project or testing.
