@@ -3,33 +3,19 @@
 = Getting Started =
 
 == Environment ==
-Eneter.ProtoBuf.Serializer integrates Protocol Buffers with Eneter Messaging Framework. Therefore based on the platform you may need to reference following libraries from your project:
- * Android
-  * protobuf-2.5.0.jar
-  * eneter-protobuf-serializer-android-1.0.0.jar
-  * eneter-messaging-android-5.1.0.jar
- * Java
-  * protobuf-java-2.5.0.jar
-  * eneter-protobuf-serializer-1.0.0.jar
-  * eneter-messaging-5.1.0.jar
- * .NET platforms
-  * protobuf-net.dll
-  * Eneter.ProtoBuf.Serializer.dll
-  * Eneter.Messaging.Framework.dll
- * Silverlight
-  * protobuf-net.dll
-  * Eneter.ProtoBuf.Serializer.Silverlight.dll
-  * Eneter.Messaging.Framework.Silverlight.dll
- * Phone 7.1
-  * protobuf-net.dll
-  * Eneter.ProtoBuf.Serializer.Phone.dll
-  * Eneter.Messaging.Framework.Phone.dll
- * Compact Framework
-  * protobuf-net.dll
-  * Eneter.ProtoBuf.Serializer.CF.dll
-  * Eneter.Messaging.Framework.CF.dll
+Eneter.ProtoBuf.Serializer integrates Protocol Buffers with Eneter Messaging Framework. Therefore based on the platform you will need to reference following libraries from your project:
+ * *[https://code.google.com/p/protobuf/ protobuf.jar]* - protocol buffer  serializer for Java and Android developed by Google.
+ * *[https://code.google.com/p/protobuf-net/ protobuf-net.dll]* protocol buffer serializer for .NET, Windows Phone, Silverlight and Compact Framework developed by Marc Gravell.
+ * *[http://www.eneter.net/ProductDownload.htm Eneter.Messaging.Framework (dll, jar)]* - cross-platform framework for interprocess communication.
+ * *[http://eneter.net/Downloads/Extensions/EneterProtoBufSerializer/EneterProtoBufSerializer100.zip Eneter.ProtoBuf.Serializer (dll, jar)]* - protocol buffer serializer for Eneter Messaging Framework developed by this project.
 
-The mentioned libraries can be obtained (downloaded and/or compiled) from their original pages:
- * *[https://code.google.com/p/protobuf/ protobuf library]* for Java and Android is from Google.
- * *[https://code.google.com/p/protobuf-net/ protobuf-net library]* for .NET, Windows Phone, Silverlight and Compact Framework is developed by Marc Gravell.
- * *[http://www.eneter.net/ProductDownload.htm Eneter.Messaging.Framework]* as cross-platform framework developed by Ondrej Uzovic.
+Further, you may need a utility application to convert 'proto' files to the source code:
+ * *protogen.exe* - to convert 'proto' file to C#.
+ * *protoc* - to convert 'proto' files to Java.
+
+These libraries and applications can be downloaded and/or compiled directly from their original pages but in order to simplify the setup Eneter.ProtoBuf.Serializer package includes all of them except Eneter Messaging Framework which is free only for non-commercial use.<br/>
+Therefore to get everything what is needed you need to do two downloads:
+ * *[http://eneter.net/Downloads/Extensions/EneterProtoBufSerializer/EneterProtoBufSerializer100.zip Eneter.ProtoBuf.Serializer package]* - includes protocol buffer serializer for Eneter and protocol buffer libraries and utility applications for 'proto' files.
+ * *[http://www.eneter.net/ProductDownload.htm Eneter.Messaging.Framework]* - communication framework that you can download for free if you want to give a try or your project is non-commercial.
+
+
