@@ -1,4 +1,5 @@
 #summary Steps to use Eneter Protobuf Serializer
+#labels Featured
 
 = Getting Started =
 
@@ -17,5 +18,3 @@ These libraries and applications can be downloaded and/or compiled directly from
 Therefore to get everything what is needed you need to do two downloads:
  * *[http://eneter.net/Downloads/Extensions/EneterProtoBufSerializer/EneterProtoBufSerializer100.zip Eneter.ProtoBuf.Serializer package]* - includes protocol buffer serializer for Eneter and protocol buffer libraries and utility applications for 'proto' files.
  * *[http://www.eneter.net/ProductDownload.htm Eneter.Messaging.Framework]* - communication framework that you can download for free if you want to give a try or your project is non-commercial.
-
-
