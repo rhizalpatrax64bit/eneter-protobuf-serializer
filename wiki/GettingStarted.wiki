@@ -3,6 +3,9 @@
 
 = Getting Started =
 
+The example demonstrated bellow can be downloaded from:
+http://eneter.net/Downloads/Extensions/EneterProtoBufSerializer/Examples/AndroidNetCommunicationProtoBuf.zip
+
 == Environment ==
 Eneter.ProtoBuf.Serializer integrates Protocol Buffers with Eneter Messaging Framework. Therefore based on the platform you will need to reference following libraries from your project:
  * *[https://code.google.com/p/protobuf/ protobuf.jar]* - protocol buffer  serializer for Java and Android developed by Google.
