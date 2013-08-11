@@ -3,7 +3,7 @@
 
 = Performance Measurements =
 
-The unit-test 'SerializeDeserializePerformanceTest' compares the performance of following serializers:
+The unit-test 'SerializeDeserializePerformanceTest' provides the performance of following serializers:
 
 For .NET:
  * *EneterProtoBufSerializer* for .NET - serializer using Protocol Buffers for implemented by Marc Gravell.
