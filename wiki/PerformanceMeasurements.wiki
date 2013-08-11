@@ -6,7 +6,7 @@
 The unit-test 'SerializeDeserializePerformanceTest' provides the performance of following serializers:
 
 For .NET:
- * *EneterProtoBufSerializer* for .NET - serializer using Protocol Buffers for implemented by Marc Gravell.
+ * *EneterProtoBufSerializer* for .NET - serializer using Protocol Buffers for .NET implemented by Marc Gravell.
  * *BinarySerializer* -  binary serializer using BinaryFormatter.
  * *XmlStringSerializer* - text serializer using XmlSerializer.
 
