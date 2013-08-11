@@ -13,7 +13,7 @@ For .NET:
 For Java:
  * *EneterProtoBufSerializer* - serializer using Protocol Buffers for Java implemented by Google.
  * *JavaBinarySerializer* - binary serializer for Java using ObjectOutputStream.
- * *XmlStringSerializer* - text serializer using internal Eneter XML serializer compatible with XmlSerializer from .NET.
+ * *XmlStringSerializer* - internal Eneter XML serializer compatible with XmlSerializer from .NET.
 <br/>
 The EneterProtoBufSerializer used the following message declared in the proto file:
 {{{
