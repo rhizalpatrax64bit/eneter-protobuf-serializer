@@ -31,8 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Eneter.Messaging.Framework">
-      <HintPath>..\..\..\..\EneterMessaging510\EneterMessagingFramework\bin\Net40\Debug\Eneter.Messaging.Framework.dll</HintPath>
+    <Reference Include="Eneter.Messaging.Framework, Version=5.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\EneterMessaging510\EneterMessagingFramework\bin\Net40\Release\Eneter.Messaging.Framework.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\..\..\..\Program Files\NUnit-2.6.2\bin\nunit.framework.dll</HintPath>
