@@ -10,10 +10,14 @@ package eneter.protobuf;
 
 import static org.junit.Assert.*;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 import org.junit.Test;
 
+import eneter.messaging.dataprocessing.serializing.ISerializer;
+import eneter.messaging.dataprocessing.serializing.JavaBinarySerializer;
+import eneter.messaging.dataprocessing.serializing.XmlStringSerializer;
 import eneter.messaging.endpoints.typedmessages.VoidMessage;
 import eneter.messaging.endpoints.typedmessages.internal.ReliableMessage;
 import eneter.messaging.endpoints.typedmessages.internal.ReliableMessage.EMessageType;
@@ -24,6 +28,12 @@ import eneter.protobuf.EneterProtoBufUnitTestDeclarations.TestMessage;
 
 public class Test_ProtoBufSerializer
 {
+    public static class TestMessage2 implements Serializable
+    {
+        private static final long serialVersionUID = -7462355711199438895L;
+        public String Name;
+        public int Value;
+    }
 
 	@Test
 	public void serializeDeserializeTestMessage() throws Exception
@@ -41,6 +51,26 @@ public class Test_ProtoBufSerializer
 	    
 	    assertEquals(aResult.getName(), aTestMessage.getName());
 	    assertEquals(aResult.getValue(), aTestMessage.getValue());
+	}
+	
+	@Test
+	public void serializeDeserializePerformanceTest() throws Exception
+	{
+	    TestMessage aTestMessage = TestMessage.newBuilder()
+                .setName("Hello")
+                .setValue(123)
+                .build();
+        ProtoBufSerializer aProtoBufSerializer = new ProtoBufSerializer();
+        serializerPerformanceTest(aProtoBufSerializer, aTestMessage, TestMessage.class);
+
+        TestMessage2 aTestMessage2 = new TestMessage2();
+        aTestMessage2.Name = "Hello";
+        aTestMessage2.Value = 123;
+        JavaBinarySerializer aNetBinSerializer = new JavaBinarySerializer();
+        serializerPerformanceTest(aNetBinSerializer, aTestMessage2, TestMessage2.class);
+
+        XmlStringSerializer anXmlSerializer = new XmlStringSerializer();
+        serializerPerformanceTest(anXmlSerializer, aTestMessage2, TestMessage2.class);
 	}
 	
 	@Test
@@ -173,5 +203,45 @@ public class Test_ProtoBufSerializer
         VoidMessage aResult = aProtoBufSerializer.deserialize(aSerializedData, VoidMessage.class);
         assertNotNull(aResult);
     }
+	
+	
+	private <T> void serializerPerformanceTest(ISerializer serializer, T dataToSerialize, Class<T> clazz) throws Exception
+	{
+	    long aStartingTime = System.nanoTime();
+
+        for (int i = 0; i < 100000; ++i)
+        {
+            Object aSerializedData = serializer.serialize(dataToSerialize, clazz);
+            T aResult2 = serializer.deserialize(aSerializedData, clazz);
+        }
+
+        long anElapsedTime = System.nanoTime() - aStartingTime;
+        
+        System.out.printf("%s: %s\n", serializer.getClass().getSimpleName(), nanoToTime(anElapsedTime));
+	}
+	
+	private String nanoToTime(long elapsedTime)
+	{
+	    long aHours = (long) (elapsedTime / (60.0 * 60.0 * 1000000000.0));
+        elapsedTime -= aHours * 60 * 60 * 1000000000;
+        
+        long aMinutes = (long) (elapsedTime / (60.0 * 1000000000.0));
+        elapsedTime -= aMinutes * 60 * 1000000000;
+        
+        long aSeconds = elapsedTime / 1000000000;
+        elapsedTime -= aSeconds * 1000000000;
+        
+        long aMiliseconds = elapsedTime / 1000000;
+        elapsedTime -= aMiliseconds * 1000000;
+        
+        double aMicroseconds = elapsedTime / 1000.0;
+
+        return String.format("[%d:%d:%d %dms %.1fus]",
+            aHours,
+            aMinutes,
+            aSeconds,
+            aMiliseconds,
+            aMicroseconds);
+	}
 	
 }
