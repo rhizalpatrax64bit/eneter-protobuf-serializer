@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Eneter</RootNamespace>
-    <AssemblyName>Eneter.ProtoBuf.Serializer</AssemblyName>
+    <AssemblyName>Eneter.ProtoBuf.Serializer.Mono</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -22,7 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Mono264\Debug\Eneter.ProtoBuf.Serializer.XML</DocumentationFile>
+    <DocumentationFile>bin\Mono264\Debug\Eneter.ProtoBuf.Serializer.Mono.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,7 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Mono264\Release\Eneter.ProtoBuf.Serializer.XML</DocumentationFile>
+    <DocumentationFile>bin\Mono264\Release\Eneter.ProtoBuf.Serializer.Mono.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Eneter.Messaging.Framework.Mono">

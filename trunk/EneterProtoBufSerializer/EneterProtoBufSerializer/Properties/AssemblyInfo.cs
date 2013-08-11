@@ -28,5 +28,7 @@ using System.Resources;
 //      Revision
 //
 [assembly: AssemblyVersion("1.0.0.0")]
+#if !COMPACT_FRAMEWORK
 [assembly: AssemblyFileVersion("1.0.0.0")]
+#endif
 [assembly: NeutralResourcesLanguageAttribute("en")]
