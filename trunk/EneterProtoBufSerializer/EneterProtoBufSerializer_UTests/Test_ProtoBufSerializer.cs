@@ -13,12 +13,22 @@ using Eneter.Messaging.Nodes.Broker;
 using Eneter.Messaging.Nodes.ChannelWrapper;
 using Eneter.ProtoBuf;
 using NUnit.Framework;
+using Eneter.Messaging.Diagnostic;
+using System.Diagnostics;
+using Eneter.Messaging.DataProcessing.Serializing;
 
 namespace EneterProtoBufSerializer_UTests
 {
     [TestFixture]
     public class Test_ProtoBufSerializer
     {
+        [Serializable]
+        public class TestMessage2
+        {
+            public string Name;
+            public int Value;
+        }
+
         [Test]
         public void SerializeDeserializeTestMessage()
         {
@@ -32,6 +42,25 @@ namespace EneterProtoBufSerializer_UTests
 
             Assert.AreEqual(aTestMessage.Name, aResult.Name);
             Assert.AreEqual(aTestMessage.Value, aResult.Value);
+        }
+
+        [Test]
+        public void SerializeDeserializePerformanceTest()
+        {
+            TestMessage aTestMessage = new TestMessage();
+            aTestMessage.Name = "Hello";
+            aTestMessage.Value = 123;
+            ProtoBufSerializer aProtoBufSerializer = new ProtoBufSerializer();
+            SerializerPerformanceTest<TestMessage>(aProtoBufSerializer, aTestMessage);
+
+            TestMessage2 aTestMessage2 = new TestMessage2();
+            aTestMessage2.Name = "Hello";
+            aTestMessage2.Value = 123;
+            BinarySerializer aNetBinSerializer = new BinarySerializer();
+            SerializerPerformanceTest<TestMessage2>(aNetBinSerializer, aTestMessage2);
+
+            XmlStringSerializer anXmlSerializer = new XmlStringSerializer();
+            SerializerPerformanceTest<TestMessage2>(anXmlSerializer, aTestMessage2);
         }
 
         [Test]
@@ -164,6 +193,23 @@ namespace EneterProtoBufSerializer_UTests
             object aSerializedData = aProtoBufSerializer.Serialize<VoidMessage>(aSrc);
             VoidMessage aResult = aProtoBufSerializer.Deserialize<VoidMessage>(aSerializedData);
             Assert.IsNotNull(aResult);
+        }
+
+
+
+        private void SerializerPerformanceTest<T>(ISerializer serializer, T dataToSerialize)
+        {
+            Stopwatch aStopWatch = new Stopwatch();
+            aStopWatch.Start();
+
+            for (int i = 0; i < 100000; ++i)
+            {
+                object aSerializedData = serializer.Serialize<T>(dataToSerialize);
+                T aResult2 = serializer.Deserialize<T>(aSerializedData);
+            }
+
+            aStopWatch.Stop();
+            Console.WriteLine(serializer.GetType().Name + ": " + aStopWatch.Elapsed);
         }
     }
 }
