@@ -45,7 +45,7 @@ public static class TestMessage2 implements Serializable
 }}}
 
 = Results =
-Each serializer was used in the loop to serialize/deserialize the message 10 000 times. (_The test was performed on Intel Core2 Duo CPU 2.27 GHz 4GB RAM in 32bit mode. The source code of the unit-test is available in the source code of this project._)
+Each serializer was used in the loop to serialize/deserialize the message 100 000 times. (_The test was performed on Intel Core2 Duo CPU 2.27 GHz 4GB RAM in 32bit mode. The source code of the unit-test is available in the source code of this project._)
 
 || *.NET serializers* || *Time* ||
 ||EneterProtoBufSerializer||250 ms||
