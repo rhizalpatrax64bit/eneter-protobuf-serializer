@@ -1,0 +1,13 @@
+package message.declarations;
+
+// Request Message
+message MyRequest
+{
+    required string Text = 1;
+}
+
+// Response Message
+message MyResponse
+{
+    required int32 Length = 1;
+}
