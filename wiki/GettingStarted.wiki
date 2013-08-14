@@ -22,7 +22,7 @@ Further, you may need a utility application to convert 'proto' files to the sour
  * _protogen.exe_ - to convert 'proto' file to C#.
  * _protoc_ - to convert 'proto' files to Java.
 
-== Quick Example ==
+== Quick example ==
 The following example demonstrates simple request-response communication between Android and .NET application.
 The Android application is a simple client using the .NET application as a service to calculate length of the text message.
 
