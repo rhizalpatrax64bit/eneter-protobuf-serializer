@@ -22,7 +22,7 @@ Further, you may need a utility application to convert 'proto' files to the sour
 These libraries and applications can be downloaded and/or compiled directly from their original pages but in order to simplify the setup they are also included in Eneter.ProtoBuf.Serializer.<br/>
 
 Therefore you need to download:
- * *[http://eneter.net/Downloads/Extensions/EneterProtoBufSerializer/EneterProtoBufSerializer100.zip Eneter.ProtoBuf.Serializer package]* - protocol buffer serializer for Eneter, and in addition protocol buffer libraries and utility applications for 'proto' files.
+ * *[http://eneter.net/Downloads/Extensions/EneterProtoBufSerializer/EneterProtoBufSerializer100.zip Eneter.ProtoBuf.Serializer 1.0.0]* - protocol buffer serializer for Eneter, and in addition protocol buffer libraries and utility applications for 'proto' files.
  * *[http://www.eneter.net/ProductDownload.htm Eneter.Messaging.Framework]* - communication framework that can be  downloaded for free for non-commercial use.
 
 == Quick Example ==
