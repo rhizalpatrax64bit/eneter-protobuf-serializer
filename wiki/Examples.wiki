@@ -14,6 +14,7 @@ Request-response communication between .NET applications. The client application
 Communication messages are not declared via the proto file but using attributes.
 
 ==== [http://eneter.net/Downloads/Extensions/EneterProtoBufSerializer/Examples/MulPublishersMulSubscribersProtoBuf.zip  MulPublishersMulSubscribersProtoBuf.zip] ====
-- publish-subscribe communication between .NET applications. This example does not use proto file but .NET attributes.
+Publish-subscribe communication between .NET applications. Commnication scenario where multiple subscribing applications need to receive notifications from multiple publishing applications.
+Communication messages are not declared via the proto file but using attributes.
 
 All examples are also available in the source code of this project.
