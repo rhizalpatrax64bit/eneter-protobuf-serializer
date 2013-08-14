@@ -2,9 +2,12 @@
 #labels Featured
 
 = Getting Started =
-== What you need ==
-Eneter.ProtoBuf.Serializer integrates Protocol Buffers with Eneter Messaging Framework. Therefore, to use Eneter.ProtoBufSerializer you will need to reference following libraries from your project:
+== What you need to download ==
+You need to download:
+ * *[http://eneter.net/Downloads/Extensions/EneterProtoBufSerializer/EneterProtoBufSerializer100.zip Eneter.ProtoBuf.Serializer 1.0.0]* - protocol buffer serializer for Eneter, and in addition protocol buffer libraries and utility applications for 'proto' files.
+ * *[http://www.eneter.net/ProductDownload.htm Eneter.Messaging.Framework]* - communication framework that can be  downloaded for free for non-commercial use.
 
+== What you need to reference from your project ==
 *.NET project:*
  * _protobuf-net.dll_ - protocol buffer serializer for .NET, Windows Phone, Silverlight and Compact Framework developed by Marc Gravell. https://code.google.com/p/protobuf-net/
  * _Eneter.ProtoBuf.Serializer.dll_ - implements serializer for Eneter Messaging Framework using protobuf-net.dll
@@ -18,12 +21,6 @@ Eneter.ProtoBuf.Serializer integrates Protocol Buffers with Eneter Messaging Fra
 Further, you may need a utility application to convert 'proto' files to the source code:
  * _protogen.exe_ - to convert 'proto' file to C#.
  * _protoc_ - to convert 'proto' files to Java.
-
-These libraries and applications can be downloaded and/or compiled directly from their original pages but in order to simplify the setup they are also included in Eneter.ProtoBuf.Serializer.<br/>
-
-Therefore you need to download:
- * *[http://eneter.net/Downloads/Extensions/EneterProtoBufSerializer/EneterProtoBufSerializer100.zip Eneter.ProtoBuf.Serializer 1.0.0]* - protocol buffer serializer for Eneter, and in addition protocol buffer libraries and utility applications for 'proto' files.
- * *[http://www.eneter.net/ProductDownload.htm Eneter.Messaging.Framework]* - communication framework that can be  downloaded for free for non-commercial use.
 
 == Quick Example ==
 The following example demonstrates simple request-response communication between Android and .NET application.
