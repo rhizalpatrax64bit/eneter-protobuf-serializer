@@ -61,6 +61,9 @@ namespace EneterProtoBufSerializer_UTests
 
             XmlStringSerializer anXmlSerializer = new XmlStringSerializer();
             SerializerPerformanceTest<TestMessage2>(anXmlSerializer, aTestMessage2);
+
+            DataContractJsonStringSerializer aJsonSerializer = new DataContractJsonStringSerializer();
+            SerializerPerformanceTest<TestMessage2>(aJsonSerializer, aTestMessage2);
         }
 
         [Test]
@@ -199,17 +202,27 @@ namespace EneterProtoBufSerializer_UTests
 
         private void SerializerPerformanceTest<T>(ISerializer serializer, T dataToSerialize)
         {
+            int aMessageSize = 0;
+
             Stopwatch aStopWatch = new Stopwatch();
             aStopWatch.Start();
 
             for (int i = 0; i < 100000; ++i)
             {
                 object aSerializedData = serializer.Serialize<T>(dataToSerialize);
+                if (aSerializedData is byte[])
+                {
+                    aMessageSize = ((byte[])aSerializedData).Length;
+                }
+                else if (aSerializedData is string)
+                {
+                    aMessageSize = ((string)aSerializedData).Length;
+                }
                 T aResult2 = serializer.Deserialize<T>(aSerializedData);
             }
 
             aStopWatch.Stop();
-            Console.WriteLine(serializer.GetType().Name + ": " + aStopWatch.Elapsed);
+            Console.WriteLine(serializer.GetType().Name + ": " + aStopWatch.Elapsed + " Message Size: " + aMessageSize);
         }
     }
 }
