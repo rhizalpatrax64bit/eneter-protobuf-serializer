@@ -47,10 +47,10 @@ public static class TestMessage2 implements Serializable
 = Results =
 Each serializer was used in the loop to serialize/deserialize the message 100 000 times. (_The test was performed on Intel Core2 Duo CPU 2.27 GHz 4GB RAM in 32bit mode. The source code of the unit-test is available in the source code of this project._)
 
-|| *.NET serializers* || *Time* ||
-||EneterProtoBufSerializer||250 ms||
-||BinarySerializer|| 2 294 ms||
-||XmlStringSerializer|| 9 231 ms||
+|| *.NET serializers* || *Time* || *Message Size* ||
+||EneterProtoBufSerializer||250 ms|| 9 bytes ||
+||BinarySerializer|| 2 294 ms|| 221 bytes ||
+||XmlStringSerializer|| 9 231 ms|| 164 bytes ||
 
 || *Java serializers* || *Time* ||
 ||EneterProtoBufSerializer||404 ms||
