@@ -3,7 +3,7 @@
 
 = Getting Started =
 == Environment ==
-Eneter.ProtoBuf.Serializer integrates Protocol Buffers with Eneter Messaging Framework. Therefore, to use Eneter.ProtoBufSerializer you will need to reference following libraries from you project:
+Eneter.ProtoBuf.Serializer integrates Protocol Buffers with Eneter Messaging Framework. Therefore, to use Eneter.ProtoBufSerializer you will need to reference following libraries from your project:
 
 *.NET project:*
  * _protobuf-net.dll_ - protocol buffer serializer for .NET, Windows Phone, Silverlight and Compact Framework developed by Marc Gravell. https://code.google.com/p/protobuf-net/
