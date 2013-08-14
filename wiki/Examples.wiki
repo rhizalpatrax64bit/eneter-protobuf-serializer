@@ -1,0 +1,19 @@
+#summary Example code
+#labels Featured
+
+== Examples ==
+
+==== [http://eneter.net/Downloads/Extensions/EneterProtoBufSerializer/Examples/AndroidNetCommunicationProtoBuf.zip  AndroidNetCommunicationProtoBuf.zip] ====
+Request-response communication between Android client and .NET service. 
+The Android application is a simple client using the .NET application as a service to calculate length of the text message.
+
+More details in the blog article at http://eneter.blogspot.sk/2013/08/android-fast-communication-with-net.html
+
+==== [http://eneter.net/Downloads/Extensions/EneterProtoBufSerializer/Examples/CalculatorProtoBuf.zip  CalculatorProtoBuf.zip] ====
+Request-response communication between .NET applications. The client application uses the service to calculate two numbers.
+Communication messages are not declared via the proto file but using attributes.
+
+==== [http://eneter.net/Downloads/Extensions/EneterProtoBufSerializer/Examples/MulPublishersMulSubscribersProtoBuf.zip  MulPublishersMulSubscribersProtoBuf.zip] ====
+- publish-subscribe communication between .NET applications. This example does not use proto file but .NET attributes.
+
+All examples are also available in the source code of this project.
