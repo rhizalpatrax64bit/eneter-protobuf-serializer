@@ -3,20 +3,27 @@
 
 = Getting Started =
 == Environment ==
-Eneter.ProtoBuf.Serializer integrates Protocol Buffers with Eneter Messaging Framework. Therefore based on the platform you will need to reference following libraries from your project:
- * *[https://code.google.com/p/protobuf/ protobuf.jar]* - protocol buffer  serializer for Java and Android developed by Google.
- * *[https://code.google.com/p/protobuf-net/ protobuf-net.dll]* protocol buffer serializer for .NET, Windows Phone, Silverlight and Compact Framework developed by Marc Gravell.
- * *[http://www.eneter.net/ProductDownload.htm Eneter.Messaging.Framework (dll, jar)]* - cross-platform framework for interprocess communication.
- * *[http://eneter.net/Downloads/Extensions/EneterProtoBufSerializer/EneterProtoBufSerializer100.zip Eneter.ProtoBuf.Serializer (dll, jar)]* - protocol buffer serializer for Eneter Messaging Framework developed by this project.
+Eneter.ProtoBuf.Serializer integrates Protocol Buffers with Eneter Messaging Framework. Therefore, to use Eneter.ProtoBufSerializer you will need to reference following libraries from you project:
+
+*.NET project:*
+ * _protobuf-net.dll_ - protocol buffer serializer for .NET, Windows Phone, Silverlight and Compact Framework developed by Marc Gravell. https://code.google.com/p/protobuf-net/
+ * _Eneter.ProtoBuf.Serializer.dll_ - implements serializer for Eneter Messaging Framework using protobuf-net.dll
+ * _Eneter.Messaging.Framework.dll_ - lightweight cross-platform framework for interprocess communication. http://www.eneter.net/
+
+*Java project:*
+ * _protobuf.jar_ - protocol buffer serializer for Java implemented by Google. https://code.google.com/p/protobuf/
+ * _eneter-protobuf.jar_ - implements serializer for Eneter Messaging Framework using protobuf.jar
+ * _eneter-messaging.jar_ - lightweight cross-platform framework for interprocess communication. http://www.eneter.net/
 
 Further, you may need a utility application to convert 'proto' files to the source code:
- * *protogen.exe* - to convert 'proto' file to C#.
- * *protoc* - to convert 'proto' files to Java.
+ * _protogen.exe_ - to convert 'proto' file to C#.
+ * _protoc_ - to convert 'proto' files to Java.
 
-These libraries and applications can be downloaded and/or compiled directly from their original pages but in order to simplify the setup the download package for Eneter.ProtoBuf.Serializer includes all of them except Eneter Messaging Framework which is free only for non-commercial use.<br/>
-Therefore to get everything what is needed you need to download:
- * *[http://eneter.net/Downloads/Extensions/EneterProtoBufSerializer/EneterProtoBufSerializer100.zip Eneter.ProtoBuf.Serializer package]* - includes protocol buffer serializer for Eneter, and in addition protocol buffer libraries and utility applications for 'proto' files.
- * *[http://www.eneter.net/ProductDownload.htm Eneter.Messaging.Framework]* - communication framework that can be  downloaded for free in case of a non-commercial project or testing.
+These libraries and applications can be downloaded and/or compiled directly from their original pages but in order to simplify the setup they are also included in Eneter.ProtoBuf.Serializer.<br/>
+
+Therefore you need to download:
+ * *[http://eneter.net/Downloads/Extensions/EneterProtoBufSerializer/EneterProtoBufSerializer100.zip Eneter.ProtoBuf.Serializer package]* - protocol buffer serializer for Eneter, and in addition protocol buffer libraries and utility applications for 'proto' files.
+ * *[http://www.eneter.net/ProductDownload.htm Eneter.Messaging.Framework]* - communication framework that can be  downloaded for free for non-commercial use.
 
 == Quick Example ==
 The following example demonstrates simple request-response communication between Android and .NET application.
