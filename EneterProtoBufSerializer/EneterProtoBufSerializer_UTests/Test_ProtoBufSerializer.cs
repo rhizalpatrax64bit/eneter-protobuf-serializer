@@ -78,6 +78,10 @@ namespace EneterProtoBufSerializer_UTests
 
             AutoResetEvent anAllThreadDone = new AutoResetEvent(false);
             int aCount = 0;
+
+            Stopwatch aStopWatch = new Stopwatch();
+            aStopWatch.Start();
+
             for (int i = 0; i < 10; ++i)
             {
                 ThreadPool.QueueUserWorkItem(x =>
@@ -93,6 +97,9 @@ namespace EneterProtoBufSerializer_UTests
             }
 
             anAllThreadDone.WaitOne();
+
+            aStopWatch.Stop();
+            Console.WriteLine("Elapsed time: " + aStopWatch.Elapsed);
         }
 
         [Test]
