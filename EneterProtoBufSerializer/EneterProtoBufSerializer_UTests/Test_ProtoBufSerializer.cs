@@ -16,6 +16,7 @@ using NUnit.Framework;
 using Eneter.Messaging.Diagnostic;
 using System.Diagnostics;
 using Eneter.Messaging.DataProcessing.Serializing;
+using System.Threading;
 
 namespace EneterProtoBufSerializer_UTests
 {
@@ -64,6 +65,34 @@ namespace EneterProtoBufSerializer_UTests
 
             DataContractJsonStringSerializer aJsonSerializer = new DataContractJsonStringSerializer();
             SerializerPerformanceTest<TestMessage2>(aJsonSerializer, aTestMessage2);
+        }
+
+        [Test]
+        public void ThreadSafetyTest()
+        {
+            TestMessage aTestMessage = new TestMessage();
+            aTestMessage.Name = "Hello";
+            aTestMessage.Value = 123;
+
+            ProtoBufSerializer aProtoBufSerializer = new ProtoBufSerializer();
+
+            AutoResetEvent anAllThreadDone = new AutoResetEvent(false);
+            int aCount = 0;
+            for (int i = 0; i < 10; ++i)
+            {
+                ThreadPool.QueueUserWorkItem(x =>
+                    {
+                        SerializerPerformanceTest<TestMessage>(aProtoBufSerializer, aTestMessage);
+                        ++aCount;
+
+                        if (aCount == 10)
+                        {
+                            anAllThreadDone.Set();
+                        }
+                    });
+            }
+
+            anAllThreadDone.WaitOne();
         }
 
         [Test]
