@@ -48,10 +48,11 @@
     <DocumentationFile>Bin\Silverlight5\Release\Eneter.ProtoBuf.Serializer.Silverlight.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="mscorlib" />
-    <Reference Include="Eneter.Messaging.Framework.Silverlight">
-      <HintPath>..\..\..\..\EneterMessaging510\EneterMessagingFramework\bin\Silverlight5\Debug\Eneter.Messaging.Framework.Silverlight.dll</HintPath>
+    <Reference Include="Eneter.Messaging.Framework.Silverlight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b85852a6d7b5cd07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\EneterMessaging550\EneterMessagingFramework\bin\Silverlight5\Debug\Eneter.Messaging.Framework.Silverlight.dll</HintPath>
     </Reference>
+    <Reference Include="mscorlib" />
     <Reference Include="protobuf-net">
       <HintPath>..\..\..\..\Ondrej\Projects\Externals\ProtoBufNet\Full\sl4\protobuf-net.dll</HintPath>
     </Reference>

@@ -14,6 +14,51 @@
 // Generated from: EneterProtoBufDeclarations.proto
 namespace Eneter.ProtoBuf
 {
+  [global::ProtoBuf.ProtoContract(Name=@"RpcMessageProto")]
+  public partial class RpcMessageProto : global::ProtoBuf.IExtensible
+  {
+    public RpcMessageProto() {}
+    
+    private int _Id;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int Id
+    {
+      get { return _Id; }
+      set { _Id = value; }
+    }
+    private int _Flag;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"Flag", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int Flag
+    {
+      get { return _Flag; }
+      set { _Flag = value; }
+    }
+    private string _OperationName;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"OperationName", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string OperationName
+    {
+      get { return _OperationName; }
+      set { _OperationName = value; }
+    }
+    private string _Error;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"Error", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string Error
+    {
+      get { return _Error; }
+      set { _Error = value; }
+    }
+    private readonly global::System.Collections.Generic.List<byte[]> _SerializedData = new global::System.Collections.Generic.List<byte[]>();
+    [global::ProtoBuf.ProtoMember(5, Name=@"SerializedData", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<byte[]> SerializedData
+    {
+      get { return _SerializedData; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::ProtoBuf.ProtoContract(Name=@"WrappedDataProto")]
   public partial class WrappedDataProto : global::ProtoBuf.IExtensible
   {

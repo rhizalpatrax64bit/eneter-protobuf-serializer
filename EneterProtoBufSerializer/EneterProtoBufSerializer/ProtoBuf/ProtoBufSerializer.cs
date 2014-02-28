@@ -8,6 +8,7 @@
 using System;
 using System.IO;
 using Eneter.Messaging.DataProcessing.Serializing;
+using Eneter.Messaging.EndPoints.Rpc;
 using Eneter.Messaging.EndPoints.TypedMessages;
 using Eneter.Messaging.MessagingSystems.Composites.MonitoredMessagingComposit;
 using Eneter.Messaging.Nodes.Broker;
@@ -32,7 +33,11 @@ namespace Eneter.ProtoBuf
             object aSerializedData;
 
             // If it is an internal Eneter type adapt it for ProtoBuf
-            if (dataToSerialize is WrappedData)
+            if (dataToSerialize is RpcMessage)
+            {
+                aSerializedData = SerializeRpcMessage(dataToSerialize as RpcMessage);
+            }
+            else if (dataToSerialize is WrappedData)
             {
                 aSerializedData = SerializeWrappedData(dataToSerialize as WrappedData);
             }
@@ -74,7 +79,11 @@ namespace Eneter.ProtoBuf
                 _T aDeserializedObject;
 
                 // If it is an internal Eneter type, adapt it from the proto type.
-                if (typeof(_T) == typeof(WrappedData))
+                if (typeof(_T) == typeof(RpcMessage))
+                {
+                    aDeserializedObject = (_T)((object)DeserializeRpcMessage(aBuf));
+                }
+                else if (typeof(_T) == typeof(WrappedData))
                 {
                     aDeserializedObject = (_T)((object)DeserializeWrappedData(aBuf));
                 }
@@ -104,6 +113,44 @@ namespace Eneter.ProtoBuf
             }
         }
 
+        private byte[] SerializeRpcMessage(RpcMessage data)
+        {
+            RpcMessageProto anRpcMessageProto = new RpcMessageProto();
+            anRpcMessageProto.Id = data.Id;
+            anRpcMessageProto.Flag = data.Flag;
+            anRpcMessageProto.OperationName = data.OperationName;
+            anRpcMessageProto.Error = data.Error;
+            if (data.SerializedData != null)
+            {
+                foreach (byte[] aMethodParameter in data.SerializedData)
+                {
+                    anRpcMessageProto.SerializedData.Add(aMethodParameter);
+                }
+            }
+
+            return SerializeProtoBuf<RpcMessageProto>(anRpcMessageProto);
+        }
+
+        private RpcMessage DeserializeRpcMessage(MemoryStream data)
+        {
+            RpcMessageProto anRpcMessageProto = Serializer.Deserialize<RpcMessageProto>(data);
+            RpcMessage anRpcMessage = new RpcMessage();
+            anRpcMessage.Id = anRpcMessageProto.Id;
+            anRpcMessage.Flag = anRpcMessageProto.Flag;
+            anRpcMessage.OperationName = anRpcMessageProto.OperationName;
+            anRpcMessage.Error = anRpcMessageProto.Error;
+            
+            if (anRpcMessageProto.SerializedData != null)
+            {
+                anRpcMessage.SerializedData = new object[anRpcMessageProto.SerializedData.Count];
+                for (int i = 0; i < anRpcMessageProto.SerializedData.Count; ++i)
+                {
+                    anRpcMessage.SerializedData[i] = anRpcMessageProto.SerializedData[i];
+                }
+            }
+
+            return anRpcMessage;
+        }
 
         private byte[] SerializeWrappedData(WrappedData data)
         {

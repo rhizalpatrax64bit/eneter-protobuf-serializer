@@ -17,6 +17,7 @@ using Eneter.Messaging.Diagnostic;
 using System.Diagnostics;
 using Eneter.Messaging.DataProcessing.Serializing;
 using System.Threading;
+using Eneter.Messaging.EndPoints.Rpc;
 
 namespace EneterProtoBufSerializer_UTests
 {
@@ -234,7 +235,106 @@ namespace EneterProtoBufSerializer_UTests
             Assert.IsNotNull(aResult);
         }
 
+        [Test]
+        public void SerializeDeserializeRpcMessage()
+        {
+            ProtoBufSerializer aProtoBufSerializer = new ProtoBufSerializer();
+            byte[] aParam1 = aProtoBufSerializer.Serialize<string>("hello") as byte[];
+            byte[] aParam2 = aProtoBufSerializer.Serialize<bool>(true) as byte[];
+            byte[] aParam3 = aProtoBufSerializer.Serialize<bool>(false) as byte[];
+            byte[] aParam4 = aProtoBufSerializer.Serialize<byte>(255) as byte[];
+            byte[] aParam5 = aProtoBufSerializer.Serialize<char>('ž') as byte[];
+            byte[] aParam6 = aProtoBufSerializer.Serialize<short>(-1) as byte[];
+            byte[] aParam7 = aProtoBufSerializer.Serialize<int>(100) as byte[];
+            byte[] aParam8 = aProtoBufSerializer.Serialize<long>((long)-1236987) as byte[];
+            byte[] aParam9 = aProtoBufSerializer.Serialize<float>(1.2345f) as byte[];
+            byte[] aParam10 = aProtoBufSerializer.Serialize<double>(13.2345) as byte[];
+            
+            string[] st = {"hello 1", "hello 2"};
+            bool[] bo = {true, false};
+            byte[] by = {123, 1};
+            char[] ch = {'ž', 'A'};
+            short[] sh = {-1, 6000};
+            int[] i = {-1, 60000};
+            long[] lo = {-1, 60000000};
+            float[] fl = {-1.0f, 1.234f};
+            double[] dou = {-1.0, 100.4353};
 
+            byte[] aParam11 = aProtoBufSerializer.Serialize<string[]>(st) as byte[];
+            byte[] aParam12 = aProtoBufSerializer.Serialize<bool[]>(bo) as byte[];
+            byte[] aParam13 = aProtoBufSerializer.Serialize<byte[]>(by) as byte[];
+            byte[] aParam14 = aProtoBufSerializer.Serialize<char[]>(ch) as byte[];
+            byte[] aParam15 = aProtoBufSerializer.Serialize<short[]>(sh) as byte[];
+            byte[] aParam16 = aProtoBufSerializer.Serialize<int[]>(i) as byte[];
+            byte[] aParam17 = aProtoBufSerializer.Serialize<long[]>(lo) as byte[];
+            byte[] aParam18 = aProtoBufSerializer.Serialize<float[]>(fl) as byte[];
+            byte[] aParam19 = aProtoBufSerializer.Serialize<double[]>(dou) as byte[];
+
+            
+            RpcMessage anRpcMessage = new RpcMessage();
+            anRpcMessage.Id = 102;
+            anRpcMessage.Flag = 20;
+            anRpcMessage.OperationName = "DummyOperation";
+            anRpcMessage.Error = "DummyError";
+            anRpcMessage.SerializedData = new object[]
+                { aParam1, aParam2, aParam3, aParam4, aParam5, aParam6, aParam7, aParam8, aParam9, aParam10,
+                  aParam11, aParam12, aParam13, aParam14, aParam15, aParam16, aParam17, aParam18, aParam19};
+
+            object aSerialized = aProtoBufSerializer.Serialize<RpcMessage>(anRpcMessage);
+
+            RpcMessage aDeserialized = aProtoBufSerializer.Deserialize<RpcMessage>(aSerialized);
+
+            Assert.AreEqual(anRpcMessage.Id, aDeserialized.Id);
+            Assert.AreEqual(anRpcMessage.Flag, aDeserialized.Flag);
+            Assert.AreEqual(anRpcMessage.OperationName, aDeserialized.OperationName);
+            Assert.AreEqual(anRpcMessage.Error, aDeserialized.Error);
+
+            Assert.AreEqual(19, aDeserialized.SerializedData.Length);
+
+            string aD1 = aProtoBufSerializer.Deserialize<string>(aDeserialized.SerializedData[0]);
+            bool aD2 = aProtoBufSerializer.Deserialize<bool>(aDeserialized.SerializedData[1]);
+            bool aD3 = aProtoBufSerializer.Deserialize<bool>(aDeserialized.SerializedData[2]);
+            byte aD4 = aProtoBufSerializer.Deserialize<byte>(aDeserialized.SerializedData[3]);
+            char aD5 = aProtoBufSerializer.Deserialize<char>(aDeserialized.SerializedData[4]);
+            short aD6 = aProtoBufSerializer.Deserialize<short>(aDeserialized.SerializedData[5]);
+            int aD7 = aProtoBufSerializer.Deserialize<int>(aDeserialized.SerializedData[6]);
+            long aD8 = aProtoBufSerializer.Deserialize<long>(aDeserialized.SerializedData[7]);
+            float aD9 = aProtoBufSerializer.Deserialize<float>(aDeserialized.SerializedData[8]);
+            double aD10 = aProtoBufSerializer.Deserialize<double>(aDeserialized.SerializedData[9]);
+        
+            string[] aD11 = aProtoBufSerializer.Deserialize<string[]>(aDeserialized.SerializedData[10]);
+            bool[] aD12 = aProtoBufSerializer.Deserialize<bool[]>(aDeserialized.SerializedData[11]);
+            byte[] aD13 = aProtoBufSerializer.Deserialize<byte[]>(aDeserialized.SerializedData[12]);
+            char[] aD14 = aProtoBufSerializer.Deserialize<char[]>(aDeserialized.SerializedData[13]);
+            short[] aD15 = aProtoBufSerializer.Deserialize<short[]>(aDeserialized.SerializedData[14]);
+            int[] aD16 = aProtoBufSerializer.Deserialize<int[]>(aDeserialized.SerializedData[15]);
+            long[] aD17 = aProtoBufSerializer.Deserialize<long[]>(aDeserialized.SerializedData[16]);
+            float[] aD18 = aProtoBufSerializer.Deserialize<float[]>(aDeserialized.SerializedData[17]);
+            double[] aD19 = aProtoBufSerializer.Deserialize<double[]>(aDeserialized.SerializedData[18]);
+
+            Assert.AreEqual("hello", aD1);
+            Assert.AreEqual(true, aD2);
+            Assert.AreEqual(false, aD3);
+            Assert.AreEqual((byte)255, aD4);
+            Assert.AreEqual('ž', aD5);
+            Assert.AreEqual(-1, aD6);
+            Assert.AreEqual(100, aD7);
+            Assert.AreEqual((long)-1236987, aD8);
+            Assert.True(Math.Abs((float)1.2345 - aD9) < 0.00001);
+            Assert.True(Math.Abs((double)13.2345 - aD10) < 0.00001);
+
+
+            Assert.True(st.SequenceEqual(aD11));
+        
+            Assert.True(bo.SequenceEqual(aD12));
+            Assert.True(by.SequenceEqual(aD13));
+            Assert.True(ch.SequenceEqual(aD14));
+            Assert.True(sh.SequenceEqual(aD15));
+            Assert.True(i.SequenceEqual(aD16));
+            Assert.True(lo.SequenceEqual(aD17));
+            Assert.True(fl.SequenceEqual(aD18));
+            Assert.True(dou.SequenceEqual(aD19));
+        }
 
         private void SerializerPerformanceTest<T>(ISerializer serializer, T dataToSerialize)
         {
