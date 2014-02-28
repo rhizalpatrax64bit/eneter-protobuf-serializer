@@ -1,3 +1,13 @@
+// Message for RPC
+message RpcMessageProto
+{
+    required int32 Id = 1;
+    required int32 Flag = 2;
+    required string OperationName = 3;
+    required string Error = 4;
+    repeated bytes SerializedData = 5;
+}
+
 // Message for ChannelWrapper/ChannelUnwrapper
 message WrappedDataProto
 {

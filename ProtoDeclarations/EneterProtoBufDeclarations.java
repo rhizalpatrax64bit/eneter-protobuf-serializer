@@ -6,6 +6,985 @@ public final class EneterProtoBufDeclarations {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
+  public interface RpcMessageProtoOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 Id = 1;
+    /**
+     * <code>required int32 Id = 1;</code>
+     */
+    boolean hasId();
+    /**
+     * <code>required int32 Id = 1;</code>
+     */
+    int getId();
+
+    // required int32 Flag = 2;
+    /**
+     * <code>required int32 Flag = 2;</code>
+     */
+    boolean hasFlag();
+    /**
+     * <code>required int32 Flag = 2;</code>
+     */
+    int getFlag();
+
+    // required string OperationName = 3;
+    /**
+     * <code>required string OperationName = 3;</code>
+     */
+    boolean hasOperationName();
+    /**
+     * <code>required string OperationName = 3;</code>
+     */
+    java.lang.String getOperationName();
+    /**
+     * <code>required string OperationName = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getOperationNameBytes();
+
+    // required string Error = 4;
+    /**
+     * <code>required string Error = 4;</code>
+     */
+    boolean hasError();
+    /**
+     * <code>required string Error = 4;</code>
+     */
+    java.lang.String getError();
+    /**
+     * <code>required string Error = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getErrorBytes();
+
+    // repeated bytes SerializedData = 5;
+    /**
+     * <code>repeated bytes SerializedData = 5;</code>
+     */
+    java.util.List<com.google.protobuf.ByteString> getSerializedDataList();
+    /**
+     * <code>repeated bytes SerializedData = 5;</code>
+     */
+    int getSerializedDataCount();
+    /**
+     * <code>repeated bytes SerializedData = 5;</code>
+     */
+    com.google.protobuf.ByteString getSerializedData(int index);
+  }
+  /**
+   * Protobuf type {@code RpcMessageProto}
+   *
+   * <pre>
+   * Message for RPC
+   * </pre>
+   */
+  public static final class RpcMessageProto extends
+      com.google.protobuf.GeneratedMessage
+      implements RpcMessageProtoOrBuilder {
+    // Use RpcMessageProto.newBuilder() to construct.
+    private RpcMessageProto(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RpcMessageProto(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final RpcMessageProto defaultInstance;
+    public static RpcMessageProto getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public RpcMessageProto getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RpcMessageProto(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              id_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              flag_ = input.readInt32();
+              break;
+            }
+            case 26: {
+              bitField0_ |= 0x00000004;
+              operationName_ = input.readBytes();
+              break;
+            }
+            case 34: {
+              bitField0_ |= 0x00000008;
+              error_ = input.readBytes();
+              break;
+            }
+            case 42: {
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+                serializedData_ = new java.util.ArrayList<com.google.protobuf.ByteString>();
+                mutable_bitField0_ |= 0x00000010;
+              }
+              serializedData_.add(input.readBytes());
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+          serializedData_ = java.util.Collections.unmodifiableList(serializedData_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return EneterProtoBufDeclarations.internal_static_RpcMessageProto_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return EneterProtoBufDeclarations.internal_static_RpcMessageProto_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              EneterProtoBufDeclarations.RpcMessageProto.class, EneterProtoBufDeclarations.RpcMessageProto.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<RpcMessageProto> PARSER =
+        new com.google.protobuf.AbstractParser<RpcMessageProto>() {
+      public RpcMessageProto parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RpcMessageProto(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RpcMessageProto> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 Id = 1;
+    public static final int ID_FIELD_NUMBER = 1;
+    private int id_;
+    /**
+     * <code>required int32 Id = 1;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 Id = 1;</code>
+     */
+    public int getId() {
+      return id_;
+    }
+
+    // required int32 Flag = 2;
+    public static final int FLAG_FIELD_NUMBER = 2;
+    private int flag_;
+    /**
+     * <code>required int32 Flag = 2;</code>
+     */
+    public boolean hasFlag() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 Flag = 2;</code>
+     */
+    public int getFlag() {
+      return flag_;
+    }
+
+    // required string OperationName = 3;
+    public static final int OPERATIONNAME_FIELD_NUMBER = 3;
+    private java.lang.Object operationName_;
+    /**
+     * <code>required string OperationName = 3;</code>
+     */
+    public boolean hasOperationName() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required string OperationName = 3;</code>
+     */
+    public java.lang.String getOperationName() {
+      java.lang.Object ref = operationName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          operationName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string OperationName = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getOperationNameBytes() {
+      java.lang.Object ref = operationName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        operationName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // required string Error = 4;
+    public static final int ERROR_FIELD_NUMBER = 4;
+    private java.lang.Object error_;
+    /**
+     * <code>required string Error = 4;</code>
+     */
+    public boolean hasError() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required string Error = 4;</code>
+     */
+    public java.lang.String getError() {
+      java.lang.Object ref = error_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          error_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string Error = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getErrorBytes() {
+      java.lang.Object ref = error_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        error_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // repeated bytes SerializedData = 5;
+    public static final int SERIALIZEDDATA_FIELD_NUMBER = 5;
+    private java.util.List<com.google.protobuf.ByteString> serializedData_;
+    /**
+     * <code>repeated bytes SerializedData = 5;</code>
+     */
+    public java.util.List<com.google.protobuf.ByteString>
+        getSerializedDataList() {
+      return serializedData_;
+    }
+    /**
+     * <code>repeated bytes SerializedData = 5;</code>
+     */
+    public int getSerializedDataCount() {
+      return serializedData_.size();
+    }
+    /**
+     * <code>repeated bytes SerializedData = 5;</code>
+     */
+    public com.google.protobuf.ByteString getSerializedData(int index) {
+      return serializedData_.get(index);
+    }
+
+    private void initFields() {
+      id_ = 0;
+      flag_ = 0;
+      operationName_ = "";
+      error_ = "";
+      serializedData_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasFlag()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasOperationName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasError()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, id_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, flag_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getOperationNameBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBytes(4, getErrorBytes());
+      }
+      for (int i = 0; i < serializedData_.size(); i++) {
+        output.writeBytes(5, serializedData_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, id_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, flag_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getOperationNameBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, getErrorBytes());
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < serializedData_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeBytesSizeNoTag(serializedData_.get(i));
+        }
+        size += dataSize;
+        size += 1 * getSerializedDataList().size();
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static EneterProtoBufDeclarations.RpcMessageProto parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EneterProtoBufDeclarations.RpcMessageProto parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EneterProtoBufDeclarations.RpcMessageProto parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static EneterProtoBufDeclarations.RpcMessageProto parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static EneterProtoBufDeclarations.RpcMessageProto parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static EneterProtoBufDeclarations.RpcMessageProto parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static EneterProtoBufDeclarations.RpcMessageProto parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static EneterProtoBufDeclarations.RpcMessageProto parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static EneterProtoBufDeclarations.RpcMessageProto parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static EneterProtoBufDeclarations.RpcMessageProto parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(EneterProtoBufDeclarations.RpcMessageProto prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code RpcMessageProto}
+     *
+     * <pre>
+     * Message for RPC
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements EneterProtoBufDeclarations.RpcMessageProtoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return EneterProtoBufDeclarations.internal_static_RpcMessageProto_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return EneterProtoBufDeclarations.internal_static_RpcMessageProto_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                EneterProtoBufDeclarations.RpcMessageProto.class, EneterProtoBufDeclarations.RpcMessageProto.Builder.class);
+      }
+
+      // Construct using EneterProtoBufDeclarations.RpcMessageProto.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        id_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        flag_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        operationName_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
+        error_ = "";
+        bitField0_ = (bitField0_ & ~0x00000008);
+        serializedData_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000010);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return EneterProtoBufDeclarations.internal_static_RpcMessageProto_descriptor;
+      }
+
+      public EneterProtoBufDeclarations.RpcMessageProto getDefaultInstanceForType() {
+        return EneterProtoBufDeclarations.RpcMessageProto.getDefaultInstance();
+      }
+
+      public EneterProtoBufDeclarations.RpcMessageProto build() {
+        EneterProtoBufDeclarations.RpcMessageProto result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public EneterProtoBufDeclarations.RpcMessageProto buildPartial() {
+        EneterProtoBufDeclarations.RpcMessageProto result = new EneterProtoBufDeclarations.RpcMessageProto(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.id_ = id_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.flag_ = flag_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.operationName_ = operationName_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.error_ = error_;
+        if (((bitField0_ & 0x00000010) == 0x00000010)) {
+          serializedData_ = java.util.Collections.unmodifiableList(serializedData_);
+          bitField0_ = (bitField0_ & ~0x00000010);
+        }
+        result.serializedData_ = serializedData_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof EneterProtoBufDeclarations.RpcMessageProto) {
+          return mergeFrom((EneterProtoBufDeclarations.RpcMessageProto)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(EneterProtoBufDeclarations.RpcMessageProto other) {
+        if (other == EneterProtoBufDeclarations.RpcMessageProto.getDefaultInstance()) return this;
+        if (other.hasId()) {
+          setId(other.getId());
+        }
+        if (other.hasFlag()) {
+          setFlag(other.getFlag());
+        }
+        if (other.hasOperationName()) {
+          bitField0_ |= 0x00000004;
+          operationName_ = other.operationName_;
+          onChanged();
+        }
+        if (other.hasError()) {
+          bitField0_ |= 0x00000008;
+          error_ = other.error_;
+          onChanged();
+        }
+        if (!other.serializedData_.isEmpty()) {
+          if (serializedData_.isEmpty()) {
+            serializedData_ = other.serializedData_;
+            bitField0_ = (bitField0_ & ~0x00000010);
+          } else {
+            ensureSerializedDataIsMutable();
+            serializedData_.addAll(other.serializedData_);
+          }
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasId()) {
+          
+          return false;
+        }
+        if (!hasFlag()) {
+          
+          return false;
+        }
+        if (!hasOperationName()) {
+          
+          return false;
+        }
+        if (!hasError()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        EneterProtoBufDeclarations.RpcMessageProto parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (EneterProtoBufDeclarations.RpcMessageProto) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 Id = 1;
+      private int id_ ;
+      /**
+       * <code>required int32 Id = 1;</code>
+       */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 Id = 1;</code>
+       */
+      public int getId() {
+        return id_;
+      }
+      /**
+       * <code>required int32 Id = 1;</code>
+       */
+      public Builder setId(int value) {
+        bitField0_ |= 0x00000001;
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 Id = 1;</code>
+       */
+      public Builder clearId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        id_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 Flag = 2;
+      private int flag_ ;
+      /**
+       * <code>required int32 Flag = 2;</code>
+       */
+      public boolean hasFlag() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 Flag = 2;</code>
+       */
+      public int getFlag() {
+        return flag_;
+      }
+      /**
+       * <code>required int32 Flag = 2;</code>
+       */
+      public Builder setFlag(int value) {
+        bitField0_ |= 0x00000002;
+        flag_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 Flag = 2;</code>
+       */
+      public Builder clearFlag() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        flag_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required string OperationName = 3;
+      private java.lang.Object operationName_ = "";
+      /**
+       * <code>required string OperationName = 3;</code>
+       */
+      public boolean hasOperationName() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required string OperationName = 3;</code>
+       */
+      public java.lang.String getOperationName() {
+        java.lang.Object ref = operationName_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          operationName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string OperationName = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getOperationNameBytes() {
+        java.lang.Object ref = operationName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          operationName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string OperationName = 3;</code>
+       */
+      public Builder setOperationName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        operationName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string OperationName = 3;</code>
+       */
+      public Builder clearOperationName() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        operationName_ = getDefaultInstance().getOperationName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string OperationName = 3;</code>
+       */
+      public Builder setOperationNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        operationName_ = value;
+        onChanged();
+        return this;
+      }
+
+      // required string Error = 4;
+      private java.lang.Object error_ = "";
+      /**
+       * <code>required string Error = 4;</code>
+       */
+      public boolean hasError() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required string Error = 4;</code>
+       */
+      public java.lang.String getError() {
+        java.lang.Object ref = error_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          error_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string Error = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getErrorBytes() {
+        java.lang.Object ref = error_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          error_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string Error = 4;</code>
+       */
+      public Builder setError(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        error_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string Error = 4;</code>
+       */
+      public Builder clearError() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        error_ = getDefaultInstance().getError();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string Error = 4;</code>
+       */
+      public Builder setErrorBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        error_ = value;
+        onChanged();
+        return this;
+      }
+
+      // repeated bytes SerializedData = 5;
+      private java.util.List<com.google.protobuf.ByteString> serializedData_ = java.util.Collections.emptyList();
+      private void ensureSerializedDataIsMutable() {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+          serializedData_ = new java.util.ArrayList<com.google.protobuf.ByteString>(serializedData_);
+          bitField0_ |= 0x00000010;
+         }
+      }
+      /**
+       * <code>repeated bytes SerializedData = 5;</code>
+       */
+      public java.util.List<com.google.protobuf.ByteString>
+          getSerializedDataList() {
+        return java.util.Collections.unmodifiableList(serializedData_);
+      }
+      /**
+       * <code>repeated bytes SerializedData = 5;</code>
+       */
+      public int getSerializedDataCount() {
+        return serializedData_.size();
+      }
+      /**
+       * <code>repeated bytes SerializedData = 5;</code>
+       */
+      public com.google.protobuf.ByteString getSerializedData(int index) {
+        return serializedData_.get(index);
+      }
+      /**
+       * <code>repeated bytes SerializedData = 5;</code>
+       */
+      public Builder setSerializedData(
+          int index, com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureSerializedDataIsMutable();
+        serializedData_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated bytes SerializedData = 5;</code>
+       */
+      public Builder addSerializedData(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureSerializedDataIsMutable();
+        serializedData_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated bytes SerializedData = 5;</code>
+       */
+      public Builder addAllSerializedData(
+          java.lang.Iterable<? extends com.google.protobuf.ByteString> values) {
+        ensureSerializedDataIsMutable();
+        super.addAll(values, serializedData_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated bytes SerializedData = 5;</code>
+       */
+      public Builder clearSerializedData() {
+        serializedData_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000010);
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:RpcMessageProto)
+    }
+
+    static {
+      defaultInstance = new RpcMessageProto(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:RpcMessageProto)
+  }
+
   public interface WrappedDataProtoOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -3581,6 +4560,11 @@ public final class EneterProtoBufDeclarations {
   }
 
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_RpcMessageProto_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_RpcMessageProto_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_WrappedDataProto_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -3614,50 +4598,58 @@ public final class EneterProtoBufDeclarations {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n EneterProtoBufDeclarations.proto\"W\n\020Wr" +
-      "appedDataProto\022\021\n\tAddedData\030\001 \002(\t\022\027\n\017Ori" +
-      "ginalDataBin\030\002 \001(\014\022\027\n\017OriginalDataStr\030\003 " +
-      "\001(\t\"c\n\022BrokerMessageProto\022\017\n\007Request\030\001 \002" +
-      "(\t\022\024\n\014MessageTypes\030\002 \003(\t\022\022\n\nMessageBin\030\003" +
-      " \001(\014\022\022\n\nMessageStr\030\004 \001(\t\"f\n\024ReliableMess" +
-      "ageProto\022\023\n\013MessageType\030\001 \002(\t\022\021\n\tMessage" +
-      "Id\030\002 \002(\t\022\022\n\nMessageBin\030\003 \001(\014\022\022\n\nMessageS" +
-      "tr\030\004 \001(\t\"g\n\032MonitorChannelMessageProto\022\023" +
-      "\n\013MessageType\030\001 \002(\t\022\031\n\021MessageContentBin",
-      "\030\002 \001(\014\022\031\n\021MessageContentStr\030\003 \001(\t\"\022\n\020Voi" +
-      "dMessageProto"
+      "\n EneterProtoBufDeclarations.proto\"i\n\017Rp" +
+      "cMessageProto\022\n\n\002Id\030\001 \002(\005\022\014\n\004Flag\030\002 \002(\005\022" +
+      "\025\n\rOperationName\030\003 \002(\t\022\r\n\005Error\030\004 \002(\t\022\026\n" +
+      "\016SerializedData\030\005 \003(\014\"W\n\020WrappedDataProt" +
+      "o\022\021\n\tAddedData\030\001 \002(\t\022\027\n\017OriginalDataBin\030" +
+      "\002 \001(\014\022\027\n\017OriginalDataStr\030\003 \001(\t\"c\n\022Broker" +
+      "MessageProto\022\017\n\007Request\030\001 \002(\t\022\024\n\014Message" +
+      "Types\030\002 \003(\t\022\022\n\nMessageBin\030\003 \001(\014\022\022\n\nMessa" +
+      "geStr\030\004 \001(\t\"f\n\024ReliableMessageProto\022\023\n\013M" +
+      "essageType\030\001 \002(\t\022\021\n\tMessageId\030\002 \002(\t\022\022\n\nM",
+      "essageBin\030\003 \001(\014\022\022\n\nMessageStr\030\004 \001(\t\"g\n\032M" +
+      "onitorChannelMessageProto\022\023\n\013MessageType" +
+      "\030\001 \002(\t\022\031\n\021MessageContentBin\030\002 \001(\014\022\031\n\021Mes" +
+      "sageContentStr\030\003 \001(\t\"\022\n\020VoidMessageProto"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
         public com.google.protobuf.ExtensionRegistry assignDescriptors(
             com.google.protobuf.Descriptors.FileDescriptor root) {
           descriptor = root;
-          internal_static_WrappedDataProto_descriptor =
+          internal_static_RpcMessageProto_descriptor =
             getDescriptor().getMessageTypes().get(0);
+          internal_static_RpcMessageProto_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_RpcMessageProto_descriptor,
+              new java.lang.String[] { "Id", "Flag", "OperationName", "Error", "SerializedData", });
+          internal_static_WrappedDataProto_descriptor =
+            getDescriptor().getMessageTypes().get(1);
           internal_static_WrappedDataProto_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_WrappedDataProto_descriptor,
               new java.lang.String[] { "AddedData", "OriginalDataBin", "OriginalDataStr", });
           internal_static_BrokerMessageProto_descriptor =
-            getDescriptor().getMessageTypes().get(1);
+            getDescriptor().getMessageTypes().get(2);
           internal_static_BrokerMessageProto_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_BrokerMessageProto_descriptor,
               new java.lang.String[] { "Request", "MessageTypes", "MessageBin", "MessageStr", });
           internal_static_ReliableMessageProto_descriptor =
-            getDescriptor().getMessageTypes().get(2);
+            getDescriptor().getMessageTypes().get(3);
           internal_static_ReliableMessageProto_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_ReliableMessageProto_descriptor,
               new java.lang.String[] { "MessageType", "MessageId", "MessageBin", "MessageStr", });
           internal_static_MonitorChannelMessageProto_descriptor =
-            getDescriptor().getMessageTypes().get(3);
+            getDescriptor().getMessageTypes().get(4);
           internal_static_MonitorChannelMessageProto_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_MonitorChannelMessageProto_descriptor,
               new java.lang.String[] { "MessageType", "MessageContentBin", "MessageContentStr", });
           internal_static_VoidMessageProto_descriptor =
-            getDescriptor().getMessageTypes().get(4);
+            getDescriptor().getMessageTypes().get(5);
           internal_static_VoidMessageProto_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_VoidMessageProto_descriptor,

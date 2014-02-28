@@ -7,6 +7,7 @@ protogen.exe -i:EneterProtoBufDeclarations.proto -o:EneterProtoBufDeclarations.c
 
 To generate Java:
 protoc.exe -I=./ --java_out=./ ./EneterProtoBufDeclarations.proto
+protoc.exe -I=./ --java_out=./ ./EneterProtoBufPrimitivesDeclarations.proto
 
 At the beginning of the java file the following line with package declaration must be inserted:
 package eneter.protobuf;
