@@ -9,20 +9,17 @@
 package eneter.protobuf;
 
 import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.List;
 
-import com.google.protobuf.ByteString;
 import com.google.protobuf.GeneratedMessage;
-import com.google.protobuf.InvalidProtocolBufferException;
 
 import eneter.messaging.dataprocessing.serializing.ISerializer;
+import eneter.messaging.endpoints.rpc.RpcMessage;
 import eneter.messaging.endpoints.typedmessages.VoidMessage;
 import eneter.messaging.endpoints.typedmessages.internal.ReliableMessage;
 import eneter.messaging.messagingsystems.composites.monitoredmessagingcomposit.*;
 import eneter.messaging.nodes.broker.*;
 import eneter.messaging.nodes.channelwrapper.WrappedData;
-import eneter.protobuf.EneterProtoBufDeclarations.*;
+
 
 /**
  * Implements protocol buffer serialization for Eneter.Messaging.Framework.
@@ -42,32 +39,145 @@ public class ProtoBufSerializer implements ISerializer
     public <T> Object serialize(T dataToSerialize, Class<T> clazz)
             throws Exception
     {
-        Object aSerializedData;
+        boolean aUseDirectlyProtobBuf = false;
+        Object aSerializedData = null;
         
-        // If it is an internal Eneter type adapt it for ProtoBuf
-        if (clazz == WrappedData.class)
+        if (clazz == String.class)
         {
-            aSerializedData = serializeWrappedData((WrappedData)dataToSerialize);
+            aSerializedData = PrimitiveTypesWrapper.serializeString((String)dataToSerialize);
+        }
+        // If it is a primitive type
+        else if (clazz.isPrimitive())
+        {
+            if (clazz == Boolean.class || clazz == Byte.class || clazz == Character.class ||
+                clazz == Short.class || clazz == Integer.class || clazz == Long.class ||
+                clazz == Float.class || clazz == Double.class)
+            {
+                throw new IllegalStateException("ProtoBufSerializer does not support primitive types as references (e.g. int is supported but not Integer).");
+            }
+            
+            if (clazz == boolean.class)
+            {
+                aSerializedData = PrimitiveTypesWrapper.serializeBool((Boolean)dataToSerialize);
+            }
+            else if (clazz == byte.class)
+            {
+                aSerializedData = PrimitiveTypesWrapper.serializeByte((Byte)dataToSerialize);
+            }
+            else if (clazz == char.class)
+            {
+                aSerializedData = PrimitiveTypesWrapper.serializeChar((Character)dataToSerialize);
+            }
+            else if (clazz == short.class)
+            {
+                aSerializedData = PrimitiveTypesWrapper.serializeShort((Short)dataToSerialize);
+            }
+            else if (clazz == int.class)
+            {
+                aSerializedData = PrimitiveTypesWrapper.serializeInt((Integer)dataToSerialize);
+            }
+            else if (clazz == long.class)
+            {
+                aSerializedData = PrimitiveTypesWrapper.serializeLong((Long)dataToSerialize);
+            }
+            else if (clazz == float.class)
+            {
+                aSerializedData = PrimitiveTypesWrapper.serializeFloat((Float)dataToSerialize);
+            }
+            else if (clazz == double.class)
+            {
+                aSerializedData = PrimitiveTypesWrapper.serializeDouble((Double)dataToSerialize);
+            }
+            else
+            {
+                aUseDirectlyProtobBuf = true;
+            }
+        }
+        // if it is an array of string or a primitive type.
+        else if (clazz.isArray())
+        {
+            if (clazz == Boolean[].class || clazz == Byte[].class || clazz == Character[].class ||
+                clazz == Short[].class || clazz == Integer[].class || clazz == Long[].class ||
+                clazz == Float[].class || clazz == Double[].class)
+            {
+                throw new IllegalStateException("ProtoBufSerializer does not support arrays of primitive types references (e.g. int[] is supported but not Integer[]).");
+            }
+            
+            if (clazz == String[].class)
+            {
+                aSerializedData = PrimitiveTypesWrapper.serializeStringArray((String[])dataToSerialize);
+            }
+            else if (clazz == boolean[].class)
+            {
+                aSerializedData = PrimitiveTypesWrapper.serializeBoolArray((boolean[])dataToSerialize);
+            }
+            else if (clazz == byte[].class)
+            {
+                aSerializedData = PrimitiveTypesWrapper.serializeByteArray((byte[])dataToSerialize);
+            }
+            else if (clazz == char[].class)
+            {
+                aSerializedData = PrimitiveTypesWrapper.serializeCharArray((char[])dataToSerialize);
+            }
+            else if (clazz == short[].class)
+            {
+                aSerializedData = PrimitiveTypesWrapper.serializeShortArray((short[])dataToSerialize);
+            }
+            else if (clazz == int[].class)
+            {
+                aSerializedData = PrimitiveTypesWrapper.serializeIntArray((int[])dataToSerialize);
+            }
+            else if (clazz == long[].class)
+            {
+                aSerializedData = PrimitiveTypesWrapper.serializeLongArray((long[])dataToSerialize);
+            }
+            else if (clazz == float[].class)
+            {
+                aSerializedData = PrimitiveTypesWrapper.serializeFloatArray((float[])dataToSerialize);
+            }
+            else if (clazz == double[].class)
+            {
+                aSerializedData = PrimitiveTypesWrapper.serializeDoubleArray((double[])dataToSerialize);
+            }
+            else
+            {
+                aUseDirectlyProtobBuf = true;
+            }
+        }
+        // If it is an internal Eneter type adapt it for ProtoBuf
+        else if (clazz == RpcMessage.class)
+        {
+            aSerializedData = EneterTypesWrapper.serializeRpcMessage((RpcMessage)dataToSerialize);
+        }
+        else if (clazz == WrappedData.class)
+        {
+            aSerializedData = EneterTypesWrapper.serializeWrappedData((WrappedData)dataToSerialize);
         }
         else if (clazz == BrokerMessage.class)
         {
-            aSerializedData = serializeBrokerMessage((BrokerMessage)dataToSerialize);
+            aSerializedData = EneterTypesWrapper.serializeBrokerMessage((BrokerMessage)dataToSerialize);
         }
         else if (clazz == ReliableMessage.class)
         {
-            aSerializedData = serializeReliableMessage((ReliableMessage)dataToSerialize);
+            aSerializedData = EneterTypesWrapper.serializeReliableMessage((ReliableMessage)dataToSerialize);
         }
         else if (clazz == MonitorChannelMessage.class)
         {
-            aSerializedData = serializeMonitorChannelMessage((MonitorChannelMessage)dataToSerialize);
+            aSerializedData = EneterTypesWrapper.serializeMonitorChannelMessage((MonitorChannelMessage)dataToSerialize);
         }
         else if (clazz == VoidMessage.class)
         {
-            aSerializedData = serializeVoidMessage((VoidMessage)dataToSerialize);
+            aSerializedData = EneterTypesWrapper.serializeVoidMessage((VoidMessage)dataToSerialize);
         }
         else
         {
-            // If it is not internal Eneter message use directly ProtoBuf serializer.
+            aUseDirectlyProtobBuf = true;
+        }
+
+        // If it is not string, primitive type or array of an primitive type then
+        // try to use directly ProtoBuf serializer.
+        if (aUseDirectlyProtobBuf)
+        {
             GeneratedMessage aDataToSerialize = (GeneratedMessage)dataToSerialize;
             aSerializedData = aDataToSerialize.toByteArray();
         }
@@ -81,34 +191,155 @@ public class ProtoBufSerializer implements ISerializer
      * @param clazz data type of deserialized data.
      * @return instance of deserialized data type 
      */
+    @SuppressWarnings("unchecked")
     @Override
     public <T> T deserialize(Object serializedData, Class<T> clazz)
             throws Exception
     {
-        T aDeserializedObject;
+        boolean aUseDirectlyProtoBuf = false;
+        T aDeserializedObject = null;
 
-        // If it is an internal Eneter type, adapt it from the proto type.
-        if (clazz == WrappedData.class)
+        if (clazz == String.class)
         {
-            aDeserializedObject = clazz.cast(deserializeWrappedData((byte[])serializedData));
+            aDeserializedObject = clazz.cast(PrimitiveTypesWrapper.deserializeString((byte[])serializedData));
+        }
+        // If it is a primitive type
+        else if (clazz.isPrimitive())
+        {
+            if (clazz == Boolean.class || clazz == Byte.class || clazz == Character.class ||
+                clazz == Short.class || clazz == Integer.class || clazz == Long.class ||
+                clazz == Float.class || clazz == Double.class)
+            {
+                throw new IllegalStateException("ProtoBufSerializer does not support primitive types as references (e.g. int is supported but not Integer).");
+            }
+            
+            if (clazz == boolean.class)
+            {
+                Boolean aResult = PrimitiveTypesWrapper.deserializeBool((byte[])serializedData);
+                aDeserializedObject = (T) aResult;
+            }
+            else if (clazz == byte.class)
+            {
+                Byte aResult = PrimitiveTypesWrapper.deserializeByte((byte[])serializedData);
+                aDeserializedObject = (T) aResult;
+            }
+            else if (clazz == char.class)
+            {
+                Character aResult = PrimitiveTypesWrapper.deserializeChar((byte[])serializedData);
+                aDeserializedObject = (T) aResult;
+            }
+            else if (clazz == short.class)
+            {
+                Short aResult = PrimitiveTypesWrapper.deserializeShort((byte[])serializedData);
+                aDeserializedObject = (T) aResult;
+            }
+            else if (clazz == int.class)
+            {
+                Integer aResult = PrimitiveTypesWrapper.deserializeInt((byte[])serializedData);
+                aDeserializedObject = (T) aResult;
+            }
+            else if (clazz == long.class)
+            {
+                Long aResult = PrimitiveTypesWrapper.deserializeLong((byte[])serializedData);
+                aDeserializedObject = (T) aResult;
+            }
+            else if (clazz == float.class)
+            {
+                Float aResult = PrimitiveTypesWrapper.deserializeFloat((byte[])serializedData);
+                aDeserializedObject = (T) aResult;
+            }
+            else if (clazz == double.class)
+            {
+                Double aResult = PrimitiveTypesWrapper.deserializeDouble((byte[])serializedData);
+                aDeserializedObject = (T) aResult;
+            }
+            else
+            {
+                aUseDirectlyProtoBuf = true;
+            }
+        }
+        // If is an array of string or a primitive type.
+        else if (clazz.isArray())
+        {
+            if (clazz == Boolean[].class || clazz == Byte[].class || clazz == Character[].class ||
+                clazz == Short[].class || clazz == Integer[].class || clazz == Long[].class ||
+                clazz == Float[].class || clazz == Double[].class)
+            {
+                throw new IllegalStateException("ProtoBufSerializer does not support arrays of primitive types references (e.g. int[] is supported but not Integer[]).");
+            }
+            
+            if (clazz == String[].class)
+            {
+                aDeserializedObject = clazz.cast(PrimitiveTypesWrapper.deserializeStringArray((byte[])serializedData));
+            }
+            else if (clazz == boolean[].class)
+            {
+                aDeserializedObject = clazz.cast(PrimitiveTypesWrapper.deserializeBoolArray((byte[])serializedData));
+            }
+            else if (clazz == byte[].class)
+            {
+                aDeserializedObject = clazz.cast(PrimitiveTypesWrapper.deserializeByteArray((byte[])serializedData));
+            }
+            else if (clazz == char[].class)
+            {
+                aDeserializedObject = clazz.cast(PrimitiveTypesWrapper.deserializeCharArray((byte[])serializedData));
+            }
+            else if (clazz == short[].class)
+            {
+                aDeserializedObject = clazz.cast(PrimitiveTypesWrapper.deserializeShortArray((byte[])serializedData));
+            }
+            else if (clazz == int[].class)
+            {
+                aDeserializedObject = clazz.cast(PrimitiveTypesWrapper.deserializeIntArray((byte[])serializedData));
+            }
+            else if (clazz == long[].class)
+            {
+                aDeserializedObject = clazz.cast(PrimitiveTypesWrapper.deserializeLongArray((byte[])serializedData));
+            }
+            else if (clazz == float[].class)
+            {
+                aDeserializedObject = clazz.cast(PrimitiveTypesWrapper.deserializeFloatArray((byte[])serializedData));
+            }
+            else if (clazz == double[].class)
+            {
+                aDeserializedObject = clazz.cast(PrimitiveTypesWrapper.deserializeDoubleArray((byte[])serializedData));
+            }
+            else
+            {
+                aUseDirectlyProtoBuf = true;
+            }
+        }
+        // If it is an internal Eneter type, adapt it from the proto type.
+        else if (clazz == RpcMessage.class)
+        {
+            aDeserializedObject = clazz.cast(EneterTypesWrapper.deserializeRpcMessage((byte[])serializedData));
+        }
+        else if (clazz == WrappedData.class)
+        {
+            aDeserializedObject = clazz.cast(EneterTypesWrapper.deserializeWrappedData((byte[])serializedData));
         }
         else if (clazz == BrokerMessage.class)
         {
-            aDeserializedObject = clazz.cast(deserializeBrokerMessage((byte[])serializedData)); 
+            aDeserializedObject = clazz.cast(EneterTypesWrapper.deserializeBrokerMessage((byte[])serializedData)); 
         }
         else if (clazz == ReliableMessage.class)
         {
-            aDeserializedObject = clazz.cast(deserializeReliableMessage((byte[])serializedData)); 
+            aDeserializedObject = clazz.cast(EneterTypesWrapper.deserializeReliableMessage((byte[])serializedData)); 
         }
         else if (clazz == MonitorChannelMessage.class)
         {
-            aDeserializedObject = clazz.cast(deserializeMonitorChannelMessage((byte[])serializedData)); 
+            aDeserializedObject = clazz.cast(EneterTypesWrapper.deserializeMonitorChannelMessage((byte[])serializedData)); 
         }
         else if (clazz == VoidMessage.class)
         {
-            aDeserializedObject = clazz.cast(deserializeVoidMessage((byte[])serializedData));
+            aDeserializedObject = clazz.cast(EneterTypesWrapper.deserializeVoidMessage((byte[])serializedData));
         }
         else
+        {
+            aUseDirectlyProtoBuf = true;
+        }
+        
+        if (aUseDirectlyProtoBuf)
         {
             // If it is not an Eneter internal type then use directly protobuf.
             Method aParsingMethod = clazz.getMethod("parseFrom", byte[].class);
@@ -119,176 +350,4 @@ public class ProtoBufSerializer implements ISerializer
     }
     
     
-    private byte[] serializeWrappedData(WrappedData data)
-    {
-        WrappedDataProto.Builder aBuilder = WrappedDataProto.newBuilder()
-                .setAddedData((String)data.AddedData);
-        if (data.OriginalData != null)
-        {
-            if (data.OriginalData instanceof String)
-            {
-                aBuilder.setOriginalDataStr((String)data.OriginalData);
-            }
-            else
-            {
-                aBuilder.setOriginalDataBin(ByteString.copyFrom((byte[]) data.OriginalData));
-            }
-        }
-        WrappedDataProto aWrappedDataProto = aBuilder.build();
-
-        return aWrappedDataProto.toByteArray();
-    }
-
-    private WrappedData deserializeWrappedData(byte[] data) throws InvalidProtocolBufferException
-    {
-        WrappedDataProto aWrappedDataProto = WrappedDataProto.parseFrom(data);
-        WrappedData aWrappedData = new WrappedData();
-        aWrappedData.AddedData = aWrappedDataProto.getAddedData();
-        if (aWrappedDataProto.hasOriginalDataStr())
-        {
-            aWrappedData.OriginalData = aWrappedDataProto.getOriginalDataStr();
-        }
-        else if (aWrappedDataProto.hasOriginalDataBin())
-        {
-            aWrappedData.OriginalData = aWrappedDataProto.getOriginalDataBin().toByteArray();
-        }
-
-        return aWrappedData;
-    }
-
-
-    private byte[] serializeBrokerMessage(BrokerMessage data)
-    {
-        BrokerMessageProto.Builder aBuilder = BrokerMessageProto.newBuilder()
-                .setRequest(data.Request.toString())
-                .addAllMessageTypes(Arrays.asList(data.MessageTypes));
-        if (data.Message != null)
-        {
-            if (data.Message instanceof String)
-            {
-                aBuilder.setMessageStr((String)data.Message);
-            }
-            else
-            {
-                aBuilder.setMessageBin(ByteString.copyFrom((byte[])data.Message));
-            }
-        }
-        BrokerMessageProto aBrokerMessageProto = aBuilder.build();
-        
-        return aBrokerMessageProto.toByteArray();
-    }
-
-    private BrokerMessage deserializeBrokerMessage(byte[] data) throws InvalidProtocolBufferException
-    {
-        BrokerMessageProto aBrokerMessageProto = BrokerMessageProto.parseFrom(data);
-        
-        List<String> aMessageTypes = aBrokerMessageProto.getMessageTypesList();
-        
-        BrokerMessage aBrokerMessage = new BrokerMessage();
-        aBrokerMessage.Request = EBrokerRequest.valueOf(aBrokerMessageProto.getRequest());
-        aBrokerMessage.MessageTypes = aMessageTypes.toArray(new String[aMessageTypes.size()]);
-        if (aBrokerMessageProto.hasMessageStr())
-        {
-            aBrokerMessage.Message = aBrokerMessageProto.getMessageStr();
-        }
-        else if (aBrokerMessageProto.hasMessageBin())
-        {
-            aBrokerMessage.Message = aBrokerMessageProto.getMessageBin().toByteArray();
-        }
-        
-        return aBrokerMessage;
-    }
-
-
-    private byte[] serializeReliableMessage(ReliableMessage data)
-    {
-        ReliableMessageProto.Builder aBuilder = ReliableMessageProto.newBuilder()
-                .setMessageId(data.MessageId)
-                .setMessageType(data.MessageType.toString());
-        if (data.Message != null)
-        {
-            if (data.Message instanceof String)
-            {
-                aBuilder.setMessageStr((String)data.Message);
-            }
-            else
-            {
-                aBuilder.setMessageBin(ByteString.copyFrom((byte[])data.Message));
-            }
-        }
-        ReliableMessageProto aReliableMessageProto = aBuilder.build();
-        
-        return aReliableMessageProto.toByteArray();
-    }
-
-    private ReliableMessage deserializeReliableMessage(byte[] data) throws InvalidProtocolBufferException
-    {
-        ReliableMessageProto aReliableMessageProto = ReliableMessageProto.parseFrom(data);
-        ReliableMessage aReliableMessage = new ReliableMessage();
-        aReliableMessage.MessageId = aReliableMessageProto.getMessageId();
-        aReliableMessage.MessageType = ReliableMessage.EMessageType.valueOf(aReliableMessageProto.getMessageType());
-        if (aReliableMessageProto.hasMessageStr())
-        {
-            aReliableMessage.Message = aReliableMessageProto.getMessageStr();
-        }
-        else if (aReliableMessageProto.hasMessageBin())
-        {
-            aReliableMessage.Message = aReliableMessageProto.getMessageBin().toByteArray();
-        }
-        
-        return aReliableMessage;
-    }
-
-
-    private byte[] serializeMonitorChannelMessage(MonitorChannelMessage data)
-    {
-        MonitorChannelMessageProto.Builder aBuilder = MonitorChannelMessageProto.newBuilder()
-                .setMessageType(data.MessageType.toString());
-        if (data.MessageContent != null)
-        {
-            if (data.MessageContent instanceof String)
-            {
-                aBuilder.setMessageContentStr((String)data.MessageContent);
-            }
-            else
-            {
-                aBuilder.setMessageContentBin(ByteString.copyFrom((byte[])data.MessageContent));
-            }
-        }
-        MonitorChannelMessageProto aMonitorChannelMessageProto = aBuilder.build();
-        
-        return aMonitorChannelMessageProto.toByteArray();
-    }
-
-    private MonitorChannelMessage deserializeMonitorChannelMessage(byte[] data) throws InvalidProtocolBufferException
-    {
-        MonitorChannelMessageProto aMonitorChannelMessageProto = MonitorChannelMessageProto.parseFrom(data); 
-        MonitorChannelMessage aMonitorChannelMessage = new MonitorChannelMessage();
-        aMonitorChannelMessage.MessageType = MonitorChannelMessageType.valueOf(aMonitorChannelMessageProto.getMessageType());
-        if (aMonitorChannelMessageProto.hasMessageContentStr())
-        {
-            aMonitorChannelMessage.MessageContent = aMonitorChannelMessageProto.getMessageContentStr();
-        }
-        else if (aMonitorChannelMessageProto.hasMessageContentBin())
-        {
-            aMonitorChannelMessage.MessageContent = aMonitorChannelMessageProto.getMessageContentBin().toByteArray();
-        }
-        
-        return aMonitorChannelMessage;
-    }
-    
-    
-    private byte[] serializeVoidMessage(VoidMessage data)
-    {
-        VoidMessageProto aVoidMessageProto = VoidMessageProto.newBuilder()
-                .build();
-        return aVoidMessageProto.toByteArray();
-    }
-    
-    private VoidMessage deserializeVoidMessage(byte[] data) throws InvalidProtocolBufferException
-    {
-        VoidMessageProto.parseFrom(data);
-        VoidMessage aVoidMessage = new VoidMessage();
-        return aVoidMessage;
-    }
 }
