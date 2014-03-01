@@ -1,4 +1,4 @@
-// Message for RPC
+// Message for RPC.
 message RpcMessageProto
 {
     required int32 Id = 1;
@@ -6,6 +6,12 @@ message RpcMessageProto
     required string OperationName = 3;
     required string Error = 4;
     repeated bytes SerializedData = 5;
+}
+
+// EventArgs can be used in RPC communication.
+message EventArgsProto
+{
+    required int32 dummy = 1;
 }
 
 // Message for ChannelWrapper/ChannelUnwrapper
@@ -45,4 +51,5 @@ message MonitorChannelMessageProto
 // Empty message
 message VoidMessageProto
 {
+    required int32 dummy = 1;
 }

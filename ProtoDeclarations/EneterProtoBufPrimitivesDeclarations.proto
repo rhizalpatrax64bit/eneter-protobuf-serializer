@@ -1,0 +1,74 @@
+// This proto file provides wrappers for primitive types.
+
+
+// String
+message StringWrapper
+{
+    required string Value = 1;
+}
+message StringArrayWrapper
+{
+    repeated string Value = 1;
+}
+
+
+// Boolean
+message BooleanWrapper
+{
+    required bool Value = 1;
+}
+message BooleanArrayWrapper
+{
+    repeated bool Value = 1 [packed=true];
+}
+
+
+// Byte
+message ByteWrapper
+{
+    required bytes Value = 1;
+}
+
+
+// Int, Short and Char
+message IntWrapper
+{
+    required int32 Value = 1;
+}
+message IntArrayWrapper
+{
+    repeated int32 Value = 1 [packed=true];
+}
+
+
+// Long
+message LongWrapper
+{
+    required int64 Value = 1;
+}
+message LongArrayWrapper
+{
+    repeated int64 Value = 1 [packed=true];
+}
+
+
+// Float
+message FloatWrapper
+{
+    required float Value = 1;
+}
+message FloatArrayWrapper
+{
+    repeated float Value = 1 [packed=true];
+}
+
+
+// Double
+message DoubleWrapper
+{
+    required double Value = 1;
+}
+message DoubleArrayWrapper
+{
+    repeated double Value = 1 [packed=true];
+}
