@@ -25,6 +25,7 @@ import eneter.messaging.endpoints.typedmessages.internal.ReliableMessage.EMessag
 import eneter.messaging.messagingsystems.composites.monitoredmessagingcomposit.*;
 import eneter.messaging.nodes.broker.*;
 import eneter.messaging.nodes.channelwrapper.WrappedData;
+import eneter.net.system.EventArgs;
 import eneter.protobuf.EneterProtoBufUnitTestDeclarations.TestMessage;
 
 public class Test_ProtoBufSerializer
@@ -202,6 +203,17 @@ public class Test_ProtoBufSerializer
         VoidMessage aSrc = new VoidMessage();
         Object aSerializedData = aProtoBufSerializer.serialize(aSrc, VoidMessage.class);
         VoidMessage aResult = aProtoBufSerializer.deserialize(aSerializedData, VoidMessage.class);
+        assertNotNull(aResult);
+    }
+	
+	@Test
+    public void serializeDeserializeEventArgs() throws Exception
+    {
+        ProtoBufSerializer aProtoBufSerializer = new ProtoBufSerializer();
+        
+        EventArgs aSrc = new EventArgs();
+        Object aSerializedData = aProtoBufSerializer.serialize(aSrc, EventArgs.class);
+        EventArgs aResult = aProtoBufSerializer.deserialize(aSerializedData, EventArgs.class);
         assertNotNull(aResult);
     }
 	
