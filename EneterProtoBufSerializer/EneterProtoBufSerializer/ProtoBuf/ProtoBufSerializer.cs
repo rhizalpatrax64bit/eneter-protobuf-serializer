@@ -37,6 +37,10 @@ namespace Eneter.ProtoBuf
             {
                 aSerializedData = SerializeRpcMessage(dataToSerialize as RpcMessage);
             }
+            else if (dataToSerialize is EventArgs)
+            {
+                aSerializedData = SerializeEventArgs(dataToSerialize as EventArgs);
+            }
             else if (dataToSerialize is WrappedData)
             {
                 aSerializedData = SerializeWrappedData(dataToSerialize as WrappedData);
@@ -82,6 +86,10 @@ namespace Eneter.ProtoBuf
                 if (typeof(_T) == typeof(RpcMessage))
                 {
                     aDeserializedObject = (_T)((object)DeserializeRpcMessage(aBuf));
+                }
+                else if (typeof(_T) == typeof(EventArgs))
+                {
+                    aDeserializedObject = (_T)((object)DeserializeEventArgs(aBuf));
                 }
                 else if (typeof(_T) == typeof(WrappedData))
                 {
@@ -150,6 +158,17 @@ namespace Eneter.ProtoBuf
             }
 
             return anRpcMessage;
+        }
+
+        private byte[] SerializeEventArgs(EventArgs data)
+        {
+            return myEmptyMessage;
+        }
+
+        private EventArgs DeserializeEventArgs(MemoryStream data)
+        {
+            Serializer.Deserialize<EventArgsProto>(data);
+            return myEventArgs;
         }
 
         private byte[] SerializeWrappedData(WrappedData data)
@@ -289,15 +308,14 @@ namespace Eneter.ProtoBuf
 
         private byte[] SerializeVoidMessage(VoidMessage data)
         {
-            VoidMessageProto aVoidMessageProto = new VoidMessageProto();
-            return SerializeProtoBuf<VoidMessageProto>(aVoidMessageProto);
+            return myEmptyMessage;
         }
 
         private VoidMessage DeserializeVoidMessage(MemoryStream data)
         {
+            // Read bytes from the stream.
             Serializer.Deserialize<VoidMessageProto>(data);
-            VoidMessage aVoidMessage = new VoidMessage();
-            return aVoidMessage;
+            return myVoidMessage;
         }
 
         private byte[] SerializeProtoBuf<_T>(_T dataToSerialize)
@@ -308,5 +326,9 @@ namespace Eneter.ProtoBuf
                 return aBuf.ToArray();
             }
         }
+
+        private readonly EventArgs myEventArgs = new EventArgs();
+        private readonly VoidMessage myVoidMessage = new VoidMessage();
+        private readonly byte[] myEmptyMessage = { 8, 0 };
     }
 }

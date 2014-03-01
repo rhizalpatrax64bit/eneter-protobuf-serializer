@@ -236,6 +236,19 @@ namespace EneterProtoBufSerializer_UTests
         }
 
         [Test]
+        public void serializeDeserializeEventArgs()
+        {
+            ProtoBufSerializer aProtoBufSerializer = new ProtoBufSerializer();
+
+            object a = aProtoBufSerializer.Serialize<int>(0);
+
+            EventArgs aSrc = new EventArgs();
+            object aSerializedData = aProtoBufSerializer.Serialize<EventArgs>(aSrc);
+            EventArgs aResult = aProtoBufSerializer.Deserialize<EventArgs>(aSerializedData);
+            Assert.IsNotNull(aResult);
+        }
+
+        [Test]
         public void SerializeDeserializeRpcMessage()
         {
             ProtoBufSerializer aProtoBufSerializer = new ProtoBufSerializer();
