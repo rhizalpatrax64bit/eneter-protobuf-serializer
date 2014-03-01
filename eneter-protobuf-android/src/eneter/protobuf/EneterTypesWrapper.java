@@ -12,6 +12,7 @@ import eneter.messaging.endpoints.typedmessages.internal.ReliableMessage;
 import eneter.messaging.messagingsystems.composites.monitoredmessagingcomposit.*;
 import eneter.messaging.nodes.broker.*;
 import eneter.messaging.nodes.channelwrapper.WrappedData;
+import eneter.net.system.EventArgs;
 import eneter.protobuf.EneterProtoBufDeclarations.*;
 
 class EneterTypesWrapper
@@ -55,6 +56,19 @@ class EneterTypesWrapper
         }
         
         return anRpcMessage;
+    }
+    
+    public static byte[] serializeEventArgs(EventArgs data)
+    {
+        EventArgsProto aVoidMessageProto = EventArgsProto.newBuilder().build();
+        return aVoidMessageProto.toByteArray();
+    }
+    
+    public static EventArgs deserializeEventArgs(byte[] data) throws InvalidProtocolBufferException
+    {
+        EventArgsProto.parseFrom(data);
+        EventArgs anEventArgs = new EventArgs();
+        return anEventArgs;
     }
     
     public static byte[] serializeWrappedData(WrappedData data)

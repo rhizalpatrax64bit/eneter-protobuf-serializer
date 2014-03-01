@@ -520,9 +520,6 @@ public final class EneterProtoBufPrimitivesDeclarations {
   }
   /**
    * Protobuf type {@code StringArrayWrapper}
-   *
-   * <pre>
-   * </pre>
    */
   public static final class StringArrayWrapper extends
       com.google.protobuf.GeneratedMessage
@@ -768,9 +765,6 @@ public final class EneterProtoBufPrimitivesDeclarations {
     }
     /**
      * Protobuf type {@code StringArrayWrapper}
-     *
-     * <pre>
-     * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -1015,6 +1009,7 @@ public final class EneterProtoBufPrimitivesDeclarations {
    * Protobuf type {@code BooleanWrapper}
    *
    * <pre>
+   * Boolean
    * </pre>
    */
   public static final class BooleanWrapper extends
@@ -1243,6 +1238,7 @@ public final class EneterProtoBufPrimitivesDeclarations {
      * Protobuf type {@code BooleanWrapper}
      *
      * <pre>
+     * Boolean
      * </pre>
      */
     public static final class Builder extends
@@ -1899,6 +1895,10 @@ public final class EneterProtoBufPrimitivesDeclarations {
   }
   /**
    * Protobuf type {@code ByteWrapper}
+   *
+   * <pre>
+   * Byte
+   * </pre>
    */
   public static final class ByteWrapper extends
       com.google.protobuf.GeneratedMessage
@@ -2124,6 +2124,10 @@ public final class EneterProtoBufPrimitivesDeclarations {
     }
     /**
      * Protobuf type {@code ByteWrapper}
+     *
+     * <pre>
+     * Byte
+     * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -2308,7 +2312,7 @@ public final class EneterProtoBufPrimitivesDeclarations {
    * Protobuf type {@code IntWrapper}
    *
    * <pre>
-   * Int, Short, Boolean and Char
+   * Int, Short and Char
    * </pre>
    */
   public static final class IntWrapper extends
@@ -2537,7 +2541,7 @@ public final class EneterProtoBufPrimitivesDeclarations {
      * Protobuf type {@code IntWrapper}
      *
      * <pre>
-     * Int, Short, Boolean and Char
+     * Int, Short and Char
      * </pre>
      */
     public static final class Builder extends
@@ -3199,6 +3203,7 @@ public final class EneterProtoBufPrimitivesDeclarations {
    * Protobuf type {@code LongWrapper}
    *
    * <pre>
+   * Long
    * </pre>
    */
   public static final class LongWrapper extends
@@ -3427,6 +3432,7 @@ public final class EneterProtoBufPrimitivesDeclarations {
      * Protobuf type {@code LongWrapper}
      *
      * <pre>
+     * Long
      * </pre>
      */
     public static final class Builder extends
@@ -4088,6 +4094,7 @@ public final class EneterProtoBufPrimitivesDeclarations {
    * Protobuf type {@code FloatWrapper}
    *
    * <pre>
+   * Float
    * </pre>
    */
   public static final class FloatWrapper extends
@@ -4316,6 +4323,7 @@ public final class EneterProtoBufPrimitivesDeclarations {
      * Protobuf type {@code FloatWrapper}
      *
      * <pre>
+     * Float
      * </pre>
      */
     public static final class Builder extends
@@ -4972,6 +4980,10 @@ public final class EneterProtoBufPrimitivesDeclarations {
   }
   /**
    * Protobuf type {@code DoubleWrapper}
+   *
+   * <pre>
+   * Double
+   * </pre>
    */
   public static final class DoubleWrapper extends
       com.google.protobuf.GeneratedMessage
@@ -5197,6 +5209,10 @@ public final class EneterProtoBufPrimitivesDeclarations {
     }
     /**
      * Protobuf type {@code DoubleWrapper}
+     *
+     * <pre>
+     * Double
+     * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>

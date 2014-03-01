@@ -19,6 +19,7 @@ import eneter.messaging.endpoints.typedmessages.internal.ReliableMessage;
 import eneter.messaging.messagingsystems.composites.monitoredmessagingcomposit.*;
 import eneter.messaging.nodes.broker.*;
 import eneter.messaging.nodes.channelwrapper.WrappedData;
+import eneter.net.system.EventArgs;
 
 
 /**
@@ -148,6 +149,10 @@ public class ProtoBufSerializer implements ISerializer
         else if (clazz == RpcMessage.class)
         {
             aSerializedData = EneterTypesWrapper.serializeRpcMessage((RpcMessage)dataToSerialize);
+        }
+        else if (clazz == EventArgs.class)
+        {
+            aSerializedData = EneterTypesWrapper.serializeEventArgs((EventArgs)dataToSerialize);
         }
         else if (clazz == WrappedData.class)
         {
@@ -313,6 +318,10 @@ public class ProtoBufSerializer implements ISerializer
         else if (clazz == RpcMessage.class)
         {
             aDeserializedObject = clazz.cast(EneterTypesWrapper.deserializeRpcMessage((byte[])serializedData));
+        }
+        else if (clazz == EventArgs.class)
+        {
+            aDeserializedObject = clazz.cast(EneterTypesWrapper.deserializeEventArgs((byte[])serializedData));
         }
         else if (clazz == WrappedData.class)
         {
