@@ -60,15 +60,13 @@ class EneterTypesWrapper
     
     public static byte[] serializeEventArgs(EventArgs data)
     {
-        EventArgsProto aVoidMessageProto = EventArgsProto.newBuilder().build();
-        return aVoidMessageProto.toByteArray();
+        return myEmptyMessage;
     }
     
     public static EventArgs deserializeEventArgs(byte[] data) throws InvalidProtocolBufferException
     {
         EventArgsProto.parseFrom(data);
-        EventArgs anEventArgs = new EventArgs();
-        return anEventArgs;
+        return myEventArgs;
     }
     
     public static byte[] serializeWrappedData(WrappedData data)
@@ -232,15 +230,17 @@ class EneterTypesWrapper
     
     public static byte[] serializeVoidMessage(VoidMessage data)
     {
-        VoidMessageProto aVoidMessageProto = VoidMessageProto.newBuilder()
-                .build();
-        return aVoidMessageProto.toByteArray();
+        return myEmptyMessage;
     }
     
     public static VoidMessage deserializeVoidMessage(byte[] data) throws InvalidProtocolBufferException
     {
         VoidMessageProto.parseFrom(data);
-        VoidMessage aVoidMessage = new VoidMessage();
-        return aVoidMessage;
+        return myVoidMessage;
     }
+    
+    
+    private static final EventArgs myEventArgs = new EventArgs();
+    private static final VoidMessage myVoidMessage = new VoidMessage();
+    private static final byte[] myEmptyMessage = { 8, 0 };
 }
