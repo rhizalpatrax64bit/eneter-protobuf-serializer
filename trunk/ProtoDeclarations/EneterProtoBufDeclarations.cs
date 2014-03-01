@@ -59,6 +59,23 @@ namespace Eneter.ProtoBuf
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::ProtoBuf.ProtoContract(Name=@"EventArgsProto")]
+  public partial class EventArgsProto : global::ProtoBuf.IExtensible
+  {
+    public EventArgsProto() {}
+    
+    private int _dummy;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"dummy", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int dummy
+    {
+      get { return _dummy; }
+      set { _dummy = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::ProtoBuf.ProtoContract(Name=@"WrappedDataProto")]
   public partial class WrappedDataProto : global::ProtoBuf.IExtensible
   {
@@ -290,6 +307,13 @@ namespace Eneter.ProtoBuf
   {
     public VoidMessageProto() {}
     
+    private int _dummy;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"dummy", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int dummy
+    {
+      get { return _dummy; }
+      set { _dummy = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
