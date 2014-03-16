@@ -34,9 +34,9 @@
     <DocumentationFile>bin\Mono264\Release\Eneter.ProtoBuf.Serializer.Mono.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Eneter.Messaging.Framework.Mono, Version=5.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Eneter.Messaging.Framework.Mono, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b85852a6d7b5cd07, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\EneterMessaging550\EneterMessagingFramework\bin\Mono264\Debug\Eneter.Messaging.Framework.Mono.dll</HintPath>
+      <HintPath>..\..\..\..\EneterMessaging600\EneterMessagingFramework\bin\Mono264\Debug\Eneter.Messaging.Framework.Mono.dll</HintPath>
     </Reference>
     <Reference Include="protobuf-net, Version=2.0.0.640, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
