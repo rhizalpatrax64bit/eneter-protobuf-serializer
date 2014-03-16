@@ -33,9 +33,9 @@
     <DocumentationFile>bin\Net40\Release\Eneter.ProtoBuf.Serializer.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Eneter.Messaging.Framework, Version=5.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Eneter.Messaging.Framework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b85852a6d7b5cd07, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\EneterMessaging550\EneterMessagingFramework\bin\Net40\Debug\Eneter.Messaging.Framework.dll</HintPath>
+      <HintPath>..\..\..\..\EneterMessaging600\EneterMessagingFramework\bin\Net40\Debug\Eneter.Messaging.Framework.dll</HintPath>
     </Reference>
     <Reference Include="protobuf-net">
       <HintPath>..\..\..\..\Ondrej\Projects\Externals\ProtoBufNet\Full\net30\protobuf-net.dll</HintPath>

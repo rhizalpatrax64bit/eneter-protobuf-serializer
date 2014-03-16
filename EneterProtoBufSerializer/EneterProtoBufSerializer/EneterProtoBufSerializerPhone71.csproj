@@ -43,9 +43,8 @@
     <DocumentationFile>Bin\Phone71\Release\Eneter.ProtoBuf.Serializer.Phone.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Eneter.Messaging.Framework.Phone, Version=6.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\EneterMessaging550\EneterMessagingFramework\bin\Phone71\Debug\Eneter.Messaging.Framework.Phone.dll</HintPath>
+    <Reference Include="Eneter.Messaging.Framework.Phone">
+      <HintPath>..\..\..\..\EneterMessaging600\EneterMessagingFramework\bin\Phone71\Debug\Eneter.Messaging.Framework.Phone.dll</HintPath>
     </Reference>
     <Reference Include="protobuf-net">
       <HintPath>..\..\..\..\Ondrej\Projects\Externals\ProtoBufNet\Full\wp71\protobuf-net.dll</HintPath>
