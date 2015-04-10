@@ -14,8 +14,9 @@ import com.google.protobuf.GeneratedMessage;
 
 import eneter.messaging.dataprocessing.serializing.ISerializer;
 import eneter.messaging.endpoints.rpc.RpcMessage;
+import eneter.messaging.endpoints.typedmessages.MultiTypedMessage;
 import eneter.messaging.endpoints.typedmessages.VoidMessage;
-import eneter.messaging.endpoints.typedmessages.internal.ReliableMessage;
+import eneter.messaging.messagingsystems.composites.messagebus.MessageBusMessage;
 import eneter.messaging.messagingsystems.composites.monitoredmessagingcomposit.*;
 import eneter.messaging.nodes.broker.*;
 import eneter.messaging.nodes.channelwrapper.WrappedData;
@@ -146,6 +147,14 @@ public class ProtoBufSerializer implements ISerializer
             }
         }
         // If it is an internal Eneter type adapt it for ProtoBuf
+        else if (clazz == MultiTypedMessage.class)
+        {
+            aSerializedData = EneterTypesWrapper.serializeMultiTypedMessage((MultiTypedMessage)dataToSerialize);
+        }
+        else if (clazz == MessageBusMessage.class)
+        {
+            aSerializedData = EneterTypesWrapper.serializeMessageBusMessage((MessageBusMessage)dataToSerialize);
+        }
         else if (clazz == RpcMessage.class)
         {
             aSerializedData = EneterTypesWrapper.serializeRpcMessage((RpcMessage)dataToSerialize);
@@ -161,10 +170,6 @@ public class ProtoBufSerializer implements ISerializer
         else if (clazz == BrokerMessage.class)
         {
             aSerializedData = EneterTypesWrapper.serializeBrokerMessage((BrokerMessage)dataToSerialize);
-        }
-        else if (clazz == ReliableMessage.class)
-        {
-            aSerializedData = EneterTypesWrapper.serializeReliableMessage((ReliableMessage)dataToSerialize);
         }
         else if (clazz == MonitorChannelMessage.class)
         {
@@ -315,6 +320,14 @@ public class ProtoBufSerializer implements ISerializer
             }
         }
         // If it is an internal Eneter type, adapt it from the proto type.
+        else if (clazz == MultiTypedMessage.class)
+        {
+            aDeserializedObject = clazz.cast(EneterTypesWrapper.deserializeMultiTypedMessage((byte[])serializedData));
+        }
+        else if (clazz == MessageBusMessage.class)
+        {
+            aDeserializedObject = clazz.cast(EneterTypesWrapper.deserializeMessageBusMessage((byte[])serializedData));
+        }
         else if (clazz == RpcMessage.class)
         {
             aDeserializedObject = clazz.cast(EneterTypesWrapper.deserializeRpcMessage((byte[])serializedData));
@@ -330,10 +343,6 @@ public class ProtoBufSerializer implements ISerializer
         else if (clazz == BrokerMessage.class)
         {
             aDeserializedObject = clazz.cast(EneterTypesWrapper.deserializeBrokerMessage((byte[])serializedData)); 
-        }
-        else if (clazz == ReliableMessage.class)
-        {
-            aDeserializedObject = clazz.cast(EneterTypesWrapper.deserializeReliableMessage((byte[])serializedData)); 
         }
         else if (clazz == MonitorChannelMessage.class)
         {
