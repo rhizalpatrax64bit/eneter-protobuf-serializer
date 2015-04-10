@@ -7,8 +7,10 @@ import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 
 import eneter.messaging.endpoints.rpc.RpcMessage;
+import eneter.messaging.endpoints.typedmessages.MultiTypedMessage;
 import eneter.messaging.endpoints.typedmessages.VoidMessage;
-import eneter.messaging.endpoints.typedmessages.internal.ReliableMessage;
+import eneter.messaging.messagingsystems.composites.messagebus.EMessageBusRequest;
+import eneter.messaging.messagingsystems.composites.messagebus.MessageBusMessage;
 import eneter.messaging.messagingsystems.composites.monitoredmessagingcomposit.*;
 import eneter.messaging.nodes.broker.*;
 import eneter.messaging.nodes.channelwrapper.WrappedData;
@@ -17,6 +19,83 @@ import eneter.protobuf.EneterProtoBufDeclarations.*;
 
 class EneterTypesWrapper
 {
+    public static byte[] serializeMultiTypedMessage(MultiTypedMessage data)
+    {
+        MultiTypedMessageProto.Builder aBuilder = MultiTypedMessageProto.newBuilder()
+                .setTypeName(data.TypeName);
+        if (data.MessageData != null)
+        {
+            if (data.MessageData instanceof String)
+            {
+                aBuilder.setMessageDataStr((String)data.MessageData);
+            }
+            else
+            {
+                aBuilder.setMessageDataBin(ByteString.copyFrom((byte[]) data.MessageData));
+            }
+        }
+        MultiTypedMessageProto aMessage = aBuilder.build();
+        return aMessage.toByteArray();
+    }
+
+    public static MultiTypedMessage deserializeMultiTypedMessage(byte[] data) throws InvalidProtocolBufferException
+    {
+        MultiTypedMessageProto aMultiTyMessageProto = MultiTypedMessageProto.parseFrom(data);
+        MultiTypedMessage aMessage = new MultiTypedMessage();
+        aMessage.TypeName = aMultiTyMessageProto.getTypeName();
+        if (aMultiTyMessageProto.hasMessageDataStr())
+        {
+            aMessage.MessageData = aMultiTyMessageProto.getMessageDataStr();
+        }
+        else if (aMultiTyMessageProto.hasMessageDataBin())
+        {
+            aMessage.MessageData = aMultiTyMessageProto.getMessageDataBin().toByteArray();
+        }
+
+        return aMessage;
+    }
+
+
+    public static byte[] serializeMessageBusMessage(MessageBusMessage data)
+    {
+        MessageBusMessageProto.Builder aBuilder = MessageBusMessageProto.newBuilder()
+                .setRequest(data.Request.geValue())
+                .setId(data.Id);
+        if (data.MessageData != null)
+        {
+            if (data.MessageData instanceof String)
+            {
+                aBuilder.setMessageDataStr((String)data.MessageData);
+            }
+            else
+            {
+                aBuilder.setMessageDataBin(ByteString.copyFrom((byte[]) data.MessageData));
+            }
+        }
+        MessageBusMessageProto aMessage = aBuilder.build();
+
+        return aMessage.toByteArray();
+    }
+
+    public static MessageBusMessage deserializeMessageBusMessage(byte[] data) throws InvalidProtocolBufferException
+    {
+        MessageBusMessageProto aMessageBusMessageProto = MessageBusMessageProto.parseFrom(data);
+        MessageBusMessage aMessage = new MessageBusMessage();
+        aMessage.Request = EMessageBusRequest.fromInt(aMessageBusMessageProto.getRequest());
+        aMessage.Id = aMessageBusMessageProto.getId();
+        if (aMessageBusMessageProto.hasMessageDataStr())
+        {
+            aMessage.MessageData = aMessageBusMessageProto.getMessageDataStr();
+        }
+        else if (aMessageBusMessageProto.hasMessageDataBin())
+        {
+            aMessage.MessageData = aMessageBusMessageProto.getMessageDataBin().toByteArray();
+        }
+
+        return aMessage;
+    }
+
+
     public static byte[] serializeRpcMessage(RpcMessage data)
     {
         RpcMessageProto.Builder aBuilder = RpcMessageProto.newBuilder()
@@ -110,7 +189,7 @@ class EneterTypesWrapper
     public static byte[] serializeBrokerMessage(BrokerMessage data)
     {
         BrokerMessageProto.Builder aBuilder = BrokerMessageProto.newBuilder()
-                .setRequest(data.Request.toString())
+                .setRequest(data.Request.geValue())
                 .addAllMessageTypes(Arrays.asList(data.MessageTypes));
         if (data.Message != null)
         {
@@ -135,7 +214,7 @@ class EneterTypesWrapper
         List<String> aMessageTypes = aBrokerMessageProto.getMessageTypesList();
         
         BrokerMessage aBrokerMessage = new BrokerMessage();
-        aBrokerMessage.Request = EBrokerRequest.valueOf(aBrokerMessageProto.getRequest());
+        aBrokerMessage.Request = EBrokerRequest.fromInt(aBrokerMessageProto.getRequest());
         aBrokerMessage.MessageTypes = aMessageTypes.toArray(new String[aMessageTypes.size()]);
         if (aBrokerMessageProto.hasMessageStr())
         {
@@ -149,51 +228,11 @@ class EneterTypesWrapper
         return aBrokerMessage;
     }
 
-
-    public static byte[] serializeReliableMessage(ReliableMessage data)
-    {
-        ReliableMessageProto.Builder aBuilder = ReliableMessageProto.newBuilder()
-                .setMessageId(data.MessageId)
-                .setMessageType(data.MessageType.toString());
-        if (data.Message != null)
-        {
-            if (data.Message instanceof String)
-            {
-                aBuilder.setMessageStr((String)data.Message);
-            }
-            else
-            {
-                aBuilder.setMessageBin(ByteString.copyFrom((byte[])data.Message));
-            }
-        }
-        ReliableMessageProto aReliableMessageProto = aBuilder.build();
-        
-        return aReliableMessageProto.toByteArray();
-    }
-
-    public static ReliableMessage deserializeReliableMessage(byte[] data) throws InvalidProtocolBufferException
-    {
-        ReliableMessageProto aReliableMessageProto = ReliableMessageProto.parseFrom(data);
-        ReliableMessage aReliableMessage = new ReliableMessage();
-        aReliableMessage.MessageId = aReliableMessageProto.getMessageId();
-        aReliableMessage.MessageType = ReliableMessage.EMessageType.valueOf(aReliableMessageProto.getMessageType());
-        if (aReliableMessageProto.hasMessageStr())
-        {
-            aReliableMessage.Message = aReliableMessageProto.getMessageStr();
-        }
-        else if (aReliableMessageProto.hasMessageBin())
-        {
-            aReliableMessage.Message = aReliableMessageProto.getMessageBin().toByteArray();
-        }
-        
-        return aReliableMessage;
-    }
-
-
+    
     public static byte[] serializeMonitorChannelMessage(MonitorChannelMessage data)
     {
         MonitorChannelMessageProto.Builder aBuilder = MonitorChannelMessageProto.newBuilder()
-                .setMessageType(data.MessageType.toString());
+                .setMessageType(data.MessageType.geValue());
         if (data.MessageContent != null)
         {
             if (data.MessageContent instanceof String)
@@ -214,7 +253,7 @@ class EneterTypesWrapper
     {
         MonitorChannelMessageProto aMonitorChannelMessageProto = MonitorChannelMessageProto.parseFrom(data); 
         MonitorChannelMessage aMonitorChannelMessage = new MonitorChannelMessage();
-        aMonitorChannelMessage.MessageType = MonitorChannelMessageType.valueOf(aMonitorChannelMessageProto.getMessageType());
+        aMonitorChannelMessage.MessageType = MonitorChannelMessageType.fromInt(aMonitorChannelMessageProto.getMessageType());
         if (aMonitorChannelMessageProto.hasMessageContentStr())
         {
             aMonitorChannelMessage.MessageContent = aMonitorChannelMessageProto.getMessageContentStr();

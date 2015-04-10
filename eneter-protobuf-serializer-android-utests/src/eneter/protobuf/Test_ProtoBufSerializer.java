@@ -19,9 +19,10 @@ import eneter.messaging.dataprocessing.serializing.ISerializer;
 import eneter.messaging.dataprocessing.serializing.JavaBinarySerializer;
 import eneter.messaging.dataprocessing.serializing.XmlStringSerializer;
 import eneter.messaging.endpoints.rpc.RpcMessage;
+import eneter.messaging.endpoints.typedmessages.MultiTypedMessage;
 import eneter.messaging.endpoints.typedmessages.VoidMessage;
-import eneter.messaging.endpoints.typedmessages.internal.ReliableMessage;
-import eneter.messaging.endpoints.typedmessages.internal.ReliableMessage.EMessageType;
+import eneter.messaging.messagingsystems.composites.messagebus.EMessageBusRequest;
+import eneter.messaging.messagingsystems.composites.messagebus.MessageBusMessage;
 import eneter.messaging.messagingsystems.composites.monitoredmessagingcomposit.*;
 import eneter.messaging.nodes.broker.*;
 import eneter.messaging.nodes.channelwrapper.WrappedData;
@@ -74,6 +75,63 @@ public class Test_ProtoBufSerializer
         XmlStringSerializer anXmlSerializer = new XmlStringSerializer();
         serializerPerformanceTest(anXmlSerializer, aTestMessage2, TestMessage2.class);
 	}
+	
+	@Test
+    public void serializeDeserializeMultiTypedMessage() throws Exception
+    {
+        ProtoBufSerializer aProtoBufSerializer = new ProtoBufSerializer();
+
+        MultiTypedMessage aSrc = new MultiTypedMessage();
+        aSrc.TypeName = "String";
+        aSrc.MessageData = "Hello";
+
+        Object aSerializedData = aProtoBufSerializer.serialize(aSrc, MultiTypedMessage.class);
+
+        MultiTypedMessage aResult = aProtoBufSerializer.deserialize(aSerializedData, MultiTypedMessage.class);
+        assertEquals(aSrc.TypeName, aResult.TypeName);
+        assertEquals(aSrc.MessageData, aResult.MessageData);
+
+        aSrc.TypeName = "Byte[]";
+        aSrc.MessageData = new byte[] { 1, 2, 3 };
+        aSerializedData = aProtoBufSerializer.serialize(aSrc, MultiTypedMessage.class);
+        aResult = aProtoBufSerializer.deserialize(aSerializedData, MultiTypedMessage.class);
+        assertEquals(aSrc.TypeName, aResult.TypeName);
+        assertTrue(Arrays.equals((byte[])aSrc.MessageData, (byte[])aResult.MessageData));
+    }
+
+	@Test
+    public void serializeDeserializeMessageBusMessage() throws Exception
+    {
+        ProtoBufSerializer aProtoBufSerializer = new ProtoBufSerializer();
+
+        MessageBusMessage aSrc = new MessageBusMessage();
+        aSrc.Request = EMessageBusRequest.DisconnectClient;
+        aSrc.Id = "1234";
+        aSrc.MessageData = "Hello";
+        Object aSerializedData = aProtoBufSerializer.serialize(aSrc, MessageBusMessage.class);
+        MessageBusMessage aResult = aProtoBufSerializer.deserialize(aSerializedData, MessageBusMessage.class);
+        assertEquals(aSrc.Request, aResult.Request);
+        assertEquals(aSrc.Id, aResult.Id);
+        assertEquals(aSrc.MessageData, aResult.MessageData);
+
+        aSrc.Request = EMessageBusRequest.SendResponseMessage;
+        aSrc.Id = "1234";
+        aSrc.MessageData = new byte[] { 1, 2, 3 };
+        aSerializedData = aProtoBufSerializer.serialize(aSrc, MessageBusMessage.class);
+        aResult = aProtoBufSerializer.deserialize(aSerializedData, MessageBusMessage.class);
+        assertEquals(aSrc.Request, aResult.Request);
+        assertEquals(aSrc.Id, aResult.Id);
+        assertTrue(Arrays.equals((byte[])aSrc.MessageData, (byte[])aResult.MessageData));
+
+        aSrc.Request = EMessageBusRequest.SendResponseMessage;
+        aSrc.Id = "";
+        aSrc.MessageData = null;
+        aSerializedData = aProtoBufSerializer.serialize(aSrc, MessageBusMessage.class);
+        aResult = aProtoBufSerializer.deserialize(aSerializedData, MessageBusMessage.class);
+        assertEquals(aSrc.Request, aResult.Request);
+        assertEquals(aSrc.Id, aResult.Id);
+        assertNull(aResult.MessageData);
+    }
 	
 	@Test
     public void serializeDeserializeWrappedData() throws Exception
@@ -135,38 +193,6 @@ public class Test_ProtoBufSerializer
         assertTrue(Arrays.equals((byte[])aResult.Message, (byte[])aSrc.Message));
     }
 
-	@Test
-    public void serializeDeserializeReliableMessage() throws Exception
-    {
-	    ProtoBufSerializer aProtoBufSerializer = new ProtoBufSerializer();
-	    
-	    ReliableMessage aSrc = new ReliableMessage();
-        aSrc.MessageType = EMessageType.Acknowledge;
-        aSrc.MessageId = "123";
-        aSrc.Message = null;
-        Object aSerializedData = aProtoBufSerializer.serialize(aSrc, ReliableMessage.class);
-        ReliableMessage aResult = aProtoBufSerializer.deserialize(aSerializedData, ReliableMessage.class);
-        assertEquals(aResult.MessageType, aSrc.MessageType);
-        assertEquals(aResult.MessageId, aSrc.MessageId);
-        assertNull(aResult.Message);
-                
-        
-        aSrc.Message = "Hello2";
-        aSerializedData = aProtoBufSerializer.serialize(aSrc, ReliableMessage.class);
-        aResult = aProtoBufSerializer.deserialize(aSerializedData, ReliableMessage.class);
-        assertEquals(aResult.MessageType, aSrc.MessageType);
-        assertEquals(aResult.MessageId, aSrc.MessageId);
-        assertEquals(aResult.Message, aSrc.Message);
-        
-        
-        aSrc.Message = new byte[]{10, 20, 30};
-        aSerializedData = aProtoBufSerializer.serialize(aSrc, ReliableMessage.class);
-        aResult = aProtoBufSerializer.deserialize(aSerializedData, ReliableMessage.class);
-        assertEquals(aResult.MessageType, aSrc.MessageType);
-        assertEquals(aResult.MessageId, aSrc.MessageId);
-        assertTrue(Arrays.equals((byte[])aResult.Message, (byte[])aSrc.Message));
-    }
-	
 	@Test
     public void serializeDeserializeMonitorChannelMessage() throws Exception
     {
