@@ -14,6 +14,7 @@ using Eneter.Messaging.MessagingSystems.Composites.MonitoredMessagingComposit;
 using Eneter.Messaging.Nodes.Broker;
 using Eneter.Messaging.Nodes.ChannelWrapper;
 using ProtoBuf;
+using Eneter.Messaging.MessagingSystems.Composites.MessageBus;
 
 namespace Eneter.ProtoBuf
 {
@@ -25,15 +26,23 @@ namespace Eneter.ProtoBuf
         /// <summary>
         /// Serializes data using Protocol Buffer binary format.
         /// </summary>
-        /// <typeparam name="_T">data type of serialized data</typeparam>
+        /// <typeparam name="T">data type of serialized data</typeparam>
         /// <param name="dataToSerialize">protocol buffer generated data class to be serialized.</param>
         /// <returns>array containing serialized data</returns>
-        public object Serialize<_T>(_T dataToSerialize)
+        public object Serialize<T>(T dataToSerialize)
         {
             object aSerializedData;
 
             // If it is an internal Eneter type adapt it for ProtoBuf
-            if (dataToSerialize is RpcMessage)
+            if (dataToSerialize is MultiTypedMessage)
+            {
+                aSerializedData = SerializeMultiTypedMessage(dataToSerialize as MultiTypedMessage);
+            }
+            else if (dataToSerialize is MessageBusMessage)
+            {
+                aSerializedData = SerializeMessageBusMessage(dataToSerialize as MessageBusMessage);
+            }
+            else if (dataToSerialize is RpcMessage)
             {
                 aSerializedData = SerializeRpcMessage(dataToSerialize as RpcMessage);
             }
@@ -49,10 +58,6 @@ namespace Eneter.ProtoBuf
             {
                 aSerializedData = SerializeBrokerMessage(dataToSerialize as BrokerMessage);
             }
-            else if (dataToSerialize is ReliableMessage)
-            {
-                aSerializedData = SerializeReliableMessage(dataToSerialize as ReliableMessage);
-            }
             else if (dataToSerialize is MonitorChannelMessage)
             {
                 aSerializedData = SerializeMonitorChannelMessage(dataToSerialize as MonitorChannelMessage);
@@ -64,7 +69,7 @@ namespace Eneter.ProtoBuf
             else
             {
                 // If it is not internal Eneter message use directly ProtoBuf serializer.
-                aSerializedData = SerializeProtoBuf<_T>(dataToSerialize);
+                aSerializedData = SerializeProtoBuf<T>(dataToSerialize);
             }
 
             return aSerializedData;
@@ -73,52 +78,127 @@ namespace Eneter.ProtoBuf
         /// <summary>
         /// Deserializes data from the Protocol Buffer binary format.
         /// </summary>
-        /// <typeparam name="_T">data type of deserialized data.</typeparam>
+        /// <typeparam name="T">data type of deserialized data.</typeparam>
         /// <param name="serializedData">data (byte[]) serialized by protocol buffer to be deserialized</param>
         /// <returns>instance of deserialized data type</returns>
-        public _T Deserialize<_T>(object serializedData)
+        public T Deserialize<T>(object serializedData)
         {
             using (MemoryStream aBuf = new MemoryStream((byte[])serializedData))
             {
-                _T aDeserializedObject;
+                T aDeserializedObject;
 
                 // If it is an internal Eneter type, adapt it from the proto type.
-                if (typeof(_T) == typeof(RpcMessage))
+                if (typeof(T) == typeof(MultiTypedMessage))
                 {
-                    aDeserializedObject = (_T)((object)DeserializeRpcMessage(aBuf));
+                    aDeserializedObject = (T)((object)DeserializeMultiTypedMessage(aBuf));
                 }
-                else if (typeof(_T) == typeof(EventArgs))
+                else if (typeof(T) == typeof(MessageBusMessage))
                 {
-                    aDeserializedObject = (_T)((object)DeserializeEventArgs(aBuf));
+                    aDeserializedObject = (T)((object)DeserializeMessageBusMessage(aBuf));
                 }
-                else if (typeof(_T) == typeof(WrappedData))
+                else if (typeof(T) == typeof(RpcMessage))
                 {
-                    aDeserializedObject = (_T)((object)DeserializeWrappedData(aBuf));
+                    aDeserializedObject = (T)((object)DeserializeRpcMessage(aBuf));
                 }
-                else if (typeof(_T) == typeof(BrokerMessage))
+                else if (typeof(T) == typeof(EventArgs))
                 {
-                    aDeserializedObject = (_T)((object)DeserializeBrokerMessage(aBuf));
+                    aDeserializedObject = (T)((object)DeserializeEventArgs(aBuf));
                 }
-                else if (typeof(_T) == typeof(ReliableMessage))
+                else if (typeof(T) == typeof(WrappedData))
                 {
-                    aDeserializedObject = (_T)((object)DeserializeReliableMessage(aBuf));
+                    aDeserializedObject = (T)((object)DeserializeWrappedData(aBuf));
                 }
-                else if (typeof(_T) == typeof(MonitorChannelMessage))
+                else if (typeof(T) == typeof(BrokerMessage))
                 {
-                    aDeserializedObject = (_T)((object)DeserializeMonitorChannelMessage(aBuf));
+                    aDeserializedObject = (T)((object)DeserializeBrokerMessage(aBuf));
                 }
-                else if (typeof(_T) == typeof(VoidMessage))
+                else if (typeof(T) == typeof(MonitorChannelMessage))
                 {
-                    aDeserializedObject = (_T)((object)DeserializeVoidMessage(aBuf));
+                    aDeserializedObject = (T)((object)DeserializeMonitorChannelMessage(aBuf));
+                }
+                else if (typeof(T) == typeof(VoidMessage))
+                {
+                    aDeserializedObject = (T)((object)DeserializeVoidMessage(aBuf));
                 }
                 else
                 {
                     // If it is not internal Eneter message use directly ProtoBuf serializer.
-                    aDeserializedObject = Serializer.Deserialize<_T>(aBuf);
+                    aDeserializedObject = Serializer.Deserialize<T>(aBuf);
                 }
 
                 return aDeserializedObject;
             }
+        }
+
+        private byte[] SerializeMultiTypedMessage(MultiTypedMessage data)
+        {
+            MultiTypedMessageProto aMultiTypedMessageProto = new MultiTypedMessageProto();
+            aMultiTypedMessageProto.TypeName = data.TypeName;
+            if (data.MessageData != null)
+            {
+                if (data.MessageData is string)
+                {
+                    aMultiTypedMessageProto.MessageDataStr = (string)data.MessageData;
+                }
+                else
+                {
+                    aMultiTypedMessageProto.MessageDataBin = (byte[])data.MessageData;
+                }
+            }
+            return SerializeProtoBuf<MultiTypedMessageProto>(aMultiTypedMessageProto);
+        }
+
+        private MultiTypedMessage DeserializeMultiTypedMessage(MemoryStream data)
+        {
+            MultiTypedMessageProto aMultiTypedMessageProto = Serializer.Deserialize<MultiTypedMessageProto>(data);
+            MultiTypedMessage aMultiTypedMessage = new MultiTypedMessage();
+            aMultiTypedMessage.TypeName = aMultiTypedMessageProto.TypeName;
+            if (aMultiTypedMessageProto.MessageDataStrSpecified)
+            {
+                aMultiTypedMessage.MessageData = aMultiTypedMessageProto.MessageDataStr;
+            }
+            else if (aMultiTypedMessageProto.MessageDataBinSpecified)
+            {
+                aMultiTypedMessage.MessageData = aMultiTypedMessageProto.MessageDataBin;
+            }
+
+            return aMultiTypedMessage;
+        }
+
+        private byte[] SerializeMessageBusMessage(MessageBusMessage data)
+        {
+            MessageBusMessageProto aMessageBusMessageProto = new MessageBusMessageProto();
+            aMessageBusMessageProto.Request = (int)data.Request;
+            aMessageBusMessageProto.Id = data.Id;
+            if (data.MessageData != null)
+            {
+                if (data.MessageData is string)
+                {
+                    aMessageBusMessageProto.MessageDataStr = (string)data.MessageData;
+                }
+                else
+                {
+                    aMessageBusMessageProto.MessageDataBin = (byte[])data.MessageData;
+                }
+            }
+            return SerializeProtoBuf<MessageBusMessageProto>(aMessageBusMessageProto);
+        }
+
+        private MessageBusMessage DeserializeMessageBusMessage(MemoryStream data)
+        {
+            MessageBusMessageProto aMessageBusMessageProto = Serializer.Deserialize<MessageBusMessageProto>(data);
+            MessageBusMessage aMessageBusMessage = new MessageBusMessage();
+            aMessageBusMessage.Request = (EMessageBusRequest)aMessageBusMessageProto.Request;
+            aMessageBusMessage.Id = aMessageBusMessageProto.Id;
+            if (aMessageBusMessageProto.MessageDataStrSpecified)
+            {
+                aMessageBusMessage.MessageData = aMessageBusMessageProto.MessageDataStr;
+            }
+            else if (aMessageBusMessageProto.MessageDataBinSpecified)
+            {
+                aMessageBusMessage.MessageData = aMessageBusMessageProto.MessageDataBin;
+            }
+            return aMessageBusMessage;
         }
 
         private byte[] SerializeRpcMessage(RpcMessage data)
@@ -210,7 +290,7 @@ namespace Eneter.ProtoBuf
         private byte[] SerializeBrokerMessage(BrokerMessage data)
         {
             BrokerMessageProto aBrokerMessageProto = new BrokerMessageProto();
-            aBrokerMessageProto.Request = data.Request.ToString();
+            aBrokerMessageProto.Request = (int)data.Request;
             aBrokerMessageProto.MessageTypes.AddRange(data.MessageTypes);
             if (data.Message is string)
             {
@@ -227,7 +307,7 @@ namespace Eneter.ProtoBuf
         {
             BrokerMessageProto aBrokerMessageProto = Serializer.Deserialize<BrokerMessageProto>(data);
             BrokerMessage aBrokerMessage = new BrokerMessage();
-            aBrokerMessage.Request = (EBrokerRequest) Enum.Parse(typeof(EBrokerRequest), aBrokerMessageProto.Request, true);
+            aBrokerMessage.Request = (EBrokerRequest)aBrokerMessageProto.Request;
             aBrokerMessage.MessageTypes = aBrokerMessageProto.MessageTypes.ToArray();
             if (aBrokerMessageProto.MessageStrSpecified)
             {
@@ -241,44 +321,10 @@ namespace Eneter.ProtoBuf
         }
 
 
-        private byte[] SerializeReliableMessage(ReliableMessage data)
-        {
-            ReliableMessageProto aReliableMessageProto = new ReliableMessageProto();
-            aReliableMessageProto.MessageId = data.MessageId;
-            aReliableMessageProto.MessageType = data.MessageType.ToString();
-            if (data.Message is string)
-            {
-                aReliableMessageProto.MessageStr = (string)data.Message;
-            }
-            else
-            {
-                aReliableMessageProto.MessageBin = (byte[])data.Message;
-            }
-            return SerializeProtoBuf<ReliableMessageProto>(aReliableMessageProto);
-        }
-
-        private ReliableMessage DeserializeReliableMessage(MemoryStream data)
-        {
-            ReliableMessageProto aReliableMessageProto = Serializer.Deserialize<ReliableMessageProto>(data);
-            ReliableMessage aReliableMessage = new ReliableMessage();
-            aReliableMessage.MessageId = aReliableMessageProto.MessageId;
-            aReliableMessage.MessageType = (ReliableMessage.EMessageType)Enum.Parse(typeof(ReliableMessage.EMessageType), aReliableMessageProto.MessageType, true);
-            if (aReliableMessageProto.MessageStrSpecified)
-            {
-                aReliableMessage.Message = aReliableMessageProto.MessageStr;
-            }
-            else if (aReliableMessageProto.MessageBinSpecified)
-            {
-                aReliableMessage.Message = aReliableMessageProto.MessageBin;
-            }
-            return aReliableMessage;
-        }
-
-
         private byte[] SerializeMonitorChannelMessage(MonitorChannelMessage data)
         {
             MonitorChannelMessageProto aMonitorChannelMessageProto = new MonitorChannelMessageProto();
-            aMonitorChannelMessageProto.MessageType = data.MessageType.ToString();
+            aMonitorChannelMessageProto.MessageType = (int)data.MessageType;
             if (data.MessageContent is string)
             {
                 aMonitorChannelMessageProto.MessageContentStr = (string)data.MessageContent;
@@ -294,7 +340,7 @@ namespace Eneter.ProtoBuf
         {
             MonitorChannelMessageProto aMonitorChannelMessageProto = Serializer.Deserialize<MonitorChannelMessageProto>(data);
             MonitorChannelMessage aMonitorChannelMessage = new MonitorChannelMessage();
-            aMonitorChannelMessage.MessageType = (MonitorChannelMessageType)Enum.Parse(typeof(MonitorChannelMessageType), aMonitorChannelMessageProto.MessageType, true);
+            aMonitorChannelMessage.MessageType = (MonitorChannelMessageType)aMonitorChannelMessageProto.MessageType;
             if (aMonitorChannelMessageProto.MessageContentStrSpecified)
             {
                 aMonitorChannelMessage.MessageContent = aMonitorChannelMessageProto.MessageContentStr;
