@@ -6,10 +6,10 @@ public final class EneterProtoBufPrimitivesDeclarations {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
-  public interface StringWrapperOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
+  public interface StringWrapperOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:StringWrapper)
+      com.google.protobuf.MessageOrBuilder {
 
-    // required string Value = 1;
     /**
      * <code>required string Value = 1;</code>
      */
@@ -32,8 +32,9 @@ public final class EneterProtoBufPrimitivesDeclarations {
    * </pre>
    */
   public static final class StringWrapper extends
-      com.google.protobuf.GeneratedMessage
-      implements StringWrapperOrBuilder {
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:StringWrapper)
+      StringWrapperOrBuilder {
     // Use StringWrapper.newBuilder() to construct.
     private StringWrapper(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
@@ -80,8 +81,9 @@ public final class EneterProtoBufPrimitivesDeclarations {
               break;
             }
             case 10: {
+              com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000001;
-              value_ = input.readBytes();
+              value_ = bs;
               break;
             }
           }
@@ -124,7 +126,6 @@ public final class EneterProtoBufPrimitivesDeclarations {
     }
 
     private int bitField0_;
-    // required string Value = 1;
     public static final int VALUE_FIELD_NUMBER = 1;
     private java.lang.Object value_;
     /**
@@ -173,7 +174,8 @@ public final class EneterProtoBufPrimitivesDeclarations {
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
 
       if (!hasValue()) {
         memoizedIsInitialized = 0;
@@ -288,8 +290,9 @@ public final class EneterProtoBufPrimitivesDeclarations {
      * </pre>
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements EneterProtoBufPrimitivesDeclarations.StringWrapperOrBuilder {
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:StringWrapper)
+        EneterProtoBufPrimitivesDeclarations.StringWrapperOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return EneterProtoBufPrimitivesDeclarations.internal_static_StringWrapper_descriptor;
@@ -408,7 +411,6 @@ public final class EneterProtoBufPrimitivesDeclarations {
       }
       private int bitField0_;
 
-      // required string Value = 1;
       private java.lang.Object value_ = "";
       /**
        * <code>required string Value = 1;</code>
@@ -422,9 +424,12 @@ public final class EneterProtoBufPrimitivesDeclarations {
       public java.lang.String getValue() {
         java.lang.Object ref = value_;
         if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          value_ = s;
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            value_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -493,15 +498,15 @@ public final class EneterProtoBufPrimitivesDeclarations {
     // @@protoc_insertion_point(class_scope:StringWrapper)
   }
 
-  public interface StringArrayWrapperOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
+  public interface StringArrayWrapperOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:StringArrayWrapper)
+      com.google.protobuf.MessageOrBuilder {
 
-    // repeated string Value = 1;
     /**
      * <code>repeated string Value = 1;</code>
      */
-    java.util.List<java.lang.String>
-    getValueList();
+    com.google.protobuf.ProtocolStringList
+        getValueList();
     /**
      * <code>repeated string Value = 1;</code>
      */
@@ -520,8 +525,9 @@ public final class EneterProtoBufPrimitivesDeclarations {
    * Protobuf type {@code StringArrayWrapper}
    */
   public static final class StringArrayWrapper extends
-      com.google.protobuf.GeneratedMessage
-      implements StringArrayWrapperOrBuilder {
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:StringArrayWrapper)
+      StringArrayWrapperOrBuilder {
     // Use StringArrayWrapper.newBuilder() to construct.
     private StringArrayWrapper(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
@@ -568,11 +574,12 @@ public final class EneterProtoBufPrimitivesDeclarations {
               break;
             }
             case 10: {
+              com.google.protobuf.ByteString bs = input.readBytes();
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
                 value_ = new com.google.protobuf.LazyStringArrayList();
                 mutable_bitField0_ |= 0x00000001;
               }
-              value_.add(input.readBytes());
+              value_.add(bs);
               break;
             }
           }
@@ -584,7 +591,7 @@ public final class EneterProtoBufPrimitivesDeclarations {
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          value_ = new com.google.protobuf.UnmodifiableLazyStringList(value_);
+          value_ = value_.getUnmodifiableView();
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -617,13 +624,12 @@ public final class EneterProtoBufPrimitivesDeclarations {
       return PARSER;
     }
 
-    // repeated string Value = 1;
     public static final int VALUE_FIELD_NUMBER = 1;
     private com.google.protobuf.LazyStringList value_;
     /**
      * <code>repeated string Value = 1;</code>
      */
-    public java.util.List<java.lang.String>
+    public com.google.protobuf.ProtocolStringList
         getValueList() {
       return value_;
     }
@@ -653,7 +659,8 @@ public final class EneterProtoBufPrimitivesDeclarations {
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
 
       memoizedIsInitialized = 1;
       return true;
@@ -765,8 +772,9 @@ public final class EneterProtoBufPrimitivesDeclarations {
      * Protobuf type {@code StringArrayWrapper}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements EneterProtoBufPrimitivesDeclarations.StringArrayWrapperOrBuilder {
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:StringArrayWrapper)
+        EneterProtoBufPrimitivesDeclarations.StringArrayWrapperOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return EneterProtoBufPrimitivesDeclarations.internal_static_StringArrayWrapper_descriptor;
@@ -829,8 +837,7 @@ public final class EneterProtoBufPrimitivesDeclarations {
         EneterProtoBufPrimitivesDeclarations.StringArrayWrapper result = new EneterProtoBufPrimitivesDeclarations.StringArrayWrapper(this);
         int from_bitField0_ = bitField0_;
         if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          value_ = new com.google.protobuf.UnmodifiableLazyStringList(
-              value_);
+          value_ = value_.getUnmodifiableView();
           bitField0_ = (bitField0_ & ~0x00000001);
         }
         result.value_ = value_;
@@ -886,7 +893,6 @@ public final class EneterProtoBufPrimitivesDeclarations {
       }
       private int bitField0_;
 
-      // repeated string Value = 1;
       private com.google.protobuf.LazyStringList value_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       private void ensureValueIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -897,9 +903,9 @@ public final class EneterProtoBufPrimitivesDeclarations {
       /**
        * <code>repeated string Value = 1;</code>
        */
-      public java.util.List<java.lang.String>
+      public com.google.protobuf.ProtocolStringList
           getValueList() {
-        return java.util.Collections.unmodifiableList(value_);
+        return value_.getUnmodifiableView();
       }
       /**
        * <code>repeated string Value = 1;</code>
@@ -952,7 +958,8 @@ public final class EneterProtoBufPrimitivesDeclarations {
       public Builder addAllValue(
           java.lang.Iterable<java.lang.String> values) {
         ensureValueIsMutable();
-        super.addAll(values, value_);
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, value_);
         onChanged();
         return this;
       }
@@ -990,10 +997,10 @@ public final class EneterProtoBufPrimitivesDeclarations {
     // @@protoc_insertion_point(class_scope:StringArrayWrapper)
   }
 
-  public interface BooleanWrapperOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
+  public interface BooleanWrapperOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:BooleanWrapper)
+      com.google.protobuf.MessageOrBuilder {
 
-    // required bool Value = 1;
     /**
      * <code>required bool Value = 1;</code>
      */
@@ -1011,8 +1018,9 @@ public final class EneterProtoBufPrimitivesDeclarations {
    * </pre>
    */
   public static final class BooleanWrapper extends
-      com.google.protobuf.GeneratedMessage
-      implements BooleanWrapperOrBuilder {
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:BooleanWrapper)
+      BooleanWrapperOrBuilder {
     // Use BooleanWrapper.newBuilder() to construct.
     private BooleanWrapper(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
@@ -1103,7 +1111,6 @@ public final class EneterProtoBufPrimitivesDeclarations {
     }
 
     private int bitField0_;
-    // required bool Value = 1;
     public static final int VALUE_FIELD_NUMBER = 1;
     private boolean value_;
     /**
@@ -1125,7 +1132,8 @@ public final class EneterProtoBufPrimitivesDeclarations {
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
 
       if (!hasValue()) {
         memoizedIsInitialized = 0;
@@ -1240,8 +1248,9 @@ public final class EneterProtoBufPrimitivesDeclarations {
      * </pre>
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements EneterProtoBufPrimitivesDeclarations.BooleanWrapperOrBuilder {
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:BooleanWrapper)
+        EneterProtoBufPrimitivesDeclarations.BooleanWrapperOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return EneterProtoBufPrimitivesDeclarations.internal_static_BooleanWrapper_descriptor;
@@ -1358,7 +1367,6 @@ public final class EneterProtoBufPrimitivesDeclarations {
       }
       private int bitField0_;
 
-      // required bool Value = 1;
       private boolean value_ ;
       /**
        * <code>required bool Value = 1;</code>
@@ -1402,10 +1410,10 @@ public final class EneterProtoBufPrimitivesDeclarations {
     // @@protoc_insertion_point(class_scope:BooleanWrapper)
   }
 
-  public interface BooleanArrayWrapperOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
+  public interface BooleanArrayWrapperOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:BooleanArrayWrapper)
+      com.google.protobuf.MessageOrBuilder {
 
-    // repeated bool Value = 1 [packed = true];
     /**
      * <code>repeated bool Value = 1 [packed = true];</code>
      */
@@ -1423,8 +1431,9 @@ public final class EneterProtoBufPrimitivesDeclarations {
    * Protobuf type {@code BooleanArrayWrapper}
    */
   public static final class BooleanArrayWrapper extends
-      com.google.protobuf.GeneratedMessage
-      implements BooleanArrayWrapperOrBuilder {
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:BooleanArrayWrapper)
+      BooleanArrayWrapperOrBuilder {
     // Use BooleanArrayWrapper.newBuilder() to construct.
     private BooleanArrayWrapper(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
@@ -1533,7 +1542,6 @@ public final class EneterProtoBufPrimitivesDeclarations {
       return PARSER;
     }
 
-    // repeated bool Value = 1 [packed = true];
     public static final int VALUE_FIELD_NUMBER = 1;
     private java.util.List<java.lang.Boolean> value_;
     /**
@@ -1563,7 +1571,8 @@ public final class EneterProtoBufPrimitivesDeclarations {
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
 
       memoizedIsInitialized = 1;
       return true;
@@ -1681,8 +1690,9 @@ public final class EneterProtoBufPrimitivesDeclarations {
      * Protobuf type {@code BooleanArrayWrapper}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements EneterProtoBufPrimitivesDeclarations.BooleanArrayWrapperOrBuilder {
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:BooleanArrayWrapper)
+        EneterProtoBufPrimitivesDeclarations.BooleanArrayWrapperOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return EneterProtoBufPrimitivesDeclarations.internal_static_BooleanArrayWrapper_descriptor;
@@ -1801,7 +1811,6 @@ public final class EneterProtoBufPrimitivesDeclarations {
       }
       private int bitField0_;
 
-      // repeated bool Value = 1 [packed = true];
       private java.util.List<java.lang.Boolean> value_ = java.util.Collections.emptyList();
       private void ensureValueIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -1853,7 +1862,8 @@ public final class EneterProtoBufPrimitivesDeclarations {
       public Builder addAllValue(
           java.lang.Iterable<? extends java.lang.Boolean> values) {
         ensureValueIsMutable();
-        super.addAll(values, value_);
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, value_);
         onChanged();
         return this;
       }
@@ -1878,10 +1888,10 @@ public final class EneterProtoBufPrimitivesDeclarations {
     // @@protoc_insertion_point(class_scope:BooleanArrayWrapper)
   }
 
-  public interface ByteWrapperOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
+  public interface ByteWrapperOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ByteWrapper)
+      com.google.protobuf.MessageOrBuilder {
 
-    // required bytes Value = 1;
     /**
      * <code>required bytes Value = 1;</code>
      */
@@ -1899,8 +1909,9 @@ public final class EneterProtoBufPrimitivesDeclarations {
    * </pre>
    */
   public static final class ByteWrapper extends
-      com.google.protobuf.GeneratedMessage
-      implements ByteWrapperOrBuilder {
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:ByteWrapper)
+      ByteWrapperOrBuilder {
     // Use ByteWrapper.newBuilder() to construct.
     private ByteWrapper(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
@@ -1991,7 +2002,6 @@ public final class EneterProtoBufPrimitivesDeclarations {
     }
 
     private int bitField0_;
-    // required bytes Value = 1;
     public static final int VALUE_FIELD_NUMBER = 1;
     private com.google.protobuf.ByteString value_;
     /**
@@ -2013,7 +2023,8 @@ public final class EneterProtoBufPrimitivesDeclarations {
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
 
       if (!hasValue()) {
         memoizedIsInitialized = 0;
@@ -2128,8 +2139,9 @@ public final class EneterProtoBufPrimitivesDeclarations {
      * </pre>
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements EneterProtoBufPrimitivesDeclarations.ByteWrapperOrBuilder {
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ByteWrapper)
+        EneterProtoBufPrimitivesDeclarations.ByteWrapperOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return EneterProtoBufPrimitivesDeclarations.internal_static_ByteWrapper_descriptor;
@@ -2246,7 +2258,6 @@ public final class EneterProtoBufPrimitivesDeclarations {
       }
       private int bitField0_;
 
-      // required bytes Value = 1;
       private com.google.protobuf.ByteString value_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>required bytes Value = 1;</code>
@@ -2293,10 +2304,10 @@ public final class EneterProtoBufPrimitivesDeclarations {
     // @@protoc_insertion_point(class_scope:ByteWrapper)
   }
 
-  public interface IntWrapperOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
+  public interface IntWrapperOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:IntWrapper)
+      com.google.protobuf.MessageOrBuilder {
 
-    // required int32 Value = 1;
     /**
      * <code>required int32 Value = 1;</code>
      */
@@ -2314,8 +2325,9 @@ public final class EneterProtoBufPrimitivesDeclarations {
    * </pre>
    */
   public static final class IntWrapper extends
-      com.google.protobuf.GeneratedMessage
-      implements IntWrapperOrBuilder {
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:IntWrapper)
+      IntWrapperOrBuilder {
     // Use IntWrapper.newBuilder() to construct.
     private IntWrapper(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
@@ -2406,7 +2418,6 @@ public final class EneterProtoBufPrimitivesDeclarations {
     }
 
     private int bitField0_;
-    // required int32 Value = 1;
     public static final int VALUE_FIELD_NUMBER = 1;
     private int value_;
     /**
@@ -2428,7 +2439,8 @@ public final class EneterProtoBufPrimitivesDeclarations {
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
 
       if (!hasValue()) {
         memoizedIsInitialized = 0;
@@ -2543,8 +2555,9 @@ public final class EneterProtoBufPrimitivesDeclarations {
      * </pre>
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements EneterProtoBufPrimitivesDeclarations.IntWrapperOrBuilder {
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:IntWrapper)
+        EneterProtoBufPrimitivesDeclarations.IntWrapperOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return EneterProtoBufPrimitivesDeclarations.internal_static_IntWrapper_descriptor;
@@ -2661,7 +2674,6 @@ public final class EneterProtoBufPrimitivesDeclarations {
       }
       private int bitField0_;
 
-      // required int32 Value = 1;
       private int value_ ;
       /**
        * <code>required int32 Value = 1;</code>
@@ -2705,10 +2717,10 @@ public final class EneterProtoBufPrimitivesDeclarations {
     // @@protoc_insertion_point(class_scope:IntWrapper)
   }
 
-  public interface IntArrayWrapperOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
+  public interface IntArrayWrapperOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:IntArrayWrapper)
+      com.google.protobuf.MessageOrBuilder {
 
-    // repeated int32 Value = 1 [packed = true];
     /**
      * <code>repeated int32 Value = 1 [packed = true];</code>
      */
@@ -2726,8 +2738,9 @@ public final class EneterProtoBufPrimitivesDeclarations {
    * Protobuf type {@code IntArrayWrapper}
    */
   public static final class IntArrayWrapper extends
-      com.google.protobuf.GeneratedMessage
-      implements IntArrayWrapperOrBuilder {
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:IntArrayWrapper)
+      IntArrayWrapperOrBuilder {
     // Use IntArrayWrapper.newBuilder() to construct.
     private IntArrayWrapper(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
@@ -2836,7 +2849,6 @@ public final class EneterProtoBufPrimitivesDeclarations {
       return PARSER;
     }
 
-    // repeated int32 Value = 1 [packed = true];
     public static final int VALUE_FIELD_NUMBER = 1;
     private java.util.List<java.lang.Integer> value_;
     /**
@@ -2866,7 +2878,8 @@ public final class EneterProtoBufPrimitivesDeclarations {
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
 
       memoizedIsInitialized = 1;
       return true;
@@ -2987,8 +3000,9 @@ public final class EneterProtoBufPrimitivesDeclarations {
      * Protobuf type {@code IntArrayWrapper}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements EneterProtoBufPrimitivesDeclarations.IntArrayWrapperOrBuilder {
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:IntArrayWrapper)
+        EneterProtoBufPrimitivesDeclarations.IntArrayWrapperOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return EneterProtoBufPrimitivesDeclarations.internal_static_IntArrayWrapper_descriptor;
@@ -3107,7 +3121,6 @@ public final class EneterProtoBufPrimitivesDeclarations {
       }
       private int bitField0_;
 
-      // repeated int32 Value = 1 [packed = true];
       private java.util.List<java.lang.Integer> value_ = java.util.Collections.emptyList();
       private void ensureValueIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -3159,7 +3172,8 @@ public final class EneterProtoBufPrimitivesDeclarations {
       public Builder addAllValue(
           java.lang.Iterable<? extends java.lang.Integer> values) {
         ensureValueIsMutable();
-        super.addAll(values, value_);
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, value_);
         onChanged();
         return this;
       }
@@ -3184,10 +3198,10 @@ public final class EneterProtoBufPrimitivesDeclarations {
     // @@protoc_insertion_point(class_scope:IntArrayWrapper)
   }
 
-  public interface LongWrapperOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
+  public interface LongWrapperOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:LongWrapper)
+      com.google.protobuf.MessageOrBuilder {
 
-    // required int64 Value = 1;
     /**
      * <code>required int64 Value = 1;</code>
      */
@@ -3205,8 +3219,9 @@ public final class EneterProtoBufPrimitivesDeclarations {
    * </pre>
    */
   public static final class LongWrapper extends
-      com.google.protobuf.GeneratedMessage
-      implements LongWrapperOrBuilder {
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:LongWrapper)
+      LongWrapperOrBuilder {
     // Use LongWrapper.newBuilder() to construct.
     private LongWrapper(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
@@ -3297,7 +3312,6 @@ public final class EneterProtoBufPrimitivesDeclarations {
     }
 
     private int bitField0_;
-    // required int64 Value = 1;
     public static final int VALUE_FIELD_NUMBER = 1;
     private long value_;
     /**
@@ -3319,7 +3333,8 @@ public final class EneterProtoBufPrimitivesDeclarations {
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
 
       if (!hasValue()) {
         memoizedIsInitialized = 0;
@@ -3434,8 +3449,9 @@ public final class EneterProtoBufPrimitivesDeclarations {
      * </pre>
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements EneterProtoBufPrimitivesDeclarations.LongWrapperOrBuilder {
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:LongWrapper)
+        EneterProtoBufPrimitivesDeclarations.LongWrapperOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return EneterProtoBufPrimitivesDeclarations.internal_static_LongWrapper_descriptor;
@@ -3552,7 +3568,6 @@ public final class EneterProtoBufPrimitivesDeclarations {
       }
       private int bitField0_;
 
-      // required int64 Value = 1;
       private long value_ ;
       /**
        * <code>required int64 Value = 1;</code>
@@ -3596,10 +3611,10 @@ public final class EneterProtoBufPrimitivesDeclarations {
     // @@protoc_insertion_point(class_scope:LongWrapper)
   }
 
-  public interface LongArrayWrapperOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
+  public interface LongArrayWrapperOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:LongArrayWrapper)
+      com.google.protobuf.MessageOrBuilder {
 
-    // repeated int64 Value = 1 [packed = true];
     /**
      * <code>repeated int64 Value = 1 [packed = true];</code>
      */
@@ -3617,8 +3632,9 @@ public final class EneterProtoBufPrimitivesDeclarations {
    * Protobuf type {@code LongArrayWrapper}
    */
   public static final class LongArrayWrapper extends
-      com.google.protobuf.GeneratedMessage
-      implements LongArrayWrapperOrBuilder {
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:LongArrayWrapper)
+      LongArrayWrapperOrBuilder {
     // Use LongArrayWrapper.newBuilder() to construct.
     private LongArrayWrapper(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
@@ -3727,7 +3743,6 @@ public final class EneterProtoBufPrimitivesDeclarations {
       return PARSER;
     }
 
-    // repeated int64 Value = 1 [packed = true];
     public static final int VALUE_FIELD_NUMBER = 1;
     private java.util.List<java.lang.Long> value_;
     /**
@@ -3757,7 +3772,8 @@ public final class EneterProtoBufPrimitivesDeclarations {
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
 
       memoizedIsInitialized = 1;
       return true;
@@ -3878,8 +3894,9 @@ public final class EneterProtoBufPrimitivesDeclarations {
      * Protobuf type {@code LongArrayWrapper}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements EneterProtoBufPrimitivesDeclarations.LongArrayWrapperOrBuilder {
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:LongArrayWrapper)
+        EneterProtoBufPrimitivesDeclarations.LongArrayWrapperOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return EneterProtoBufPrimitivesDeclarations.internal_static_LongArrayWrapper_descriptor;
@@ -3998,7 +4015,6 @@ public final class EneterProtoBufPrimitivesDeclarations {
       }
       private int bitField0_;
 
-      // repeated int64 Value = 1 [packed = true];
       private java.util.List<java.lang.Long> value_ = java.util.Collections.emptyList();
       private void ensureValueIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -4050,7 +4066,8 @@ public final class EneterProtoBufPrimitivesDeclarations {
       public Builder addAllValue(
           java.lang.Iterable<? extends java.lang.Long> values) {
         ensureValueIsMutable();
-        super.addAll(values, value_);
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, value_);
         onChanged();
         return this;
       }
@@ -4075,10 +4092,10 @@ public final class EneterProtoBufPrimitivesDeclarations {
     // @@protoc_insertion_point(class_scope:LongArrayWrapper)
   }
 
-  public interface FloatWrapperOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
+  public interface FloatWrapperOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:FloatWrapper)
+      com.google.protobuf.MessageOrBuilder {
 
-    // required float Value = 1;
     /**
      * <code>required float Value = 1;</code>
      */
@@ -4096,8 +4113,9 @@ public final class EneterProtoBufPrimitivesDeclarations {
    * </pre>
    */
   public static final class FloatWrapper extends
-      com.google.protobuf.GeneratedMessage
-      implements FloatWrapperOrBuilder {
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:FloatWrapper)
+      FloatWrapperOrBuilder {
     // Use FloatWrapper.newBuilder() to construct.
     private FloatWrapper(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
@@ -4188,7 +4206,6 @@ public final class EneterProtoBufPrimitivesDeclarations {
     }
 
     private int bitField0_;
-    // required float Value = 1;
     public static final int VALUE_FIELD_NUMBER = 1;
     private float value_;
     /**
@@ -4210,7 +4227,8 @@ public final class EneterProtoBufPrimitivesDeclarations {
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
 
       if (!hasValue()) {
         memoizedIsInitialized = 0;
@@ -4325,8 +4343,9 @@ public final class EneterProtoBufPrimitivesDeclarations {
      * </pre>
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements EneterProtoBufPrimitivesDeclarations.FloatWrapperOrBuilder {
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:FloatWrapper)
+        EneterProtoBufPrimitivesDeclarations.FloatWrapperOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return EneterProtoBufPrimitivesDeclarations.internal_static_FloatWrapper_descriptor;
@@ -4443,7 +4462,6 @@ public final class EneterProtoBufPrimitivesDeclarations {
       }
       private int bitField0_;
 
-      // required float Value = 1;
       private float value_ ;
       /**
        * <code>required float Value = 1;</code>
@@ -4487,10 +4505,10 @@ public final class EneterProtoBufPrimitivesDeclarations {
     // @@protoc_insertion_point(class_scope:FloatWrapper)
   }
 
-  public interface FloatArrayWrapperOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
+  public interface FloatArrayWrapperOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:FloatArrayWrapper)
+      com.google.protobuf.MessageOrBuilder {
 
-    // repeated float Value = 1 [packed = true];
     /**
      * <code>repeated float Value = 1 [packed = true];</code>
      */
@@ -4508,8 +4526,9 @@ public final class EneterProtoBufPrimitivesDeclarations {
    * Protobuf type {@code FloatArrayWrapper}
    */
   public static final class FloatArrayWrapper extends
-      com.google.protobuf.GeneratedMessage
-      implements FloatArrayWrapperOrBuilder {
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:FloatArrayWrapper)
+      FloatArrayWrapperOrBuilder {
     // Use FloatArrayWrapper.newBuilder() to construct.
     private FloatArrayWrapper(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
@@ -4618,7 +4637,6 @@ public final class EneterProtoBufPrimitivesDeclarations {
       return PARSER;
     }
 
-    // repeated float Value = 1 [packed = true];
     public static final int VALUE_FIELD_NUMBER = 1;
     private java.util.List<java.lang.Float> value_;
     /**
@@ -4648,7 +4666,8 @@ public final class EneterProtoBufPrimitivesDeclarations {
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
 
       memoizedIsInitialized = 1;
       return true;
@@ -4766,8 +4785,9 @@ public final class EneterProtoBufPrimitivesDeclarations {
      * Protobuf type {@code FloatArrayWrapper}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements EneterProtoBufPrimitivesDeclarations.FloatArrayWrapperOrBuilder {
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:FloatArrayWrapper)
+        EneterProtoBufPrimitivesDeclarations.FloatArrayWrapperOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return EneterProtoBufPrimitivesDeclarations.internal_static_FloatArrayWrapper_descriptor;
@@ -4886,7 +4906,6 @@ public final class EneterProtoBufPrimitivesDeclarations {
       }
       private int bitField0_;
 
-      // repeated float Value = 1 [packed = true];
       private java.util.List<java.lang.Float> value_ = java.util.Collections.emptyList();
       private void ensureValueIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -4938,7 +4957,8 @@ public final class EneterProtoBufPrimitivesDeclarations {
       public Builder addAllValue(
           java.lang.Iterable<? extends java.lang.Float> values) {
         ensureValueIsMutable();
-        super.addAll(values, value_);
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, value_);
         onChanged();
         return this;
       }
@@ -4963,10 +4983,10 @@ public final class EneterProtoBufPrimitivesDeclarations {
     // @@protoc_insertion_point(class_scope:FloatArrayWrapper)
   }
 
-  public interface DoubleWrapperOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
+  public interface DoubleWrapperOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:DoubleWrapper)
+      com.google.protobuf.MessageOrBuilder {
 
-    // required double Value = 1;
     /**
      * <code>required double Value = 1;</code>
      */
@@ -4984,8 +5004,9 @@ public final class EneterProtoBufPrimitivesDeclarations {
    * </pre>
    */
   public static final class DoubleWrapper extends
-      com.google.protobuf.GeneratedMessage
-      implements DoubleWrapperOrBuilder {
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:DoubleWrapper)
+      DoubleWrapperOrBuilder {
     // Use DoubleWrapper.newBuilder() to construct.
     private DoubleWrapper(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
@@ -5076,7 +5097,6 @@ public final class EneterProtoBufPrimitivesDeclarations {
     }
 
     private int bitField0_;
-    // required double Value = 1;
     public static final int VALUE_FIELD_NUMBER = 1;
     private double value_;
     /**
@@ -5098,7 +5118,8 @@ public final class EneterProtoBufPrimitivesDeclarations {
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
 
       if (!hasValue()) {
         memoizedIsInitialized = 0;
@@ -5213,8 +5234,9 @@ public final class EneterProtoBufPrimitivesDeclarations {
      * </pre>
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements EneterProtoBufPrimitivesDeclarations.DoubleWrapperOrBuilder {
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:DoubleWrapper)
+        EneterProtoBufPrimitivesDeclarations.DoubleWrapperOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return EneterProtoBufPrimitivesDeclarations.internal_static_DoubleWrapper_descriptor;
@@ -5331,7 +5353,6 @@ public final class EneterProtoBufPrimitivesDeclarations {
       }
       private int bitField0_;
 
-      // required double Value = 1;
       private double value_ ;
       /**
        * <code>required double Value = 1;</code>
@@ -5375,10 +5396,10 @@ public final class EneterProtoBufPrimitivesDeclarations {
     // @@protoc_insertion_point(class_scope:DoubleWrapper)
   }
 
-  public interface DoubleArrayWrapperOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
+  public interface DoubleArrayWrapperOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:DoubleArrayWrapper)
+      com.google.protobuf.MessageOrBuilder {
 
-    // repeated double Value = 1 [packed = true];
     /**
      * <code>repeated double Value = 1 [packed = true];</code>
      */
@@ -5396,8 +5417,9 @@ public final class EneterProtoBufPrimitivesDeclarations {
    * Protobuf type {@code DoubleArrayWrapper}
    */
   public static final class DoubleArrayWrapper extends
-      com.google.protobuf.GeneratedMessage
-      implements DoubleArrayWrapperOrBuilder {
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:DoubleArrayWrapper)
+      DoubleArrayWrapperOrBuilder {
     // Use DoubleArrayWrapper.newBuilder() to construct.
     private DoubleArrayWrapper(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
@@ -5506,7 +5528,6 @@ public final class EneterProtoBufPrimitivesDeclarations {
       return PARSER;
     }
 
-    // repeated double Value = 1 [packed = true];
     public static final int VALUE_FIELD_NUMBER = 1;
     private java.util.List<java.lang.Double> value_;
     /**
@@ -5536,7 +5557,8 @@ public final class EneterProtoBufPrimitivesDeclarations {
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
 
       memoizedIsInitialized = 1;
       return true;
@@ -5654,8 +5676,9 @@ public final class EneterProtoBufPrimitivesDeclarations {
      * Protobuf type {@code DoubleArrayWrapper}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements EneterProtoBufPrimitivesDeclarations.DoubleArrayWrapperOrBuilder {
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:DoubleArrayWrapper)
+        EneterProtoBufPrimitivesDeclarations.DoubleArrayWrapperOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return EneterProtoBufPrimitivesDeclarations.internal_static_DoubleArrayWrapper_descriptor;
@@ -5774,7 +5797,6 @@ public final class EneterProtoBufPrimitivesDeclarations {
       }
       private int bitField0_;
 
-      // repeated double Value = 1 [packed = true];
       private java.util.List<java.lang.Double> value_ = java.util.Collections.emptyList();
       private void ensureValueIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -5826,7 +5848,8 @@ public final class EneterProtoBufPrimitivesDeclarations {
       public Builder addAllValue(
           java.lang.Iterable<? extends java.lang.Double> values) {
         ensureValueIsMutable();
-        super.addAll(values, value_);
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, value_);
         onChanged();
         return this;
       }
@@ -5851,67 +5874,67 @@ public final class EneterProtoBufPrimitivesDeclarations {
     // @@protoc_insertion_point(class_scope:DoubleArrayWrapper)
   }
 
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_StringWrapper_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_StringWrapper_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_StringArrayWrapper_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_StringArrayWrapper_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_BooleanWrapper_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_BooleanWrapper_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_BooleanArrayWrapper_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_BooleanArrayWrapper_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ByteWrapper_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ByteWrapper_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_IntWrapper_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_IntWrapper_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_IntArrayWrapper_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_IntArrayWrapper_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_LongWrapper_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_LongWrapper_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_LongArrayWrapper_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_LongArrayWrapper_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_FloatWrapper_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_FloatWrapper_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_FloatArrayWrapper_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_FloatArrayWrapper_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_DoubleWrapper_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_DoubleWrapper_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_DoubleArrayWrapper_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -5940,95 +5963,95 @@ public final class EneterProtoBufPrimitivesDeclarations {
       "\021\n\005Value\030\001 \003(\001B\002\020\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-      new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
-        public com.google.protobuf.ExtensionRegistry assignDescriptors(
-            com.google.protobuf.Descriptors.FileDescriptor root) {
-          descriptor = root;
-          internal_static_StringWrapper_descriptor =
-            getDescriptor().getMessageTypes().get(0);
-          internal_static_StringWrapper_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_StringWrapper_descriptor,
-              new java.lang.String[] { "Value", });
-          internal_static_StringArrayWrapper_descriptor =
-            getDescriptor().getMessageTypes().get(1);
-          internal_static_StringArrayWrapper_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_StringArrayWrapper_descriptor,
-              new java.lang.String[] { "Value", });
-          internal_static_BooleanWrapper_descriptor =
-            getDescriptor().getMessageTypes().get(2);
-          internal_static_BooleanWrapper_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_BooleanWrapper_descriptor,
-              new java.lang.String[] { "Value", });
-          internal_static_BooleanArrayWrapper_descriptor =
-            getDescriptor().getMessageTypes().get(3);
-          internal_static_BooleanArrayWrapper_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_BooleanArrayWrapper_descriptor,
-              new java.lang.String[] { "Value", });
-          internal_static_ByteWrapper_descriptor =
-            getDescriptor().getMessageTypes().get(4);
-          internal_static_ByteWrapper_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_ByteWrapper_descriptor,
-              new java.lang.String[] { "Value", });
-          internal_static_IntWrapper_descriptor =
-            getDescriptor().getMessageTypes().get(5);
-          internal_static_IntWrapper_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_IntWrapper_descriptor,
-              new java.lang.String[] { "Value", });
-          internal_static_IntArrayWrapper_descriptor =
-            getDescriptor().getMessageTypes().get(6);
-          internal_static_IntArrayWrapper_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_IntArrayWrapper_descriptor,
-              new java.lang.String[] { "Value", });
-          internal_static_LongWrapper_descriptor =
-            getDescriptor().getMessageTypes().get(7);
-          internal_static_LongWrapper_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_LongWrapper_descriptor,
-              new java.lang.String[] { "Value", });
-          internal_static_LongArrayWrapper_descriptor =
-            getDescriptor().getMessageTypes().get(8);
-          internal_static_LongArrayWrapper_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_LongArrayWrapper_descriptor,
-              new java.lang.String[] { "Value", });
-          internal_static_FloatWrapper_descriptor =
-            getDescriptor().getMessageTypes().get(9);
-          internal_static_FloatWrapper_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_FloatWrapper_descriptor,
-              new java.lang.String[] { "Value", });
-          internal_static_FloatArrayWrapper_descriptor =
-            getDescriptor().getMessageTypes().get(10);
-          internal_static_FloatArrayWrapper_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_FloatArrayWrapper_descriptor,
-              new java.lang.String[] { "Value", });
-          internal_static_DoubleWrapper_descriptor =
-            getDescriptor().getMessageTypes().get(11);
-          internal_static_DoubleWrapper_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_DoubleWrapper_descriptor,
-              new java.lang.String[] { "Value", });
-          internal_static_DoubleArrayWrapper_descriptor =
-            getDescriptor().getMessageTypes().get(12);
-          internal_static_DoubleArrayWrapper_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_DoubleArrayWrapper_descriptor,
-              new java.lang.String[] { "Value", });
-          return null;
-        }
-      };
+        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
+          public com.google.protobuf.ExtensionRegistry assignDescriptors(
+              com.google.protobuf.Descriptors.FileDescriptor root) {
+            descriptor = root;
+            return null;
+          }
+        };
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
+    internal_static_StringWrapper_descriptor =
+      getDescriptor().getMessageTypes().get(0);
+    internal_static_StringWrapper_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_StringWrapper_descriptor,
+        new java.lang.String[] { "Value", });
+    internal_static_StringArrayWrapper_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_StringArrayWrapper_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_StringArrayWrapper_descriptor,
+        new java.lang.String[] { "Value", });
+    internal_static_BooleanWrapper_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_BooleanWrapper_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_BooleanWrapper_descriptor,
+        new java.lang.String[] { "Value", });
+    internal_static_BooleanArrayWrapper_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_BooleanArrayWrapper_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_BooleanArrayWrapper_descriptor,
+        new java.lang.String[] { "Value", });
+    internal_static_ByteWrapper_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_ByteWrapper_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ByteWrapper_descriptor,
+        new java.lang.String[] { "Value", });
+    internal_static_IntWrapper_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_IntWrapper_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_IntWrapper_descriptor,
+        new java.lang.String[] { "Value", });
+    internal_static_IntArrayWrapper_descriptor =
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_IntArrayWrapper_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_IntArrayWrapper_descriptor,
+        new java.lang.String[] { "Value", });
+    internal_static_LongWrapper_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_LongWrapper_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_LongWrapper_descriptor,
+        new java.lang.String[] { "Value", });
+    internal_static_LongArrayWrapper_descriptor =
+      getDescriptor().getMessageTypes().get(8);
+    internal_static_LongArrayWrapper_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_LongArrayWrapper_descriptor,
+        new java.lang.String[] { "Value", });
+    internal_static_FloatWrapper_descriptor =
+      getDescriptor().getMessageTypes().get(9);
+    internal_static_FloatWrapper_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_FloatWrapper_descriptor,
+        new java.lang.String[] { "Value", });
+    internal_static_FloatArrayWrapper_descriptor =
+      getDescriptor().getMessageTypes().get(10);
+    internal_static_FloatArrayWrapper_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_FloatArrayWrapper_descriptor,
+        new java.lang.String[] { "Value", });
+    internal_static_DoubleWrapper_descriptor =
+      getDescriptor().getMessageTypes().get(11);
+    internal_static_DoubleWrapper_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_DoubleWrapper_descriptor,
+        new java.lang.String[] { "Value", });
+    internal_static_DoubleArrayWrapper_descriptor =
+      getDescriptor().getMessageTypes().get(12);
+    internal_static_DoubleArrayWrapper_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_DoubleArrayWrapper_descriptor,
+        new java.lang.String[] { "Value", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

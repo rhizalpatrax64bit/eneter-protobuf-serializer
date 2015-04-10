@@ -14,6 +14,115 @@
 // Generated from: EneterProtoBufDeclarations.proto
 namespace Eneter.ProtoBuf
 {
+  [global::ProtoBuf.ProtoContract(Name=@"MessageBusMessageProto")]
+  public partial class MessageBusMessageProto : global::ProtoBuf.IExtensible
+  {
+    public MessageBusMessageProto() {}
+    
+    private int _Request;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Request", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int Request
+    {
+      get { return _Request; }
+      set { _Request = value; }
+    }
+    private string _Id;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"Id", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string Id
+    {
+      get { return _Id; }
+      set { _Id = value; }
+    }
+    private byte[] _MessageDataBin;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"MessageDataBin", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public byte[] MessageDataBin
+    {
+      get { return _MessageDataBin?? null; }
+      set { _MessageDataBin = value; }
+    }
+    [global::System.Xml.Serialization.XmlIgnore]
+    
+    public bool MessageDataBinSpecified
+    {
+      get { return this._MessageDataBin != null; }
+      set { if (value == (this._MessageDataBin== null)) this._MessageDataBin = value ? this.MessageDataBin : (byte[])null; }
+    }
+    private bool ShouldSerializeMessageDataBin() { return MessageDataBinSpecified; }
+    private void ResetMessageDataBin() { MessageDataBinSpecified = false; }
+    
+    private string _MessageDataStr;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"MessageDataStr", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string MessageDataStr
+    {
+      get { return _MessageDataStr?? ""; }
+      set { _MessageDataStr = value; }
+    }
+    [global::System.Xml.Serialization.XmlIgnore]
+    
+    public bool MessageDataStrSpecified
+    {
+      get { return this._MessageDataStr != null; }
+      set { if (value == (this._MessageDataStr== null)) this._MessageDataStr = value ? this.MessageDataStr : (string)null; }
+    }
+    private bool ShouldSerializeMessageDataStr() { return MessageDataStrSpecified; }
+    private void ResetMessageDataStr() { MessageDataStrSpecified = false; }
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::ProtoBuf.ProtoContract(Name=@"MultiTypedMessageProto")]
+  public partial class MultiTypedMessageProto : global::ProtoBuf.IExtensible
+  {
+    public MultiTypedMessageProto() {}
+    
+    private string _TypeName;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"TypeName", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string TypeName
+    {
+      get { return _TypeName; }
+      set { _TypeName = value; }
+    }
+    private byte[] _MessageDataBin;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"MessageDataBin", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public byte[] MessageDataBin
+    {
+      get { return _MessageDataBin?? null; }
+      set { _MessageDataBin = value; }
+    }
+    [global::System.Xml.Serialization.XmlIgnore]
+    
+    public bool MessageDataBinSpecified
+    {
+      get { return this._MessageDataBin != null; }
+      set { if (value == (this._MessageDataBin== null)) this._MessageDataBin = value ? this.MessageDataBin : (byte[])null; }
+    }
+    private bool ShouldSerializeMessageDataBin() { return MessageDataBinSpecified; }
+    private void ResetMessageDataBin() { MessageDataBinSpecified = false; }
+    
+    private string _MessageDataStr;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"MessageDataStr", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string MessageDataStr
+    {
+      get { return _MessageDataStr?? ""; }
+      set { _MessageDataStr = value; }
+    }
+    [global::System.Xml.Serialization.XmlIgnore]
+    
+    public bool MessageDataStrSpecified
+    {
+      get { return this._MessageDataStr != null; }
+      set { if (value == (this._MessageDataStr== null)) this._MessageDataStr = value ? this.MessageDataStr : (string)null; }
+    }
+    private bool ShouldSerializeMessageDataStr() { return MessageDataStrSpecified; }
+    private void ResetMessageDataStr() { MessageDataStrSpecified = false; }
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::ProtoBuf.ProtoContract(Name=@"RpcMessageProto")]
   public partial class RpcMessageProto : global::ProtoBuf.IExtensible
   {
@@ -88,7 +197,6 @@ namespace Eneter.ProtoBuf
       get { return _AddedData; }
       set { _AddedData = value; }
     }
-
     private byte[] _OriginalDataBin;
     [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"OriginalDataBin", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public byte[] OriginalDataBin
@@ -100,13 +208,12 @@ namespace Eneter.ProtoBuf
     
     public bool OriginalDataBinSpecified
     {
-      get { return _OriginalDataBin != null; }
-      set { if (value == (_OriginalDataBin== null)) _OriginalDataBin = value ? OriginalDataBin : (byte[])null; }
+      get { return this._OriginalDataBin != null; }
+      set { if (value == (this._OriginalDataBin== null)) this._OriginalDataBin = value ? this.OriginalDataBin : (byte[])null; }
     }
     private bool ShouldSerializeOriginalDataBin() { return OriginalDataBinSpecified; }
     private void ResetOriginalDataBin() { OriginalDataBinSpecified = false; }
     
-
     private string _OriginalDataStr;
     [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"OriginalDataStr", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string OriginalDataStr
@@ -118,8 +225,8 @@ namespace Eneter.ProtoBuf
     
     public bool OriginalDataStrSpecified
     {
-      get { return _OriginalDataStr != null; }
-      set { if (value == (_OriginalDataStr== null)) _OriginalDataStr = value ? OriginalDataStr : (string)null; }
+      get { return this._OriginalDataStr != null; }
+      set { if (value == (this._OriginalDataStr== null)) this._OriginalDataStr = value ? this.OriginalDataStr : (string)null; }
     }
     private bool ShouldSerializeOriginalDataStr() { return OriginalDataStrSpecified; }
     private void ResetOriginalDataStr() { OriginalDataStrSpecified = false; }
@@ -134,9 +241,9 @@ namespace Eneter.ProtoBuf
   {
     public BrokerMessageProto() {}
     
-    private string _Request;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Request", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public string Request
+    private int _Request;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Request", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int Request
     {
       get { return _Request; }
       set { _Request = value; }
@@ -148,7 +255,6 @@ namespace Eneter.ProtoBuf
       get { return _MessageTypes; }
     }
   
-
     private byte[] _MessageBin;
     [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"MessageBin", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public byte[] MessageBin
@@ -160,13 +266,12 @@ namespace Eneter.ProtoBuf
     
     public bool MessageBinSpecified
     {
-      get { return _MessageBin != null; }
-      set { if (value == (_MessageBin== null)) _MessageBin = value ? MessageBin : (byte[])null; }
+      get { return this._MessageBin != null; }
+      set { if (value == (this._MessageBin== null)) this._MessageBin = value ? this.MessageBin : (byte[])null; }
     }
     private bool ShouldSerializeMessageBin() { return MessageBinSpecified; }
     private void ResetMessageBin() { MessageBinSpecified = false; }
     
-
     private string _MessageStr;
     [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"MessageStr", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string MessageStr
@@ -178,68 +283,8 @@ namespace Eneter.ProtoBuf
     
     public bool MessageStrSpecified
     {
-      get { return _MessageStr != null; }
-      set { if (value == (_MessageStr== null)) _MessageStr = value ? MessageStr : (string)null; }
-    }
-    private bool ShouldSerializeMessageStr() { return MessageStrSpecified; }
-    private void ResetMessageStr() { MessageStrSpecified = false; }
-    
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
-  [global::ProtoBuf.ProtoContract(Name=@"ReliableMessageProto")]
-  public partial class ReliableMessageProto : global::ProtoBuf.IExtensible
-  {
-    public ReliableMessageProto() {}
-    
-    private string _MessageType;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"MessageType", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public string MessageType
-    {
-      get { return _MessageType; }
-      set { _MessageType = value; }
-    }
-    private string _MessageId;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"MessageId", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public string MessageId
-    {
-      get { return _MessageId; }
-      set { _MessageId = value; }
-    }
-
-    private byte[] _MessageBin;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"MessageBin", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public byte[] MessageBin
-    {
-      get { return _MessageBin?? null; }
-      set { _MessageBin = value; }
-    }
-    [global::System.Xml.Serialization.XmlIgnore]
-    
-    public bool MessageBinSpecified
-    {
-      get { return _MessageBin != null; }
-      set { if (value == (_MessageBin== null)) _MessageBin = value ? MessageBin : (byte[])null; }
-    }
-    private bool ShouldSerializeMessageBin() { return MessageBinSpecified; }
-    private void ResetMessageBin() { MessageBinSpecified = false; }
-    
-
-    private string _MessageStr;
-    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"MessageStr", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public string MessageStr
-    {
-      get { return _MessageStr?? ""; }
-      set { _MessageStr = value; }
-    }
-    [global::System.Xml.Serialization.XmlIgnore]
-    
-    public bool MessageStrSpecified
-    {
-      get { return _MessageStr != null; }
-      set { if (value == (_MessageStr== null)) _MessageStr = value ? MessageStr : (string)null; }
+      get { return this._MessageStr != null; }
+      set { if (value == (this._MessageStr== null)) this._MessageStr = value ? this.MessageStr : (string)null; }
     }
     private bool ShouldSerializeMessageStr() { return MessageStrSpecified; }
     private void ResetMessageStr() { MessageStrSpecified = false; }
@@ -254,14 +299,13 @@ namespace Eneter.ProtoBuf
   {
     public MonitorChannelMessageProto() {}
     
-    private string _MessageType;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"MessageType", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public string MessageType
+    private int _MessageType;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"MessageType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int MessageType
     {
       get { return _MessageType; }
       set { _MessageType = value; }
     }
-
     private byte[] _MessageContentBin;
     [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"MessageContentBin", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public byte[] MessageContentBin
@@ -273,13 +317,12 @@ namespace Eneter.ProtoBuf
     
     public bool MessageContentBinSpecified
     {
-      get { return _MessageContentBin != null; }
-      set { if (value == (_MessageContentBin== null)) _MessageContentBin = value ? MessageContentBin : (byte[])null; }
+      get { return this._MessageContentBin != null; }
+      set { if (value == (this._MessageContentBin== null)) this._MessageContentBin = value ? this.MessageContentBin : (byte[])null; }
     }
     private bool ShouldSerializeMessageContentBin() { return MessageContentBinSpecified; }
     private void ResetMessageContentBin() { MessageContentBinSpecified = false; }
     
-
     private string _MessageContentStr;
     [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"MessageContentStr", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string MessageContentStr
@@ -291,8 +334,8 @@ namespace Eneter.ProtoBuf
     
     public bool MessageContentStrSpecified
     {
-      get { return _MessageContentStr != null; }
-      set { if (value == (_MessageContentStr== null)) _MessageContentStr = value ? MessageContentStr : (string)null; }
+      get { return this._MessageContentStr != null; }
+      set { if (value == (this._MessageContentStr== null)) this._MessageContentStr = value ? this.MessageContentStr : (string)null; }
     }
     private bool ShouldSerializeMessageContentStr() { return MessageContentStrSpecified; }
     private void ResetMessageContentStr() { MessageContentStrSpecified = false; }
