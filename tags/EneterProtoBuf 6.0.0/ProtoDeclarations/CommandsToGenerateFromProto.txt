@@ -1,0 +1,17 @@
+Internal messages of Eneter Messaging Framework are declared in EneterProtoBufDeclarations.proto
+
+From this file C# code and Java code must be generated.
+
+To generate C#:
+protogen.exe -i:EneterProtoBufDeclarations.proto -o:EneterProtoBufDeclarations.cs -ns:Eneter.ProtoBuf -p:detectMissing -p:lightFramework
+
+To generate Java:
+protoc.exe -I=./ --java_out=./ ./EneterProtoBufDeclarations.proto
+protoc.exe -I=./ --java_out=./ ./EneterProtoBufPrimitivesDeclarations.proto
+
+At the beginning of the java file the following line with package declaration must be inserted:
+package eneter.protobuf;
+
+
+
+

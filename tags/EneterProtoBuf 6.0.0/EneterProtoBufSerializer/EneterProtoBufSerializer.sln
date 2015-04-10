@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EneterProtoBufSerializerNet40", "EneterProtoBufSerializer\EneterProtoBufSerializerNet40.csproj", "{33C0EBF6-C962-4EDA-A77D-5DEAA9BF8B44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EneterProtoBufSerializerMono264", "EneterProtoBufSerializer\EneterProtoBufSerializerMono264.csproj", "{A2AA3A8F-ED80-4D08-A81D-CC50A57BE9E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EneterProtoBufSerializerNet35", "EneterProtoBufSerializer\EneterProtoBufSerializerNet35.csproj", "{1060C495-77F5-4B99-ADD8-D3DD76AF2A31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EneterProtoBufSerializerPhone71", "EneterProtoBufSerializer\EneterProtoBufSerializerPhone71.csproj", "{2357A3AF-BDA6-460C-8298-CDB2B5995E51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EneterProtoBufSerializerSilverlight4", "EneterProtoBufSerializer\EneterProtoBufSerializerSilverlight4.csproj", "{3CF0F812-1F78-4E3B-9C25-81CDC4A06E53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EneterProtoBufSerializerSilverlight5", "EneterProtoBufSerializer\EneterProtoBufSerializerSilverlight5.csproj", "{36DBD05A-CC92-43D8-B5C1-D233F4249BF5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EneterProtoBufSerializer_UTests", "EneterProtoBufSerializer_UTests\EneterProtoBufSerializer_UTests.csproj", "{88F6B4B5-0B2E-46A0-9780-BA4CBE9FF976}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{33C0EBF6-C962-4EDA-A77D-5DEAA9BF8B44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33C0EBF6-C962-4EDA-A77D-5DEAA9BF8B44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33C0EBF6-C962-4EDA-A77D-5DEAA9BF8B44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33C0EBF6-C962-4EDA-A77D-5DEAA9BF8B44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2AA3A8F-ED80-4D08-A81D-CC50A57BE9E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2AA3A8F-ED80-4D08-A81D-CC50A57BE9E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2AA3A8F-ED80-4D08-A81D-CC50A57BE9E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2AA3A8F-ED80-4D08-A81D-CC50A57BE9E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1060C495-77F5-4B99-ADD8-D3DD76AF2A31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1060C495-77F5-4B99-ADD8-D3DD76AF2A31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1060C495-77F5-4B99-ADD8-D3DD76AF2A31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1060C495-77F5-4B99-ADD8-D3DD76AF2A31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2357A3AF-BDA6-460C-8298-CDB2B5995E51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2357A3AF-BDA6-460C-8298-CDB2B5995E51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2357A3AF-BDA6-460C-8298-CDB2B5995E51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2357A3AF-BDA6-460C-8298-CDB2B5995E51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CF0F812-1F78-4E3B-9C25-81CDC4A06E53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CF0F812-1F78-4E3B-9C25-81CDC4A06E53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CF0F812-1F78-4E3B-9C25-81CDC4A06E53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CF0F812-1F78-4E3B-9C25-81CDC4A06E53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36DBD05A-CC92-43D8-B5C1-D233F4249BF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36DBD05A-CC92-43D8-B5C1-D233F4249BF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36DBD05A-CC92-43D8-B5C1-D233F4249BF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36DBD05A-CC92-43D8-B5C1-D233F4249BF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88F6B4B5-0B2E-46A0-9780-BA4CBE9FF976}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88F6B4B5-0B2E-46A0-9780-BA4CBE9FF976}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88F6B4B5-0B2E-46A0-9780-BA4CBE9FF976}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88F6B4B5-0B2E-46A0-9780-BA4CBE9FF976}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
