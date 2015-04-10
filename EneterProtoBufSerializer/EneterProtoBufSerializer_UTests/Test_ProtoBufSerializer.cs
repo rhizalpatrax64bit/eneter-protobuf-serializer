@@ -18,6 +18,7 @@ using System.Diagnostics;
 using Eneter.Messaging.DataProcessing.Serializing;
 using System.Threading;
 using Eneter.Messaging.EndPoints.Rpc;
+using Eneter.Messaging.MessagingSystems.Composites.MessageBus;
 
 namespace EneterProtoBufSerializer_UTests
 {
@@ -104,6 +105,63 @@ namespace EneterProtoBufSerializer_UTests
         }
 
         [Test]
+        public void SerializeDeserializeMultiTypedMessage()
+        {
+            ProtoBufSerializer aProtoBufSerializer = new ProtoBufSerializer();
+
+            MultiTypedMessage aSrc = new MultiTypedMessage();
+            aSrc.TypeName = "String";
+            aSrc.MessageData = "Hello";
+
+            object aSerializedData = aProtoBufSerializer.Serialize<MultiTypedMessage>(aSrc);
+
+            MultiTypedMessage aResult = aProtoBufSerializer.Deserialize<MultiTypedMessage>(aSerializedData);
+            Assert.AreEqual(aSrc.TypeName, aResult.TypeName);
+            Assert.AreEqual(aSrc.MessageData, aResult.MessageData);
+
+            aSrc.TypeName = "Byte[]";
+            aSrc.MessageData = new byte[] { 1, 2, 3 };
+            aSerializedData = aProtoBufSerializer.Serialize<MultiTypedMessage>(aSrc);
+            aResult = aProtoBufSerializer.Deserialize<MultiTypedMessage>(aSerializedData);
+            Assert.AreEqual(aSrc.TypeName, aResult.TypeName);
+            Assert.AreEqual(aSrc.MessageData, aResult.MessageData);
+        }
+
+        [Test]
+        public void SerializeDeserializeMessageBusMessage()
+        {
+            ProtoBufSerializer aProtoBufSerializer = new ProtoBufSerializer();
+
+            MessageBusMessage aSrc = new MessageBusMessage();
+            aSrc.Request = EMessageBusRequest.DisconnectClient;
+            aSrc.Id = "1234";
+            aSrc.MessageData = "Hello";
+            object aSerializedData = aProtoBufSerializer.Serialize<MessageBusMessage>(aSrc);
+            MessageBusMessage aResult = aProtoBufSerializer.Deserialize<MessageBusMessage>(aSerializedData);
+            Assert.AreEqual(aSrc.Request, aResult.Request);
+            Assert.AreEqual(aSrc.Id, aResult.Id);
+            Assert.AreEqual(aSrc.MessageData, aResult.MessageData);
+
+            aSrc.Request = EMessageBusRequest.SendResponseMessage;
+            aSrc.Id = "1234";
+            aSrc.MessageData = new byte[] { 1, 2, 3 };
+            aSerializedData = aProtoBufSerializer.Serialize<MessageBusMessage>(aSrc);
+            aResult = aProtoBufSerializer.Deserialize<MessageBusMessage>(aSerializedData);
+            Assert.AreEqual(aSrc.Request, aResult.Request);
+            Assert.AreEqual(aSrc.Id, aResult.Id);
+            Assert.AreEqual(aSrc.MessageData, aResult.MessageData);
+
+            aSrc.Request = EMessageBusRequest.SendResponseMessage;
+            aSrc.Id = "";
+            aSrc.MessageData = null;
+            aSerializedData = aProtoBufSerializer.Serialize<MessageBusMessage>(aSrc);
+            aResult = aProtoBufSerializer.Deserialize<MessageBusMessage>(aSerializedData);
+            Assert.AreEqual(aSrc.Request, aResult.Request);
+            Assert.AreEqual(aSrc.Id, aResult.Id);
+            Assert.IsNull(aResult.MessageData);
+        }
+
+        [Test]
         public void SerializeDeserializeWrappedData()
         {
             ProtoBufSerializer aProtoBufSerializer = new ProtoBufSerializer();
@@ -161,38 +219,6 @@ namespace EneterProtoBufSerializer_UTests
             aResult = aProtoBufSerializer.Deserialize<BrokerMessage>(aSerializedData);
             Assert.AreEqual(aResult.Request, aSrc.Request);
             Assert.IsTrue(Enumerable.SequenceEqual(aResult.MessageTypes, aSrc.MessageTypes));
-            Assert.IsTrue(Enumerable.SequenceEqual((byte[])aResult.Message, (byte[])aSrc.Message));
-        }
-
-        [Test]
-        public void SerializeDeserializeReliableMessage()
-        {
-	        ProtoBufSerializer aProtoBufSerializer = new ProtoBufSerializer();
-	    
-	        ReliableMessage aSrc = new ReliableMessage();
-            aSrc.MessageType = ReliableMessage.EMessageType.Acknowledge;
-            aSrc.MessageId = "123";
-            aSrc.Message = null;
-            object aSerializedData = aProtoBufSerializer.Serialize<ReliableMessage>(aSrc);
-            ReliableMessage aResult = aProtoBufSerializer.Deserialize<ReliableMessage>(aSerializedData);
-            Assert.AreEqual(aResult.MessageType, aSrc.MessageType);
-            Assert.AreEqual(aResult.MessageId, aSrc.MessageId);
-            Assert.IsNull(aResult.Message);
-                
-        
-            aSrc.Message = "Hello2";
-            aSerializedData = aProtoBufSerializer.Serialize<ReliableMessage>(aSrc);
-            aResult = aProtoBufSerializer.Deserialize<ReliableMessage>(aSerializedData);
-            Assert.AreEqual(aResult.MessageType, aSrc.MessageType);
-            Assert.AreEqual(aResult.MessageId, aSrc.MessageId);
-            Assert.AreEqual(aResult.Message, aSrc.Message);
-        
-        
-            aSrc.Message = new byte[]{10, 20, 30};
-            aSerializedData = aProtoBufSerializer.Serialize<ReliableMessage>(aSrc);
-            aResult = aProtoBufSerializer.Deserialize<ReliableMessage>(aSerializedData);
-            Assert.AreEqual(aResult.MessageType, aSrc.MessageType);
-            Assert.AreEqual(aResult.MessageId, aSrc.MessageId);
             Assert.IsTrue(Enumerable.SequenceEqual((byte[])aResult.Message, (byte[])aSrc.Message));
         }
 

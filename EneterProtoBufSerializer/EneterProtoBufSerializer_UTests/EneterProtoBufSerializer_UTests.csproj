@@ -33,7 +33,7 @@
   <ItemGroup>
     <Reference Include="Eneter.Messaging.Framework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b85852a6d7b5cd07, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\EneterMessaging600\EneterMessagingFramework\bin\Net40\Debug\Eneter.Messaging.Framework.dll</HintPath>
+      <HintPath>..\..\..\..\EneterMessaging650\EneterMessagingFramework\bin\Net40\Release\Eneter.Messaging.Framework.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\..\..\..\Program Files\NUnit-2.6.2\bin\nunit.framework.dll</HintPath>
