@@ -6,10 +6,10 @@ public final class EneterProtoBufUnitTestDeclarations {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
-  public interface TestMessageOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
+  public interface TestMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:TestMessage)
+      com.google.protobuf.MessageOrBuilder {
 
-    // required string Name = 1;
     /**
      * <code>required string Name = 1;</code>
      */
@@ -24,7 +24,6 @@ public final class EneterProtoBufUnitTestDeclarations {
     com.google.protobuf.ByteString
         getNameBytes();
 
-    // required int32 Value = 2;
     /**
      * <code>required int32 Value = 2;</code>
      */
@@ -38,8 +37,9 @@ public final class EneterProtoBufUnitTestDeclarations {
    * Protobuf type {@code TestMessage}
    */
   public static final class TestMessage extends
-      com.google.protobuf.GeneratedMessage
-      implements TestMessageOrBuilder {
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:TestMessage)
+      TestMessageOrBuilder {
     // Use TestMessage.newBuilder() to construct.
     private TestMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
@@ -86,8 +86,9 @@ public final class EneterProtoBufUnitTestDeclarations {
               break;
             }
             case 10: {
+              com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000001;
-              name_ = input.readBytes();
+              name_ = bs;
               break;
             }
             case 16: {
@@ -135,7 +136,6 @@ public final class EneterProtoBufUnitTestDeclarations {
     }
 
     private int bitField0_;
-    // required string Name = 1;
     public static final int NAME_FIELD_NUMBER = 1;
     private java.lang.Object name_;
     /**
@@ -178,7 +178,6 @@ public final class EneterProtoBufUnitTestDeclarations {
       }
     }
 
-    // required int32 Value = 2;
     public static final int VALUE_FIELD_NUMBER = 2;
     private int value_;
     /**
@@ -201,7 +200,8 @@ public final class EneterProtoBufUnitTestDeclarations {
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
 
       if (!hasName()) {
         memoizedIsInitialized = 0;
@@ -323,8 +323,9 @@ public final class EneterProtoBufUnitTestDeclarations {
      * Protobuf type {@code TestMessage}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements EneterProtoBufUnitTestDeclarations.TestMessageOrBuilder {
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:TestMessage)
+        EneterProtoBufUnitTestDeclarations.TestMessageOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return EneterProtoBufUnitTestDeclarations.internal_static_TestMessage_descriptor;
@@ -456,7 +457,6 @@ public final class EneterProtoBufUnitTestDeclarations {
       }
       private int bitField0_;
 
-      // required string Name = 1;
       private java.lang.Object name_ = "";
       /**
        * <code>required string Name = 1;</code>
@@ -470,9 +470,12 @@ public final class EneterProtoBufUnitTestDeclarations {
       public java.lang.String getName() {
         java.lang.Object ref = name_;
         if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          name_ = s;
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            name_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -530,7 +533,6 @@ public final class EneterProtoBufUnitTestDeclarations {
         return this;
       }
 
-      // required int32 Value = 2;
       private int value_ ;
       /**
        * <code>required int32 Value = 2;</code>
@@ -574,7 +576,7 @@ public final class EneterProtoBufUnitTestDeclarations {
     // @@protoc_insertion_point(class_scope:TestMessage)
   }
 
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_TestMessage_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -593,23 +595,23 @@ public final class EneterProtoBufUnitTestDeclarations {
       "\030\002 \002(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-      new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
-        public com.google.protobuf.ExtensionRegistry assignDescriptors(
-            com.google.protobuf.Descriptors.FileDescriptor root) {
-          descriptor = root;
-          internal_static_TestMessage_descriptor =
-            getDescriptor().getMessageTypes().get(0);
-          internal_static_TestMessage_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_TestMessage_descriptor,
-              new java.lang.String[] { "Name", "Value", });
-          return null;
-        }
-      };
+        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
+          public com.google.protobuf.ExtensionRegistry assignDescriptors(
+              com.google.protobuf.Descriptors.FileDescriptor root) {
+            descriptor = root;
+            return null;
+          }
+        };
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
+    internal_static_TestMessage_descriptor =
+      getDescriptor().getMessageTypes().get(0);
+    internal_static_TestMessage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_TestMessage_descriptor,
+        new java.lang.String[] { "Name", "Value", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
