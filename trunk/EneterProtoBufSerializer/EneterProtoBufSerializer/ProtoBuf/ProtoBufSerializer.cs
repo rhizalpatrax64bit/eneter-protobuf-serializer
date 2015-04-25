@@ -207,7 +207,6 @@ namespace Eneter.ProtoBuf
             anRpcMessageProto.Id = data.Id;
             anRpcMessageProto.Flag = data.Flag;
             anRpcMessageProto.OperationName = data.OperationName;
-            anRpcMessageProto.Error = data.Error;
             if (data.SerializedData != null)
             {
                 foreach (byte[] aMethodParameter in data.SerializedData)
@@ -215,6 +214,9 @@ namespace Eneter.ProtoBuf
                     anRpcMessageProto.SerializedData.Add(aMethodParameter);
                 }
             }
+            anRpcMessageProto.ErrorType = data.ErrorType;
+            anRpcMessageProto.ErrorMessage = data.ErrorMessage;
+            anRpcMessageProto.ErrorDetails = data.ErrorDetails;
 
             return SerializeProtoBuf<RpcMessageProto>(anRpcMessageProto);
         }
@@ -226,7 +228,9 @@ namespace Eneter.ProtoBuf
             anRpcMessage.Id = anRpcMessageProto.Id;
             anRpcMessage.Flag = anRpcMessageProto.Flag;
             anRpcMessage.OperationName = anRpcMessageProto.OperationName;
-            anRpcMessage.Error = anRpcMessageProto.Error;
+            anRpcMessage.ErrorType = anRpcMessageProto.ErrorType;
+            anRpcMessage.ErrorMessage = anRpcMessageProto.ErrorMessage;
+            anRpcMessage.ErrorDetails = anRpcMessageProto.ErrorDetails;
             
             if (anRpcMessageProto.SerializedData != null)
             {

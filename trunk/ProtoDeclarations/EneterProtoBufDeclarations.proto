@@ -21,8 +21,10 @@ message RpcMessageProto
     required int32 Id = 1;
     required int32 Flag = 2;
     required string OperationName = 3;
-    required string Error = 4;
-    repeated bytes SerializedData = 5;
+    repeated bytes SerializedData = 4;
+    required string ErrorType = 5;
+    required string ErrorMessage = 6;
+    required string ErrorDetails = 7;
 }
 
 // EventArgs can be used in RPC communication.
