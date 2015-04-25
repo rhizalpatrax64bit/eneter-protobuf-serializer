@@ -1,3 +1,11 @@
+/**
+ * Project: Eneter.ProtoBuf.Serializer
+ * Author: Ondrej Uzovic
+ * 
+ * Copyright © 2013 Ondrej Uzovic
+ * 
+ */
+
 package eneter.protobuf;
 
 import java.util.Arrays;
@@ -102,7 +110,9 @@ class EneterTypesWrapper
                 .setId(data.Id)
                 .setFlag(data.Flag)
                 .setOperationName(data.OperationName)
-                .setError(data.Error);
+                .setErrorType(data.ErrorType)
+                .setErrorMessage(data.ErrorMessage)
+                .setErrorDetails(data.ErrorDetails);
         if (data.SerializedData != null)
         {
             for (int i = 0; i < data.SerializedData.length; ++i)
@@ -122,7 +132,9 @@ class EneterTypesWrapper
         anRpcMessage.Id = anRpcMessageProto.getId();
         anRpcMessage.Flag = anRpcMessageProto.getFlag();
         anRpcMessage.OperationName = anRpcMessageProto.getOperationName();
-        anRpcMessage.Error = anRpcMessageProto.getError();
+        anRpcMessage.ErrorType = anRpcMessageProto.getErrorType();
+        anRpcMessage.ErrorMessage = anRpcMessageProto.getErrorMessage();
+        anRpcMessage.ErrorDetails = anRpcMessageProto.getErrorDetails();
         
         List<ByteString> aMethodParams = anRpcMessageProto.getSerializedDataList();
         if (aMethodParams != null)
