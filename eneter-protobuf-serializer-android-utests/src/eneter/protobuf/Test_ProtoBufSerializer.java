@@ -284,7 +284,9 @@ public class Test_ProtoBufSerializer
         anRpcMessage.Id = 102;
         anRpcMessage.Flag = 20;
         anRpcMessage.OperationName = "DummyOperation";
-        anRpcMessage.Error = "DummyError";
+        anRpcMessage.ErrorType = "DummyErrorType";
+        anRpcMessage.ErrorMessage = "DummyError";
+        anRpcMessage.ErrorDetails = "DummyErrorDetails";
         anRpcMessage.SerializedData = new Object[]
                 { aParam1, aParam2, aParam3, aParam4, aParam5, aParam6, aParam7, aParam8, aParam9, aParam10,
                   aParam11, aParam12, aParam13, aParam14, aParam15, aParam16, aParam17, aParam18, aParam19};
@@ -296,7 +298,9 @@ public class Test_ProtoBufSerializer
         assertEquals(anRpcMessage.Id, aDeserialized.Id);
         assertEquals(anRpcMessage.Flag, aDeserialized.Flag);
         assertEquals(anRpcMessage.OperationName, aDeserialized.OperationName);
-        assertEquals(anRpcMessage.Error, aDeserialized.Error);
+        assertEquals(anRpcMessage.ErrorType, aDeserialized.ErrorType);
+        assertEquals(anRpcMessage.ErrorMessage, aDeserialized.ErrorMessage);
+        assertEquals(anRpcMessage.ErrorDetails, aDeserialized.ErrorDetails);
 
         assertEquals(19, aDeserialized.SerializedData.length);
 
