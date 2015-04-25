@@ -149,20 +149,34 @@ namespace Eneter.ProtoBuf
       get { return _OperationName; }
       set { _OperationName = value; }
     }
-    private string _Error;
-    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"Error", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public string Error
-    {
-      get { return _Error; }
-      set { _Error = value; }
-    }
     private readonly global::System.Collections.Generic.List<byte[]> _SerializedData = new global::System.Collections.Generic.List<byte[]>();
-    [global::ProtoBuf.ProtoMember(5, Name=@"SerializedData", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(4, Name=@"SerializedData", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public global::System.Collections.Generic.List<byte[]> SerializedData
     {
       get { return _SerializedData; }
     }
   
+    private string _ErrorType;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"ErrorType", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string ErrorType
+    {
+      get { return _ErrorType; }
+      set { _ErrorType = value; }
+    }
+    private string _ErrorMessage;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"ErrorMessage", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string ErrorMessage
+    {
+      get { return _ErrorMessage; }
+      set { _ErrorMessage = value; }
+    }
+    private string _ErrorDetails;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"ErrorDetails", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string ErrorDetails
+    {
+      get { return _ErrorDetails; }
+      set { _ErrorDetails = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

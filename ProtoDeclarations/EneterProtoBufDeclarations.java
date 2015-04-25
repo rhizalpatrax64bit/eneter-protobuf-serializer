@@ -1589,31 +1589,59 @@ public final class EneterProtoBufDeclarations {
         getOperationNameBytes();
 
     /**
-     * <code>required string Error = 4;</code>
-     */
-    boolean hasError();
-    /**
-     * <code>required string Error = 4;</code>
-     */
-    java.lang.String getError();
-    /**
-     * <code>required string Error = 4;</code>
-     */
-    com.google.protobuf.ByteString
-        getErrorBytes();
-
-    /**
-     * <code>repeated bytes SerializedData = 5;</code>
+     * <code>repeated bytes SerializedData = 4;</code>
      */
     java.util.List<com.google.protobuf.ByteString> getSerializedDataList();
     /**
-     * <code>repeated bytes SerializedData = 5;</code>
+     * <code>repeated bytes SerializedData = 4;</code>
      */
     int getSerializedDataCount();
     /**
-     * <code>repeated bytes SerializedData = 5;</code>
+     * <code>repeated bytes SerializedData = 4;</code>
      */
     com.google.protobuf.ByteString getSerializedData(int index);
+
+    /**
+     * <code>required string ErrorType = 5;</code>
+     */
+    boolean hasErrorType();
+    /**
+     * <code>required string ErrorType = 5;</code>
+     */
+    java.lang.String getErrorType();
+    /**
+     * <code>required string ErrorType = 5;</code>
+     */
+    com.google.protobuf.ByteString
+        getErrorTypeBytes();
+
+    /**
+     * <code>required string ErrorMessage = 6;</code>
+     */
+    boolean hasErrorMessage();
+    /**
+     * <code>required string ErrorMessage = 6;</code>
+     */
+    java.lang.String getErrorMessage();
+    /**
+     * <code>required string ErrorMessage = 6;</code>
+     */
+    com.google.protobuf.ByteString
+        getErrorMessageBytes();
+
+    /**
+     * <code>required string ErrorDetails = 7;</code>
+     */
+    boolean hasErrorDetails();
+    /**
+     * <code>required string ErrorDetails = 7;</code>
+     */
+    java.lang.String getErrorDetails();
+    /**
+     * <code>required string ErrorDetails = 7;</code>
+     */
+    com.google.protobuf.ByteString
+        getErrorDetailsBytes();
   }
   /**
    * Protobuf type {@code RpcMessageProto}
@@ -1688,17 +1716,29 @@ public final class EneterProtoBufDeclarations {
               break;
             }
             case 34: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000008;
-              error_ = bs;
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+                serializedData_ = new java.util.ArrayList<com.google.protobuf.ByteString>();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              serializedData_.add(input.readBytes());
               break;
             }
             case 42: {
-              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
-                serializedData_ = new java.util.ArrayList<com.google.protobuf.ByteString>();
-                mutable_bitField0_ |= 0x00000010;
-              }
-              serializedData_.add(input.readBytes());
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000008;
+              errorType_ = bs;
+              break;
+            }
+            case 50: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000010;
+              errorMessage_ = bs;
+              break;
+            }
+            case 58: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000020;
+              errorDetails_ = bs;
               break;
             }
           }
@@ -1709,7 +1749,7 @@ public final class EneterProtoBufDeclarations {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
           serializedData_ = java.util.Collections.unmodifiableList(serializedData_);
         }
         this.unknownFields = unknownFields.build();
@@ -1816,19 +1856,41 @@ public final class EneterProtoBufDeclarations {
       }
     }
 
-    public static final int ERROR_FIELD_NUMBER = 4;
-    private java.lang.Object error_;
+    public static final int SERIALIZEDDATA_FIELD_NUMBER = 4;
+    private java.util.List<com.google.protobuf.ByteString> serializedData_;
     /**
-     * <code>required string Error = 4;</code>
+     * <code>repeated bytes SerializedData = 4;</code>
      */
-    public boolean hasError() {
+    public java.util.List<com.google.protobuf.ByteString>
+        getSerializedDataList() {
+      return serializedData_;
+    }
+    /**
+     * <code>repeated bytes SerializedData = 4;</code>
+     */
+    public int getSerializedDataCount() {
+      return serializedData_.size();
+    }
+    /**
+     * <code>repeated bytes SerializedData = 4;</code>
+     */
+    public com.google.protobuf.ByteString getSerializedData(int index) {
+      return serializedData_.get(index);
+    }
+
+    public static final int ERRORTYPE_FIELD_NUMBER = 5;
+    private java.lang.Object errorType_;
+    /**
+     * <code>required string ErrorType = 5;</code>
+     */
+    public boolean hasErrorType() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>required string Error = 4;</code>
+     * <code>required string ErrorType = 5;</code>
      */
-    public java.lang.String getError() {
-      java.lang.Object ref = error_;
+    public java.lang.String getErrorType() {
+      java.lang.Object ref = errorType_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
@@ -1836,56 +1898,120 @@ public final class EneterProtoBufDeclarations {
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
-          error_ = s;
+          errorType_ = s;
         }
         return s;
       }
     }
     /**
-     * <code>required string Error = 4;</code>
+     * <code>required string ErrorType = 5;</code>
      */
     public com.google.protobuf.ByteString
-        getErrorBytes() {
-      java.lang.Object ref = error_;
+        getErrorTypeBytes() {
+      java.lang.Object ref = errorType_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        error_ = b;
+        errorType_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    public static final int SERIALIZEDDATA_FIELD_NUMBER = 5;
-    private java.util.List<com.google.protobuf.ByteString> serializedData_;
+    public static final int ERRORMESSAGE_FIELD_NUMBER = 6;
+    private java.lang.Object errorMessage_;
     /**
-     * <code>repeated bytes SerializedData = 5;</code>
+     * <code>required string ErrorMessage = 6;</code>
      */
-    public java.util.List<com.google.protobuf.ByteString>
-        getSerializedDataList() {
-      return serializedData_;
+    public boolean hasErrorMessage() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>repeated bytes SerializedData = 5;</code>
+     * <code>required string ErrorMessage = 6;</code>
      */
-    public int getSerializedDataCount() {
-      return serializedData_.size();
+    public java.lang.String getErrorMessage() {
+      java.lang.Object ref = errorMessage_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          errorMessage_ = s;
+        }
+        return s;
+      }
     }
     /**
-     * <code>repeated bytes SerializedData = 5;</code>
+     * <code>required string ErrorMessage = 6;</code>
      */
-    public com.google.protobuf.ByteString getSerializedData(int index) {
-      return serializedData_.get(index);
+    public com.google.protobuf.ByteString
+        getErrorMessageBytes() {
+      java.lang.Object ref = errorMessage_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        errorMessage_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ERRORDETAILS_FIELD_NUMBER = 7;
+    private java.lang.Object errorDetails_;
+    /**
+     * <code>required string ErrorDetails = 7;</code>
+     */
+    public boolean hasErrorDetails() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>required string ErrorDetails = 7;</code>
+     */
+    public java.lang.String getErrorDetails() {
+      java.lang.Object ref = errorDetails_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          errorDetails_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string ErrorDetails = 7;</code>
+     */
+    public com.google.protobuf.ByteString
+        getErrorDetailsBytes() {
+      java.lang.Object ref = errorDetails_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        errorDetails_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private void initFields() {
       id_ = 0;
       flag_ = 0;
       operationName_ = "";
-      error_ = "";
       serializedData_ = java.util.Collections.emptyList();
+      errorType_ = "";
+      errorMessage_ = "";
+      errorDetails_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1905,7 +2031,15 @@ public final class EneterProtoBufDeclarations {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasError()) {
+      if (!hasErrorType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasErrorMessage()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasErrorDetails()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -1925,11 +2059,17 @@ public final class EneterProtoBufDeclarations {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeBytes(3, getOperationNameBytes());
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeBytes(4, getErrorBytes());
-      }
       for (int i = 0; i < serializedData_.size(); i++) {
-        output.writeBytes(5, serializedData_.get(i));
+        output.writeBytes(4, serializedData_.get(i));
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBytes(5, getErrorTypeBytes());
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeBytes(6, getErrorMessageBytes());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeBytes(7, getErrorDetailsBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -1952,10 +2092,6 @@ public final class EneterProtoBufDeclarations {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(3, getOperationNameBytes());
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(4, getErrorBytes());
-      }
       {
         int dataSize = 0;
         for (int i = 0; i < serializedData_.size(); i++) {
@@ -1964,6 +2100,18 @@ public final class EneterProtoBufDeclarations {
         }
         size += dataSize;
         size += 1 * getSerializedDataList().size();
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(5, getErrorTypeBytes());
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(6, getErrorMessageBytes());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(7, getErrorDetailsBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2092,10 +2240,14 @@ public final class EneterProtoBufDeclarations {
         bitField0_ = (bitField0_ & ~0x00000002);
         operationName_ = "";
         bitField0_ = (bitField0_ & ~0x00000004);
-        error_ = "";
-        bitField0_ = (bitField0_ & ~0x00000008);
         serializedData_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000008);
+        errorType_ = "";
         bitField0_ = (bitField0_ & ~0x00000010);
+        errorMessage_ = "";
+        bitField0_ = (bitField0_ & ~0x00000020);
+        errorDetails_ = "";
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
 
@@ -2136,15 +2288,23 @@ public final class EneterProtoBufDeclarations {
           to_bitField0_ |= 0x00000004;
         }
         result.operationName_ = operationName_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.error_ = error_;
-        if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        if (((bitField0_ & 0x00000008) == 0x00000008)) {
           serializedData_ = java.util.Collections.unmodifiableList(serializedData_);
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000008);
         }
         result.serializedData_ = serializedData_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.errorType_ = errorType_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.errorMessage_ = errorMessage_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.errorDetails_ = errorDetails_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -2172,19 +2332,29 @@ public final class EneterProtoBufDeclarations {
           operationName_ = other.operationName_;
           onChanged();
         }
-        if (other.hasError()) {
-          bitField0_ |= 0x00000008;
-          error_ = other.error_;
-          onChanged();
-        }
         if (!other.serializedData_.isEmpty()) {
           if (serializedData_.isEmpty()) {
             serializedData_ = other.serializedData_;
-            bitField0_ = (bitField0_ & ~0x00000010);
+            bitField0_ = (bitField0_ & ~0x00000008);
           } else {
             ensureSerializedDataIsMutable();
             serializedData_.addAll(other.serializedData_);
           }
+          onChanged();
+        }
+        if (other.hasErrorType()) {
+          bitField0_ |= 0x00000010;
+          errorType_ = other.errorType_;
+          onChanged();
+        }
+        if (other.hasErrorMessage()) {
+          bitField0_ |= 0x00000020;
+          errorMessage_ = other.errorMessage_;
+          onChanged();
+        }
+        if (other.hasErrorDetails()) {
+          bitField0_ |= 0x00000040;
+          errorDetails_ = other.errorDetails_;
           onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
@@ -2204,7 +2374,15 @@ public final class EneterProtoBufDeclarations {
           
           return false;
         }
-        if (!hasError()) {
+        if (!hasErrorType()) {
+          
+          return false;
+        }
+        if (!hasErrorMessage()) {
+          
+          return false;
+        }
+        if (!hasErrorDetails()) {
           
           return false;
         }
@@ -2370,110 +2548,34 @@ public final class EneterProtoBufDeclarations {
         return this;
       }
 
-      private java.lang.Object error_ = "";
-      /**
-       * <code>required string Error = 4;</code>
-       */
-      public boolean hasError() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>required string Error = 4;</code>
-       */
-      public java.lang.String getError() {
-        java.lang.Object ref = error_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            error_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>required string Error = 4;</code>
-       */
-      public com.google.protobuf.ByteString
-          getErrorBytes() {
-        java.lang.Object ref = error_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          error_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>required string Error = 4;</code>
-       */
-      public Builder setError(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000008;
-        error_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string Error = 4;</code>
-       */
-      public Builder clearError() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        error_ = getDefaultInstance().getError();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string Error = 4;</code>
-       */
-      public Builder setErrorBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000008;
-        error_ = value;
-        onChanged();
-        return this;
-      }
-
       private java.util.List<com.google.protobuf.ByteString> serializedData_ = java.util.Collections.emptyList();
       private void ensureSerializedDataIsMutable() {
-        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
           serializedData_ = new java.util.ArrayList<com.google.protobuf.ByteString>(serializedData_);
-          bitField0_ |= 0x00000010;
+          bitField0_ |= 0x00000008;
          }
       }
       /**
-       * <code>repeated bytes SerializedData = 5;</code>
+       * <code>repeated bytes SerializedData = 4;</code>
        */
       public java.util.List<com.google.protobuf.ByteString>
           getSerializedDataList() {
         return java.util.Collections.unmodifiableList(serializedData_);
       }
       /**
-       * <code>repeated bytes SerializedData = 5;</code>
+       * <code>repeated bytes SerializedData = 4;</code>
        */
       public int getSerializedDataCount() {
         return serializedData_.size();
       }
       /**
-       * <code>repeated bytes SerializedData = 5;</code>
+       * <code>repeated bytes SerializedData = 4;</code>
        */
       public com.google.protobuf.ByteString getSerializedData(int index) {
         return serializedData_.get(index);
       }
       /**
-       * <code>repeated bytes SerializedData = 5;</code>
+       * <code>repeated bytes SerializedData = 4;</code>
        */
       public Builder setSerializedData(
           int index, com.google.protobuf.ByteString value) {
@@ -2486,7 +2588,7 @@ public final class EneterProtoBufDeclarations {
         return this;
       }
       /**
-       * <code>repeated bytes SerializedData = 5;</code>
+       * <code>repeated bytes SerializedData = 4;</code>
        */
       public Builder addSerializedData(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -2498,7 +2600,7 @@ public final class EneterProtoBufDeclarations {
         return this;
       }
       /**
-       * <code>repeated bytes SerializedData = 5;</code>
+       * <code>repeated bytes SerializedData = 4;</code>
        */
       public Builder addAllSerializedData(
           java.lang.Iterable<? extends com.google.protobuf.ByteString> values) {
@@ -2509,11 +2611,239 @@ public final class EneterProtoBufDeclarations {
         return this;
       }
       /**
-       * <code>repeated bytes SerializedData = 5;</code>
+       * <code>repeated bytes SerializedData = 4;</code>
        */
       public Builder clearSerializedData() {
         serializedData_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000008);
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object errorType_ = "";
+      /**
+       * <code>required string ErrorType = 5;</code>
+       */
+      public boolean hasErrorType() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>required string ErrorType = 5;</code>
+       */
+      public java.lang.String getErrorType() {
+        java.lang.Object ref = errorType_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            errorType_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string ErrorType = 5;</code>
+       */
+      public com.google.protobuf.ByteString
+          getErrorTypeBytes() {
+        java.lang.Object ref = errorType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          errorType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string ErrorType = 5;</code>
+       */
+      public Builder setErrorType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
+        errorType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string ErrorType = 5;</code>
+       */
+      public Builder clearErrorType() {
         bitField0_ = (bitField0_ & ~0x00000010);
+        errorType_ = getDefaultInstance().getErrorType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string ErrorType = 5;</code>
+       */
+      public Builder setErrorTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
+        errorType_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object errorMessage_ = "";
+      /**
+       * <code>required string ErrorMessage = 6;</code>
+       */
+      public boolean hasErrorMessage() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>required string ErrorMessage = 6;</code>
+       */
+      public java.lang.String getErrorMessage() {
+        java.lang.Object ref = errorMessage_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            errorMessage_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string ErrorMessage = 6;</code>
+       */
+      public com.google.protobuf.ByteString
+          getErrorMessageBytes() {
+        java.lang.Object ref = errorMessage_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          errorMessage_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string ErrorMessage = 6;</code>
+       */
+      public Builder setErrorMessage(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000020;
+        errorMessage_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string ErrorMessage = 6;</code>
+       */
+      public Builder clearErrorMessage() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        errorMessage_ = getDefaultInstance().getErrorMessage();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string ErrorMessage = 6;</code>
+       */
+      public Builder setErrorMessageBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000020;
+        errorMessage_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object errorDetails_ = "";
+      /**
+       * <code>required string ErrorDetails = 7;</code>
+       */
+      public boolean hasErrorDetails() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>required string ErrorDetails = 7;</code>
+       */
+      public java.lang.String getErrorDetails() {
+        java.lang.Object ref = errorDetails_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            errorDetails_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string ErrorDetails = 7;</code>
+       */
+      public com.google.protobuf.ByteString
+          getErrorDetailsBytes() {
+        java.lang.Object ref = errorDetails_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          errorDetails_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string ErrorDetails = 7;</code>
+       */
+      public Builder setErrorDetails(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000040;
+        errorDetails_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string ErrorDetails = 7;</code>
+       */
+      public Builder clearErrorDetails() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        errorDetails_ = getDefaultInstance().getErrorDetails();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string ErrorDetails = 7;</code>
+       */
+      public Builder setErrorDetailsBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000040;
+        errorDetails_ = value;
         onChanged();
         return this;
       }
@@ -5624,19 +5954,20 @@ public final class EneterProtoBufDeclarations {
       "\002Id\030\002 \002(\t\022\026\n\016MessageDataBin\030\003 \001(\014\022\026\n\016Mes" +
       "sageDataStr\030\004 \001(\t\"Z\n\026MultiTypedMessagePr" +
       "oto\022\020\n\010TypeName\030\001 \002(\t\022\026\n\016MessageDataBin\030" +
-      "\002 \001(\014\022\026\n\016MessageDataStr\030\003 \001(\t\"i\n\017RpcMess" +
-      "ageProto\022\n\n\002Id\030\001 \002(\005\022\014\n\004Flag\030\002 \002(\005\022\025\n\rOp" +
-      "erationName\030\003 \002(\t\022\r\n\005Error\030\004 \002(\t\022\026\n\016Seri" +
-      "alizedData\030\005 \003(\014\"\037\n\016EventArgsProto\022\r\n\005du" +
-      "mmy\030\001 \002(\005\"W\n\020WrappedDataProto\022\021\n\tAddedDa",
-      "ta\030\001 \002(\t\022\027\n\017OriginalDataBin\030\002 \001(\014\022\027\n\017Ori" +
-      "ginalDataStr\030\003 \001(\t\"c\n\022BrokerMessageProto" +
-      "\022\017\n\007Request\030\001 \002(\005\022\024\n\014MessageTypes\030\002 \003(\t\022" +
-      "\022\n\nMessageBin\030\003 \001(\014\022\022\n\nMessageStr\030\004 \001(\t\"" +
-      "g\n\032MonitorChannelMessageProto\022\023\n\013Message" +
-      "Type\030\001 \002(\005\022\031\n\021MessageContentBin\030\002 \001(\014\022\031\n" +
-      "\021MessageContentStr\030\003 \001(\t\"!\n\020VoidMessageP" +
-      "roto\022\r\n\005dummy\030\001 \002(\005"
+      "\002 \001(\014\022\026\n\016MessageDataStr\030\003 \001(\t\"\231\001\n\017RpcMes" +
+      "sageProto\022\n\n\002Id\030\001 \002(\005\022\014\n\004Flag\030\002 \002(\005\022\025\n\rO" +
+      "perationName\030\003 \002(\t\022\026\n\016SerializedData\030\004 \003" +
+      "(\014\022\021\n\tErrorType\030\005 \002(\t\022\024\n\014ErrorMessage\030\006 " +
+      "\002(\t\022\024\n\014ErrorDetails\030\007 \002(\t\"\037\n\016EventArgsPr",
+      "oto\022\r\n\005dummy\030\001 \002(\005\"W\n\020WrappedDataProto\022\021" +
+      "\n\tAddedData\030\001 \002(\t\022\027\n\017OriginalDataBin\030\002 \001" +
+      "(\014\022\027\n\017OriginalDataStr\030\003 \001(\t\"c\n\022BrokerMes" +
+      "sageProto\022\017\n\007Request\030\001 \002(\005\022\024\n\014MessageTyp" +
+      "es\030\002 \003(\t\022\022\n\nMessageBin\030\003 \001(\014\022\022\n\nMessageS" +
+      "tr\030\004 \001(\t\"g\n\032MonitorChannelMessageProto\022\023" +
+      "\n\013MessageType\030\001 \002(\005\022\031\n\021MessageContentBin" +
+      "\030\002 \001(\014\022\031\n\021MessageContentStr\030\003 \001(\t\"!\n\020Voi" +
+      "dMessageProto\022\r\n\005dummy\030\001 \002(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -5667,7 +5998,7 @@ public final class EneterProtoBufDeclarations {
     internal_static_RpcMessageProto_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_RpcMessageProto_descriptor,
-        new java.lang.String[] { "Id", "Flag", "OperationName", "Error", "SerializedData", });
+        new java.lang.String[] { "Id", "Flag", "OperationName", "SerializedData", "ErrorType", "ErrorMessage", "ErrorDetails", });
     internal_static_EventArgsProto_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_EventArgsProto_fieldAccessorTable = new

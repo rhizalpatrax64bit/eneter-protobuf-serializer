@@ -314,7 +314,11 @@ namespace EneterProtoBufSerializer_UTests
             anRpcMessage.Id = 102;
             anRpcMessage.Flag = 20;
             anRpcMessage.OperationName = "DummyOperation";
-            anRpcMessage.Error = "DummyError";
+
+            anRpcMessage.ErrorType = "DummyErrorType";
+            anRpcMessage.ErrorMessage = "DummyError";
+            anRpcMessage.ErrorDetails = "DummyDetails";
+            
             anRpcMessage.SerializedData = new object[]
                 { aParam1, aParam2, aParam3, aParam4, aParam5, aParam6, aParam7, aParam8, aParam9, aParam10,
                   aParam11, aParam12, aParam13, aParam14, aParam15, aParam16, aParam17, aParam18, aParam19};
@@ -326,7 +330,9 @@ namespace EneterProtoBufSerializer_UTests
             Assert.AreEqual(anRpcMessage.Id, aDeserialized.Id);
             Assert.AreEqual(anRpcMessage.Flag, aDeserialized.Flag);
             Assert.AreEqual(anRpcMessage.OperationName, aDeserialized.OperationName);
-            Assert.AreEqual(anRpcMessage.Error, aDeserialized.Error);
+            Assert.AreEqual(anRpcMessage.ErrorType, aDeserialized.ErrorType);
+            Assert.AreEqual(anRpcMessage.ErrorMessage, aDeserialized.ErrorMessage);
+            Assert.AreEqual(anRpcMessage.ErrorDetails, aDeserialized.ErrorDetails);
 
             Assert.AreEqual(19, aDeserialized.SerializedData.Length);
 
